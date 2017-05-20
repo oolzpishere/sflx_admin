@@ -66,14 +66,7 @@ class PagesController < ApplicationController
   # def set_page
   #   @page = Page.find(params[:id])
   # end
-  def menu_arr
-    ['index',
-     'about',
-     'galleries',
-     'views',
-     ['contact']
-    ]
-  end
+
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def page_params

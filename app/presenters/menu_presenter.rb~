@@ -3,11 +3,13 @@ require 'active_support/configurable'
 require 'action_view/helpers/tag_helper'
 require 'action_view/helpers/url_helper'
 
-module Presenter
+
+module Presenters
   class MenuPresenter
     include ActionView::Helpers::TagHelper
     include ActionView::Helpers::UrlHelper
     include ActiveSupport::Configurable
+
 
     config_accessor :roots, :menu_tag, :list_tag, :list_item_tag, :css, :dom_id,
                     :max_depth, :active_css, :selected_css, :first_css, :last_css, :list_tag_css, 
@@ -36,7 +38,7 @@ module Presenter
     end
 
     def to_html
-      render_menu_items(collection.select {|item| item.parent_id.blank?}) if collection.present?
+      render_menu_items(collection) if collection.present?
     end
 
     def render_menu_items(menu_items)

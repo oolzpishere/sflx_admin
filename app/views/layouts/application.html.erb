@@ -12,5 +12,6 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+    <%= MenuPresenter.new( menu_arr, self).to_html %>
   </body>
 </html>
