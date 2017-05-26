@@ -28,7 +28,6 @@ class MenuPresenter
   self.link_tag_css = 'waves-effect waves-light'
   self.link_dropdown_tag_css = 'header-dropdown-button waves-effect waves-light'
 
-
   attr_accessor :context, :collection
   delegate :output_buffer, :output_buffer=, :to => :context
 
@@ -74,14 +73,14 @@ class MenuPresenter
   end
 
   def render_menu_item_link(menu_item)
-    path = get_path menu_item
+    path = menu_item.path
     turbolinks_boolean = path =~ /find_us/ ? false : true
     link_to(menu_item.title, path, :class => link_tag_css, "data-turbolinks" => turbolinks_boolean)
   end
 
   def render_menu_item_link_dropdown(menu_item)
     dropdownid = "dropdown#{menu_item.id}"
-    path = get_path menu_item
+    path = menu_item.path
     
     link_to( context.url_for(path), :class => link_dropdown_tag_css, data: {activates: dropdownid} ) do
       str = "#{menu_item.title}<i class=\"fa fa-chevron-down right\" aria-hidden=\"true\"></i>"
@@ -101,9 +100,9 @@ class MenuPresenter
   end
 
   def menu_item_children(menu_item)
-    path = get_path menu_item 
+    path  = menu_item.path
     if path =~ /^\/?galleries$|^\/?contact$/
-      @collection.select { |item| item.parent_id == menu_item.id }
+      @collection.select { |item| item.parent == menu_item.path }
     end
   end
 
