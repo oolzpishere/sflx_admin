@@ -12,6 +12,6 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-    <%= MenuPresenter.new(  MenuStructs.new.add_lr_to_struct, self ).to_html %>
+    <%= MenuPresenter.new(  MenuStructs.new.order, self ).to_html %>
   </body>
 </html>

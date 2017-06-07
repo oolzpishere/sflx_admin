@@ -10,6 +10,15 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
+    if MenuStructs.new.pages_show.include? params[:path]
+      view_file = params[:path].gsub(/\//, '_')
+     
+      render view_file and return if lookup_context.exists?(view_file, 'pages')
+
+    end
+
+    
+
   end
 
   # GET /pages/new
@@ -62,14 +71,24 @@ class PagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  # Use callbacks to share common setup or constraints between actions.
   # def set_page
   #   @page = Page.find(params[:id])
   # end
+  def reject_menus_at_page
+    ['contact']
+  end
 
+  def menus_reject
+    MenuStructs.new.order_path.reject do |struct|
+      # reg = reject_menus_at_page.join("|")
+      # struct.path.match(/#{reg}/)
+      reject_menus_at_page.any? {|item| struct.path.match(/#{item}/)}
+    end
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def page_params
     params.fetch(:page, {})
   end
-  end
+end

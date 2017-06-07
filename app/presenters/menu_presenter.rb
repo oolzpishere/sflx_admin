@@ -40,20 +40,20 @@ class MenuPresenter
     render_menu_items(collection) if collection.present?
   end
 
+  private
+
   def render_menu_items(menu_items)
     if menu_items.present? 
       content_tag(list_tag, :id => list_tag_id, :class => list_tag_css) do
-        menu_items.each_with_index.inject(ActiveSupport::SafeBuffer.new) do |buffer, (item, index)|
-          buffer << render_menu_item(item, index)
+        menu_items.inject(ActiveSupport::SafeBuffer.new) do |buffer, (item)|
+          buffer << render_menu_item(item)
         end
       end
     end
   end
 
-  private
-
-  def render_menu_item(menu_item, index)
-    content_tag(list_item_tag, :class => menu_item_css(menu_item, index), list_item_opt_tag => list_item_opt) do
+  def render_menu_item(menu_item)
+    content_tag(list_item_tag, :class => menu_item_css(menu_item), list_item_opt_tag => list_item_opt) do
       buffer = ActiveSupport::SafeBuffer.new
       
       if check_for_dropdown_item(menu_item)
@@ -61,7 +61,7 @@ class MenuPresenter
       else
         buffer << render_menu_item_link(menu_item)
       end 
-
+      
       buffer << render_menu_items_children(menu_item_children(menu_item))
 
       buffer
@@ -88,12 +88,12 @@ class MenuPresenter
     end
   end
 
-  def menu_item_css(menu_item, index)
+  def menu_item_css(menu_item)
     css = []
 
     # css << active_css if descendant_item_selected?(menu_item)
     # css << selected_css if selected_item?(menu_item)
-    css << first_css if index == 0
+    css << first_css if menu_item.parent == "self"
     # css << last_css if index == menu_item.shown_siblings.length
 
     css.reject(&:blank?).presence
@@ -102,16 +102,16 @@ class MenuPresenter
   def menu_item_children(menu_item)
     path  = menu_item.path
     if path =~ /^\/?galleries$|^\/?contact$/
-      @collection.select { |item| item.parent == menu_item.path }
+      @collection.flatten.select { |item| item.parent == menu_item.path }
     end
   end
 
   def render_menu_items_children(menu_items)
     if menu_items.present?
-      dropdownid = "dropdown#{menu_items.first.parent_id}"
+      dropdownid = "dropdown#{menu_items.first.parent}"
       content_tag(list_tag, :id => dropdownid, :class => 'dropdown-content') do
-        menu_items.each_with_index.inject(ActiveSupport::SafeBuffer.new) do |buffer, (item, index)|
-          buffer << render_menu_item(item, index)
+        menu_items.inject(ActiveSupport::SafeBuffer.new) do |buffer, (item, index)|
+          buffer << render_menu_item(item)
         end
       end
     end
