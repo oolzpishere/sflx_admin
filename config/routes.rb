@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  resources :galleries
   namespace :admin do
     resources :users
-
+    resources :galleries
+    resources :images
+    
     root to: "users#index"
   end
 

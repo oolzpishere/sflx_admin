@@ -46,12 +46,13 @@ group :development, :test do
   gem 'capybara'
   # guard detect chang need gem install rb-fsevent
   gem 'guard-rspec', require: false
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
 
   gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry'
+  gem 'railroady'
 end
 
 group :development do
@@ -71,3 +72,7 @@ gem "administrate"
 gem 'devise'
 gem 'devise-i18n'
 gem 'cancan' # or cancancan
+
+gem 'materialize-sass'
+gem 'paperclip'
+gem 'haml'
