@@ -2,8 +2,44 @@ module Admin
   class GalleriesController < Admin::ApplicationController
 
     def create
+      # not actually delete, return nil if not exist
+      images = resource_params.delete(:images)
+      resource = resource_class.new(resource_params.except(:images))
+      authorize_resource(resource)
 
-      super
+      if resource.save
+        images && images.each do |picture|
+          resource.images.create(:image => picture)
+          # Don't forget to mention :avatar(field name)
+        end
+        redirect_to(
+          [namespace, resource],
+          notice: translate_with_resource("create.success"),
+        )
+      else
+        render :new, locals: {
+          page: Administrate::Page::Form.new(dashboard, resource),
+        }
+      end
+    end
+
+    def update
+      # not actually delete, return nil if not exist
+      images = resource_params.delete(:images)
+      if requested_resource.update(resource_params.except(:images))
+        images && images.each do |picture|
+          requested_resource.images.create(:image => picture)
+          # Don't forget to mention :avatar(field name)
+        end
+        redirect_to(
+          [namespace, requested_resource],
+          notice: translate_with_resource("update.success"),
+        )
+      else
+        render :edit, locals: {
+          page: Administrate::Page::Form.new(dashboard, requested_resource),
+        }
+      end
     end
 
     # To customize the behavior of this controller,

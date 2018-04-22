@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608054740) do
+ActiveRecord::Schema.define(version: 20180327073009) do
 
   create_table "galleries", force: :cascade do |t|
     t.string   "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170608054740) do
     t.integer  "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "avatars"
     t.index ["id"], name: "index_galleries_on_id"
   end
 

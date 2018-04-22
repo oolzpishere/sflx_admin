@@ -68,6 +68,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "administrate"
+gem 'administrate-field-paperclip', git: 'https://github.com/oolzpishere/administrate-field-paperclip.git'
 
 gem 'devise'
 gem 'devise-i18n'
@@ -75,4 +76,6 @@ gem 'cancan' # or cancancan
 
 gem 'materialize-sass'
 gem 'paperclip'
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
+gem 'administrate-field-carrierwave'
 gem 'haml'

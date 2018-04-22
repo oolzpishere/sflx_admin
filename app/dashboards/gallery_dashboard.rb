@@ -13,7 +13,14 @@ class GalleryDashboard < Administrate::BaseDashboard
     body: Field::Text,
     side_body: Field::Text,
     position: Field::Number,
-    image: ImageField, # Field::HasMany,
+    avatars: Field::Carrierwave.with_options(
+    image: :standard,
+    multiple: true,
+    image_on_index: true,
+    remove: true,
+    remote_url: false
+  ),
+  images: Field::Paperclip,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -50,7 +57,8 @@ class GalleryDashboard < Administrate::BaseDashboard
     :body,
     :side_body,
     :position,
-    :image,
+    :images,
+    :avatars,
   ].freeze
 
   # Overwrite this method to customize how galleries are displayed
@@ -63,4 +71,9 @@ class GalleryDashboard < Administrate::BaseDashboard
   # def association_includes
   #   super(association_classes.merge [ImageField])
   # end
+
+  # If multiple: true
+  def permitted_attributes
+    super + [:remove_avatars] - [:avatars] + [{ avatars: [] }] - [:images] + [{images: []}] + [:image]
+  end
 end
