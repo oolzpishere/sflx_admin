@@ -13,13 +13,13 @@ class GalleryDashboard < Administrate::BaseDashboard
     body: Field::Text,
     side_body: Field::Text,
     position: Field::Number,
-    avatars: Field::Carrierwave.with_options(
-    image: :standard,
-    multiple: true,
-    image_on_index: true,
-    remove: true,
-    remote_url: false
-  ),
+  #   avatars: Field::Carrierwave.with_options(
+  #   image: :standard,
+  #   multiple: true,
+  #   image_on_index: true,
+  #   remove: true,
+  #   remote_url: false
+  # ),
   images: Field::Paperclip,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -58,7 +58,7 @@ class GalleryDashboard < Administrate::BaseDashboard
     :side_body,
     :position,
     :images,
-    :avatars,
+    # :avatars,
   ].freeze
 
   # Overwrite this method to customize how galleries are displayed

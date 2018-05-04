@@ -7,4 +7,16 @@ class Image < ApplicationRecord
   # validates_attachment :image, presence: true,
   #                      # content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },
   #                      size: { in: 0..10.megabytes }
+  # attr_accessible :image
+  include Rails.application.routes.url_helpers
+  def to_jq_upload
+    {
+      "name" => read_attribute(:image_file_name),
+      "size" => read_attribute(:image_file_size),
+      "url" => image.url(:original),
+      "thumbnail_url" => image.url(:thumb),
+      "delete_url" => admin_image_path(self),
+      "delete_type" => "DELETE"
+    }
+  end
 end

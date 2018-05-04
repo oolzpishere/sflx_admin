@@ -1,5 +1,23 @@
 module Admin
   class GalleriesController < Admin::ApplicationController
+    skip_before_action :authenticate_user!, only: [:edit], if: Proc.new { |c| c.request.format != 'application/json'}
+
+    def show
+      respond_to do |format|
+        format.html { render locals: {
+          page: Administrate::Page::Show.new(dashboard, requested_resource),
+        }}
+        format.json {render json: requested_resource.images.map {|img| img.to_jq_upload}}
+      end
+
+    end
+
+    # def edit
+    #   respond_to do |format|
+    #     format.html { render locals: { page: Administrate::Page::Form.new(dashboard, requested_resource)}}
+    #     format.json {render json: requested_resource.images.map {|img| img.to_jq_upload}}
+    #   end
+    # end
 
     def create
       # not actually delete, return nil if not exist
