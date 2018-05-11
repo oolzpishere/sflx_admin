@@ -1,13 +1,13 @@
 module Admin
   class GalleriesController < Admin::ApplicationController
-    skip_before_action :authenticate_user!, only: [:edit], if: Proc.new { |c| c.request.format != 'application/json'}
+    # skip_before_action :authenticate_user!, only: [:edit], if: Proc.new { |c| c.request.format != 'application/json'}
 
     def show
       respond_to do |format|
         format.html { render locals: {
           page: Administrate::Page::Show.new(dashboard, requested_resource),
         }}
-        format.json {render json: requested_resource.images.map {|img| img.to_jq_upload}}
+        format.json {render json: requested_resource.images.reorder('id ASC').map {|img| img.to_jq_upload}}
       end
 
     end
@@ -45,14 +45,23 @@ module Admin
       # not actually delete, return nil if not exist
       images = resource_params.delete(:images)
       if requested_resource.update(resource_params.except(:images))
+        created_images = []
         images && images.each do |picture|
-          requested_resource.images.create(:image => picture)
+          created_images << requested_resource.images.create(:image => picture)
           # Don't forget to mention :avatar(field name)
         end
-        redirect_to(
-          [namespace, requested_resource],
-          notice: translate_with_resource("update.success"),
-        )
+        respond_to do |format|
+          format.html {
+            redirect_to(
+              [namespace, requested_resource],
+              notice: translate_with_resource("update.success"),
+            )
+          }
+
+          format.json {
+            render json: created_images.map {|img| img.to_jq_upload}
+          }
+        end
       else
         render :edit, locals: {
           page: Administrate::Page::Form.new(dashboard, requested_resource),

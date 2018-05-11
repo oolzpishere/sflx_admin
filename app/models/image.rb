@@ -14,9 +14,9 @@ class Image < ApplicationRecord
       "name" => read_attribute(:image_file_name),
       "size" => read_attribute(:image_file_size),
       "url" => image.url(:original),
-      "thumbnail_url" => image.url(:thumb),
-      "delete_url" => admin_image_path(self),
-      "delete_type" => "DELETE"
+      "thumbnailUrl" => image.url(:thumb),
+      "deleteUrl" => admin_image_path(self),
+      "deleteType" => "DELETE"
     }
   end
 end
