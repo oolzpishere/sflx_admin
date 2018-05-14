@@ -26,14 +26,19 @@ module Admin
       authorize_resource(resource)
 
       if resource.save
-        images && images.each do |picture|
+        created_images = images && images.map do |picture|
           resource.images.create(:image => picture)
-          # Don't forget to mention :avatar(field name)
         end
-        redirect_to(
-          [namespace, resource],
-          notice: translate_with_resource("create.success"),
-        )
+        respond_to do |format|
+          format.html {
+            redirect_to(
+              [namespace, resource],
+              notice: translate_with_resource("create.success"),
+              )}
+              format.json {
+                render json: created_images.map {|img| img.to_jq_upload}
+              }
+            end
       else
         render :new, locals: {
           page: Administrate::Page::Form.new(dashboard, resource),
@@ -45,10 +50,8 @@ module Admin
       # not actually delete, return nil if not exist
       images = resource_params.delete(:images)
       if requested_resource.update(resource_params.except(:images))
-        created_images = []
-        images && images.each do |picture|
-          created_images << requested_resource.images.create(:image => picture)
-          # Don't forget to mention :avatar(field name)
+        created_images = images && images.map do |picture|
+          requested_resource.images.create(:image => picture)
         end
         respond_to do |format|
           format.html {
@@ -57,7 +60,6 @@ module Admin
               notice: translate_with_resource("update.success"),
             )
           }
-
           format.json {
             render json: created_images.map {|img| img.to_jq_upload}
           }
@@ -68,6 +70,7 @@ module Admin
         }
       end
     end
+
 
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:

@@ -77,10 +77,10 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'cancan' # or cancancan
 
-gem 'materialize-sass'
+# gem 'materialize-sass'
 gem 'paperclip'
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
 gem 'administrate-field-carrierwave'
 gem 'haml'
 
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap'

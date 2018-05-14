@@ -11,10 +11,11 @@
 // about supported directives.
 //
 //= require jquery3
+//= require popper
+//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery-fileupload
-//= require bootstrap-sprockets
 //= require selectize
 //= require moment
 //= require datetime_picker
