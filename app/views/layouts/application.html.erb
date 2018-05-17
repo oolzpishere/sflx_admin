@@ -5,13 +5,24 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'defer': true %>
   </head>
 
+
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-    <%= MenuPresenter.new(  MenuStructs.new.order, self ).to_html %>
+    <header>
+      <%= render "layouts/header" %>
+    </header>
+
+    <main>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <%= render "layouts/footer" %>
+    </footer>
+
   </body>
 </html>

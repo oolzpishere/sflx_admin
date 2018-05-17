@@ -13,6 +13,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require mdb/js/mdb
 //= require jquery_ujs
 //= require jquery-fileupload
 //= require turbolinks

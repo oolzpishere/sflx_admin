@@ -10,14 +10,14 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
-    if MenuStructs.new.pages_show.include? params[:path]
+    if Menus.new.pages_show.include? params[:path]
       view_file = params[:path].gsub(/\//, '_')
-     
+
       render view_file and return if lookup_context.exists?(view_file, 'pages')
 
     end
 
-    
+
 
   end
 

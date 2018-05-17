@@ -2,3 +2,9 @@
 @import "mdb/scss/mdb";
 
 @import "bootstrap";
+
+.dropdown-menu {
+  padding: .5rem;}
+
+.navbar .dropdown-menu .white-text {
+      color: #fff !important;}
