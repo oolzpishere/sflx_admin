@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327073009) do
+ActiveRecord::Schema.define(version: 20180518070734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(version: 20180327073009) do
     t.datetime "updated_at", null: false
     t.string   "avatars"
     t.index ["id"], name: "index_galleries_on_id", using: :btree
+  end
+
+  create_table "gallery_gallery_types", force: :cascade do |t|
+    t.integer  "gallery_id"
+    t.integer  "gallery_type_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["gallery_id"], name: "index_gallery_gallery_types_on_gallery_id", using: :btree
+    t.index ["gallery_type_id"], name: "index_gallery_gallery_types_on_gallery_type_id", using: :btree
+  end
+
+  create_table "gallery_types", force: :cascade do |t|
+    t.string "gallery_type"
   end
 
   create_table "images", force: :cascade do |t|

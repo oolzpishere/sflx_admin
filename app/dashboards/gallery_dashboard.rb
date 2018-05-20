@@ -12,6 +12,11 @@ class GalleryDashboard < Administrate::BaseDashboard
     title: Field::String,
     body: Field::Text,
     side_body: Field::Text,
+    gallery_types: Field::HasMany,
+  #   .with_options(
+  #   # primary_key: :gallery_type,
+  #   foreign_key: :gallery_type_id,
+  # ),
     position: Field::Number,
   #   avatars: Field::Carrierwave.with_options(
   #   image: :standard,
@@ -35,6 +40,7 @@ class GalleryDashboard < Administrate::BaseDashboard
     :title,
     :body,
     :side_body,
+    :gallery_types,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -44,6 +50,7 @@ class GalleryDashboard < Administrate::BaseDashboard
     :title,
     :body,
     :side_body,
+    :gallery_types,
     :position,
     :created_at,
     :updated_at,
@@ -57,6 +64,7 @@ class GalleryDashboard < Administrate::BaseDashboard
     :body,
     :side_body,
     :position,
+    :gallery_types,
     # :images,
     # :avatars,
   ].freeze
