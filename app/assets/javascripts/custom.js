@@ -1,5 +1,5 @@
 
-$( document ).ready(function() {
+document.addEventListener("turbolinks:load", function() {
   $('.dropdown-item').on('mouseenter mouseleave', function(){
     $(this).toggleClass('white-text z-depth-2 rounded bg-primary');
   })
@@ -12,6 +12,23 @@ $( document ).ready(function() {
     'menu': document.getElementById('menu'),
     'padding': 256,
     'tolerance': 70
+  });
+
+  function close(eve) {
+    eve.preventDefault();
+    slideout.close();
+  }
+
+  slideout
+  .on('beforeopen', function() {
+    this.panel.classList.add('panel-open');
+  })
+  .on('open', function() {
+    this.panel.addEventListener('click', close);
+  })
+  .on('beforeclose', function() {
+    this.panel.classList.remove('panel-open');
+    this.panel.removeEventListener('click', close);
   });
 
   // Toggle button

@@ -68,7 +68,7 @@ class MenuPresenter
 
   def render_menu_item_content(menu)
     content_tag(:li, :class => 'nav-item') do
-      link_to(menu[:title], menu[:path], :class => link_tag_css, "data-turbolinks" => menu.fetch(:data_turbolinks,nil))
+      link_to(menu[:title], context.url_for(menu[:path]), :class => link_tag_css, "data-turbolinks" => menu.fetch(:data_turbolinks,nil))
     end
   end
 
