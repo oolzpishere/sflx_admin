@@ -84,3 +84,5 @@ gem 'administrate-field-carrierwave'
 gem 'haml'
 
 gem 'bootstrap'
+
+gem "jquery-slick-rails"

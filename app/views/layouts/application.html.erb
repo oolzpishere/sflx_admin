@@ -10,19 +10,23 @@
 
 
   <body>
-    <header>
-      <%= render "layouts/header" %>
-    </header>
+    <div id="menu">
+      <%= SlideoutPresenter.new(  Menus.new.menu_array, self ).to_html %>
+    </div>
 
-    <main>
+    <main id="panel">
+      <header>
+        <%= render "layouts/header" %>
+      </header>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
+      <footer>
+        <%= render "layouts/footer" %>
+      </footer>
     </main>
 
-    <footer>
-      <%= render "layouts/footer" %>
-    </footer>
+
 
   </body>
 </html>
