@@ -4,9 +4,9 @@ document.addEventListener("turbolinks:load", function() {
     $(this).toggleClass('white-text z-depth-2 rounded bg-primary');
   })
 
-///////////////
-// slideout
-//////////////
+  ///////////////
+  // slideout
+  //////////////
   var slideout = new Slideout({
     'panel': document.getElementById('panel'),
     'menu': document.getElementById('menu'),
@@ -51,10 +51,10 @@ document.addEventListener("turbolinks:load", function() {
   //  slick
   /////////////
   // p index slick
-    $('.index-slider-wrap').slick({
-	      dots: true,
-	      speed: 500,
-        arrows: true
-    });
+  $('.index-slider-wrap').slick({
+    dots: true,
+    speed: 500,
+    arrows: true
+  });
 
 });

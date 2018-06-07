@@ -1,25 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="blue lighten-4">
+  <nav class="container d-flex justify-content-between">
+    <div class="navbar-brand">Galleries</div>
+    <div class="submenus">
+      <% Menus.new.gallery_types.each do |gt| %>
+      <%= link_to gt[:title], gt[:path], class: "btn", "data-classify" => gt[:title] %>
+      <% end %>
+    </div>
+  </nav>
+</div>
+
+<% @galleries.each do |g| %>
+<%= image_tag g.images.where(image_file_name: g.cover).first.image.url(:w768)  %>
+<% end %>
+<!-- <div class="container submenu">
+  <% Menus.new.gallery_types.each do |gt| %>
+  <%= link_to gt[:title], gt[:path], "data-classify" => gt[:title] %>
+  <% end %>
+</div> -->
 
 <h1>Galleries</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @galleries.each do |gallery| %>
-      <tr>
-        <td><%= link_to 'Show', gallery %></td>
-        <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-        <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Gallery', new_gallery_path %>

@@ -26,6 +26,7 @@ class GalleryDashboard < Administrate::BaseDashboard
   #   remote_url: false
   # ),
   # images: Field::Paperclip,
+  cover: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -52,6 +53,7 @@ class GalleryDashboard < Administrate::BaseDashboard
     :side_body,
     :gallery_types,
     :position,
+    :cover,
     :created_at,
     :updated_at,
   ].freeze
@@ -65,6 +67,7 @@ class GalleryDashboard < Administrate::BaseDashboard
     :side_body,
     :position,
     :gallery_types,
+    :cover,
     # :images,
     # :avatars,
   ].freeze
