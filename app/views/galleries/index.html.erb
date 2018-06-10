@@ -10,7 +10,9 @@
 </div>
 
 <% @galleries.each do |g| %>
-<%= image_tag g.images.where(image_file_name: g.cover).first.image.url(:w768)  %>
+<% cover = g.cover.empty? ? g.images.first : g.images.select {|img| img.image.filename == g.cover}.first  %>
+<%= image_tag cover.image.variant(resize: "700") %>
+
 <% end %>
 <!-- <div class="container submenu">
   <% Menus.new.gallery_types.each do |gt| %>

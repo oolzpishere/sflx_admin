@@ -11,11 +11,7 @@ class ImageDashboard < Administrate::BaseDashboard
     id: Field::Number,
     gallery_id: Field::Number,
     position: Field::Number,
-    image: ImageField,
-    image_file_name: Field::String,
-    image_content_type: Field::String,
-    image_file_size: Field::Number,
-    image_updated_at: Field::DateTime,
+    image: FileField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -29,7 +25,7 @@ class ImageDashboard < Administrate::BaseDashboard
     :id,
     :gallery_id,
     :position,
-    :image_file_name,
+    :image,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,10 +34,7 @@ class ImageDashboard < Administrate::BaseDashboard
     :id,
     :gallery_id,
     :position,
-    :image_file_name,
-    :image_content_type,
-    :image_file_size,
-    :image_updated_at,
+    :image,
     :created_at,
     :updated_at,
   ].freeze

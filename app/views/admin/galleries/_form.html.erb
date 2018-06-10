@@ -208,41 +208,7 @@ window.onload = function() {
         }
         return [];
       }
-      // Callback for file deletion:
-      // destroy: function (e, data) {
-      //   if (e.isDefaultPrevented()) {
-      //     return false;
-      //   }
-      //   var that = $(this).data('blueimp-fileupload') ||
-      //   $(this).data('fileupload'),
-      //   removeNode = function () {
-      //     that._transition(data.context).done(
-      //       function () {
-      //         $(this).remove();
-      //         that._trigger('destroyed', e, data);
-      //       }
-      //     );
-      //   };
-      //   if (data.url) {
-      //     data.dataType = data.dataType || that.options.dataType;
-      //     $.ajax(data).always(removeNode).fail(function () {
-      //       that._trigger('destroyfailed', e, data);
-      //     });
-      //   } else {
-      //     removeNode();
-      //   }
-      // }
-      // add: function (e, data) {
-      //   $('.start').click(function () {
-      //     data.submit();
-      //   });
-      // }
-      // add: function (e, data) {
-      //   $(".start").on('click',function () {
-      //     data.submit();
-      //   });
-      // }
-    // }
+
   });
   //
   // Load existing files:
@@ -260,22 +226,7 @@ window.onload = function() {
     $('#loading').remove();
   });
   //
-  // var overallProgress = $('#fileupload').fileupload('progress');
 
-  // Load existing files:
-  // $('#fileupload').addClass('fileupload-processing');
-  // $.ajax({
-  //     // Uncomment the following to send cross-domain cookies:
-  //     //xhrFields: {withCredentials: true},
-  //     url: $('#fileupload').fileupload('option', 'url'),
-  //     dataType: 'json',
-  //     context: $('#fileupload')[0]
-  // }).always(function () {
-  //     $(this).removeClass('fileupload-processing');
-  // }).done(function (result) {
-  //     $(this).fileupload('option', 'done')
-  //         .call(this, $.Event('done'), {result: result});
-  // });
 
 })(jQuery);
 }

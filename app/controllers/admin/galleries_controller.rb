@@ -27,7 +27,7 @@ module Admin
 
       if resource.save
         created_images = images && images.map do |picture|
-          resource.images.create(:image => picture)
+          resource.images.create!(:image => picture)
         end
         respond_to do |format|
           format.html {
@@ -51,7 +51,7 @@ module Admin
       images = resource_params.delete(:images)
       if requested_resource.update(resource_params.except(:images))
         created_images = images && images.map do |picture|
-          requested_resource.images.create(:image => picture)
+          requested_resource.images.create!(:image => picture)
         end
         respond_to do |format|
           format.html {

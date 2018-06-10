@@ -1,5 +1,6 @@
 
 document.addEventListener("turbolinks:load", function() {
+  
   $('.dropdown-item').on('mouseenter mouseleave', function(){
     $(this).toggleClass('white-text z-depth-2 rounded bg-primary');
   })
@@ -37,7 +38,7 @@ document.addEventListener("turbolinks:load", function() {
   });
 
 
-  //Initialization
+  //Initialization waves effect
   Waves.attach('.btn:not(.btn-flat), .btn-floating', ['waves-light']);
   Waves.attach('.btn-flat', ['waves-effect']);
   Waves.attach('.view a .mask', ['waves-light']);

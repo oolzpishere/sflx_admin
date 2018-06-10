@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "pages#index"
   resources :galleries
-  get '*path', to: 'pages#show'
+
+  get 'about', 'contact', 'contact/find_us', to: 'pages#show'
 
 end

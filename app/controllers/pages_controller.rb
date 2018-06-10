@@ -12,7 +12,7 @@ class PagesController < ApplicationController
   # GET /pages/1.json
   def show
     if ERB::Util.html_escape_once params[:path]
-      view_file = params[:path].gsub(/\//, '_')
+      view_file = request.path.gsub(/\//, '_').slice(1..-1)
       render view_file and return if lookup_context.exists?(view_file, 'pages')
     end
 
