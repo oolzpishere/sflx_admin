@@ -12,6 +12,7 @@ class GalleryTypeDashboard < Administrate::BaseDashboard
     # galleries: Field::HasMany,
     id: Field::Number,
     gallery_type: Field::String,
+    position: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,6 +25,7 @@ class GalleryTypeDashboard < Administrate::BaseDashboard
     # :galleries,
     :id,
     :gallery_type,
+    :position,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -33,6 +35,7 @@ class GalleryTypeDashboard < Administrate::BaseDashboard
     # :galleries,
     :id,
     :gallery_type,
+    :position,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -42,6 +45,7 @@ class GalleryTypeDashboard < Administrate::BaseDashboard
     # :gallery_gallery_types,
     # :galleries,
     :gallery_type,
+    :position,
   ].freeze
 
   # Overwrite this method to customize how gallery types are displayed

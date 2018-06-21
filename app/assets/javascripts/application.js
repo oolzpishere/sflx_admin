@@ -11,10 +11,13 @@
 // about supported directives.
 //
 //= require jquery3
+//= require jquery_ujs
+//= require jquery-ui
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery.slick
-//= require jquery_ujs
 //= require jquery-fileupload
 //= require turbolinks
-//= require_tree .
+//= require mslideout
+//= require lib/slideout
+//= require lib/waves

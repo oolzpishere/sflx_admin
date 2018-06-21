@@ -9,10 +9,14 @@
 @import "bootstrap";
 
 @import "slideout";
-@import "waves";
+@import "lib/waves";
 
 @import 'slick';
 @import 'slick-theme';
+
+@import 'jquery-ui';
+@import 'lib/animate';
+
 // dropdown nav
 .dropdown-menu {
   padding: .5rem;}
@@ -22,4 +26,26 @@
 
 // .navbar.navbar-dark .navbar-nav .nav-item .nav-link{
 //   color: #fff;
+// }
+
+.not-delay{
+  animation-delay: 0s !important;
+}
+.clear_animation {
+  animation-duration: 0s;
+}
+
+.animation-paused{
+  animation-play-state: paused;
+}
+.animation-running{
+  animation-play-state: running;
+}
+// .blind-in{
+//   transform: translateX(-100%);
+//   transition: transform 1s ease;
+// }
+//
+// @keyframes blind-in {
+//   from
 // }

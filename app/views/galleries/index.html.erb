@@ -1,19 +1,28 @@
-<div class="blue lighten-4">
-  <nav class="container d-flex justify-content-between">
-    <div class="navbar-brand">Galleries</div>
-    <div class="submenus">
-      <% Menus.new.gallery_types.each do |gt| %>
-      <%= link_to gt[:title], gt[:path], class: "btn", "data-classify" => gt[:title] %>
-      <% end %>
-    </div>
-  </nav>
+<div class="submenu-fadein blue" >
+  <div class="submenu-bar blue lighten-4">
+    <nav class="container d-flex justify-content-between">
+      <div class="navbar-brand">GALLERIES</div>
+      <div class="submenus">
+        <% Menus.new.gallery_types.sort{|x,y| x["position"] <=> y["position"]}.each do |gt| %>
+        <%= link_to gt[:title], "", class: "btn", "data-classify" => gt[:title] %>
+        <% end %>
+      </div>
+    </nav>
+  </div>
 </div>
 
-<% @galleries.each do |g| %>
-<% cover = g.cover.empty? ? g.images.first : g.images.select {|img| img.image.filename == g.cover}.first  %>
-<%= image_tag cover.image.variant(resize: "700") %>
-
-<% end %>
+<div class="row no-gutters">
+  <% @galleries.each_with_index do |g, index| %>
+  <% time = (index+1).to_f / 10 %>
+  <% delay = "animation-delay: #{time}s; -webkit-animation-delay: #{time}s;" %>
+  <div class="item col-md-6 col-lg-4" style="<%= delay %>" data-classify="<%= g.gallery_types.map {|gt| gt.gallery_type}.join(",") %>" >
+    <!-- <%= "<div classify=#{g.gallery_types.join(",")} >" %> -->
+    <% cover = g.cover.empty? ? g.images.first : g.images.select {|img| img.image.filename == g.cover}.first  %>
+    <% cover_size = '720x405' %>
+    <%= image_tag cover.image.variant(resize: "#{cover_size}^", gravity: 'Center', crop: "#{cover_size}+0+0"), class: "img-fluid" %>
+  </div>
+  <% end %>
+</div>
 <!-- <div class="container submenu">
   <% Menus.new.gallery_types.each do |gt| %>
   <%= link_to gt[:title], gt[:path], "data-classify" => gt[:title] %>
