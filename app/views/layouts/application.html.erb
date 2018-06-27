@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SflxAdmin</title>
-    <%= csrf_meta_tags %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'defer': true %>
-  </head>
+<head>
+  <title>SflxAdmin</title>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'defer': true %>
+</head>
 
 
-  <body>
-    <div id="menu">
-      <%= SlideoutPresenter.new(  Menus.new.menu_array, self ).to_html %>
+<body>
+  <div id="menu">
+    <div class="external-icons row no-gutters p-3 my-2 justify-content-center border-bottom border-top border-white text-white">
+      
+      <div class="col-1 mx-1">
+        <i class="fab fa-weixin"></i>
+      </div>
+      <div class="col-1 mx-1">
+        <i class="fab fa-qq"></i>
+      </div>
+      
     </div>
+    <%= SlideoutPresenter.new(  Menus.new.menu_array, self ).to_html %>
+    <div class="sidenav-bg mask-strong"></div>
+  </div>
 
-    <main id="panel">
-      <header>
-        <%= render "layouts/header" %>
-      </header>
-      <% if notice %>
-      <p class="notice"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-      <p class="alert"><%= alert %></p>
-      <% end %>
-      <%= yield %>
-      <footer>
-        <%= render "layouts/footer" %>
-      </footer>
-    </main>
+  <main id="panel">
+    <header>
+      <%= render "layouts/header" %>
+    </header>
+    <% if notice %>
+    <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+    <p class="alert"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+    <footer>
+      <%= render "layouts/footer" %>
+    </footer>
+  </main>
 
 
 
-  </body>
-  <%= javascript_include_tag 'custom', 'data-turbolinks-track': 'reload' %>
+</body>
+<%= javascript_include_tag 'custom', 'data-turbolinks-track': 'reload' %>
+
 </html>

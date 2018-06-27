@@ -1,10 +1,10 @@
 
 // @import "mdb/scss/mdb";
-@import "colors";
-@import "mixins";
-@import "variables";
-@import "navbars";
-@import "footers";
+@import "lib/mdb/colors";
+@import "lib/mdb/mixins";
+@import "lib/mdb/variables";
+@import "lib/mdb/navbars";
+@import "lib/mdb/footers";
 
 @import "bootstrap";
 
@@ -41,11 +41,72 @@
 .animation-running{
   animation-play-state: running;
 }
-// .blind-in{
-//   transform: translateX(-100%);
-//   transition: transform 1s ease;
-// }
-//
-// @keyframes blind-in {
-//   from
-// }
+
+
+.menu-toggle{
+    width: 60px;
+    height: 60px;
+    z-index: 100;
+}
+
+.menu-toggle svg path, svg line {
+    stroke: #fff;
+    stroke-width: 6px;
+    stroke-linecap: round;
+    fill: none;
+}
+
+.toggle-button {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 5;
+  top: 0;
+  left: 0;
+}
+// S slideout menu
+.slideout-menu{
+  background-image: url(sidenav4.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  // z-index: 1040;
+  .mask-strong::after{
+    background: rgba(87,134,180,.8);
+  }
+
+  .sidenav-bg::after{
+    width: 100%;
+    display: block;
+    content: "";
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    // margin-bottom: -99999px;
+    // padding-bottom: 99999px;
+  }
+// social icon hover effect
+  .external-icons .col-1 {
+
+    transition: color 300ms linear;
+  }
+
+  .external-icons .col-1:hover {
+    color: #bdbdbd;
+  }
+
+  .list-group-item{
+    background-color: transparent;
+    border: none;
+    transition: background-color 300ms linear;
+  }
+  .list-group-item:hover{
+    background-color: rgba(0,0,0,.4);
+
+  }
+}
+// E slideout menu

@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   root to: "pages#index"
   resources :galleries
 
-  get 'about', 'contact', 'contact/find_us', to: 'pages#show'
+  get 'conference', 'web', 'about', 'contact', 'contact/find_us', to: 'pages#show'
 
 end

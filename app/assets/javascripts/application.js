@@ -21,3 +21,4 @@
 //= require mslideout
 //= require lib/slideout
 //= require lib/waves
+//= require lib/moveit

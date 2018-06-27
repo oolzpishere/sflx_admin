@@ -19,14 +19,16 @@ include ActiveSupport::Configurable
     #   [{:path =>'contact',:title => '联系我们', dropdown: true, :parent => 'self'},
     #     {:path =>'contact/find_us',:title => '找到我们', :parent => 'contact'}]]
 
-    @menu_array = [
-      {:path => '/', :title => '主页'},
-      {:path => '/about',:title => '关于'},
-      {:path =>'/galleries',:title => '作品', children: gallery_types},
-      {:path =>'/views',:title => '观点'},
-      {:path =>'/contact',:title => '联系我们',
-        children: [{:path =>'/contact/find_us',:title => '找到我们', :parent => 'contact', data_turbolinks: true}]
-      }]
+    @menu_array = [ 
+      {:path => '/', :title => '主页', fontawesome: "fas fa-home"},
+      {:path =>'/galleries',:title => '设计', fontawesome: "fas fa-palette"},
+      {:path =>'/conference',:title => '会展', fontawesome: "fas fa-microphone-alt"},
+      {:path =>'/web',:title => '网络', fontawesome: "fas fa-sitemap"},
+      {:path => '/about',:title => '关于', fontawesome: "fas fa-info-circle"},
+      # {:path =>'/contact',:title => '联系我们',
+      #   children: [{:path =>'/contact/find_us',:title => '找到我们', :parent => 'contact', data_turbolinks: true}]
+      # }
+    ]
     # @menu_array = array_menulize( @menu_array )
 
   end

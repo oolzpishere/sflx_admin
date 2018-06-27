@@ -2,28 +2,37 @@
 
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark primary-color">
-<button class="toggle-button">☰</button>
-    <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">Navbar</a>
+  <!-- <button class="toggle-button">☰</button> -->
+  <div class="menu-toggle">
+    <svg width="100%" height="100%" viewBox="0 0 100 100">
+      <path id="first" d="M 30 40 L 70 40 C 90 40 90 75 60 85 A 40 40 0 0 1 20 20 L 80 80"></path>
+      <path id="middle" d="M 30 50 L 70 50"></path>
+      <path id="second" d="M 70 60 L 30 60 C 10 60 10 20 40 15 A 40 38 0 1 1 20 80 L 80 20"></path>
+    </svg>
+    <div class="toggle-button"></div>
+  </div>
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="#">Navbar</a>
 
 
-    <!-- Collapse button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+  aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
 
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="basicExampleNav">
+<!-- Collapsible content -->
+<div class="collapse navbar-collapse" id="basicExampleNav">
 
-      <%= MenuPresenter.new(  Menus.new.menu_array, self ).to_html %>
+  <%= MenuPresenter.new(  Menus.new.menu_array, self ).to_html %>
 
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-    <!-- Collapsible content -->
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
+<!-- Collapsible content -->
 
 </nav>
 <!--/.Navbar-->

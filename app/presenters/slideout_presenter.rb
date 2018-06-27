@@ -19,15 +19,15 @@ class SlideoutPresenter
   self.css = ''
   self.menu_tag = :nav
   self.list_tag = :ul
-  self.list_tag_css = 'list-group list-group-flush'
+  self.list_tag_css = 'list-group list-group-flush '
   self.active_css = :active
   self.selected_css = :selected
   self.first_css = :first
   self.last_css = :last
 
-  self.link_tag_css = 'list-group-item list-group-item-action waves-effect waves-teal'
+  self.link_tag_css = 'list-group-item list-group-item-action waves-effect waves-light text-white'
   self.link_dropdown_id = 'navbarDropdownMenuLink'
-  self.link_dropdown_tag_css = 'list-group-item list-group-item-action waves-effect waves-teal'
+  self.link_dropdown_tag_css = 'list-group-item list-group-item-action waves-effect waves-light'
   self.dropdown_css = 'nav-item dropdown'
 
   attr_accessor :context, :collection
@@ -69,8 +69,12 @@ class SlideoutPresenter
   end
 
   def render_menu_item_content(menu)
-
-      link_to(menu[:title], menu[:path], :class => link_tag_css, "data-turbolinks" => menu.fetch(:data_turbolinks,nil))
+    buffer = ActiveSupport::SafeBuffer.new
+    content_tag(:li, class: link_tag_css) do 
+      buffer << raw("<div class='w-15 d-inline-block'><i class=\"#{menu[:fontawesome]}\"></i></div>")
+      buffer << link_to(menu[:title], menu[:path], class: "text-white d-inline-block", "data-turbolinks" => menu.fetch(:data_turbolinks,nil))
+      buffer
+    end
 
   end
 
