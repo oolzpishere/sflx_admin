@@ -22,3 +22,5 @@
 //= require lib/slideout
 //= require lib/waves
 //= require lib/moveit
+//= require lib/GreenSock-JS/TweenMax
+//= require lib/GreenSock-JS/TimelineMax

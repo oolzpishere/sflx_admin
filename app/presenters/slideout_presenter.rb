@@ -25,9 +25,9 @@ class SlideoutPresenter
   self.first_css = :first
   self.last_css = :last
 
-  self.link_tag_css = 'list-group-item list-group-item-action waves-effect waves-light text-white'
+  self.link_tag_css = 'list-group-item list-group-item-action waves-effect text-white'
   self.link_dropdown_id = 'navbarDropdownMenuLink'
-  self.link_dropdown_tag_css = 'list-group-item list-group-item-action waves-effect waves-light'
+  self.link_dropdown_tag_css = 'list-group-item list-group-item-action waves-effect'
   self.dropdown_css = 'nav-item dropdown'
 
   attr_accessor :context, :collection

@@ -292,23 +292,23 @@
     cursor: pointer;
   }
   .breadcrumb,
-  .navbar-nav {
-    .nav-item {
-      .nav-link {
-        color: $color;
-        transition: $navbar-nav-transition;
-        &:hover {
-          color: $color-2;
-        }
-      }
-      &.active > .nav-link {
-        background-color: $color-3;
-        &:hover {
-          color: $color;
-        }
-      }
-    }
-  }
+  // .navbar-nav {
+  //   .nav-item {
+  //     .nav-link {
+  //       color: $color;
+  //       transition: $navbar-nav-transition;
+  //       &:hover {
+  //         color: $color-2;
+  //       }
+  //     }
+  //     &.active > .nav-link {
+  //       background-color: $color-3;
+  //       &:hover {
+  //         color: $color;
+  //       }
+  //     }
+  //   }
+  // }
   .navbar-toggler {
     color: $color;
   }

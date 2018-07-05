@@ -21,9 +21,9 @@ include ActiveSupport::Configurable
 
     @menu_array = [ 
       {:path => '/', :title => '主页', fontawesome: "fas fa-home"},
-      {:path =>'/galleries',:title => '设计', fontawesome: "fas fa-palette"},
-      {:path =>'/conference',:title => '会展', fontawesome: "fas fa-microphone-alt"},
-      {:path =>'/web',:title => '网络', fontawesome: "fas fa-sitemap"},
+      {:path =>'/galleries',:title => '设计服务', fontawesome: "fas fa-palette"},
+      {:path =>'/conference',:title => '会议会展', fontawesome: "fas fa-microphone-alt"},
+      {:path =>'/web',:title => '网络技术', fontawesome: "fas fa-sitemap"},
       {:path => '/about',:title => '关于', fontawesome: "fas fa-info-circle"},
       # {:path =>'/contact',:title => '联系我们',
       #   children: [{:path =>'/contact/find_us',:title => '找到我们', :parent => 'contact', data_turbolinks: true}]

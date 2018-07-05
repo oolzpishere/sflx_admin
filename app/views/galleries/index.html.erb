@@ -13,9 +13,11 @@
 
 <div class="row no-gutters">
   <% @galleries.each_with_index do |g, index| %>
-  <% time = (index+1).to_f / 10 %>
-  <% delay = "animation-delay: #{time}s; -webkit-animation-delay: #{time}s;" %>
-  <div class="item col-md-6 col-lg-4" style="<%= delay %>" data-classify="<%= g.gallery_types.map {|gt| gt.gallery_type}.join(",") %>" >
+
+  <div class="item col-md-6 col-lg-4" data-classify="<%= g.gallery_types.map {|gt| gt.gallery_type}.join(",") %>" >
+
+    <div class="mask"></div>
+
     <!-- <%= "<div classify=#{g.gallery_types.join(",")} >" %> -->
     <% cover = g.cover.empty? ? g.images.first : g.images.select {|img| img.image.filename == g.cover}.first  %>
     <% cover_size = '720x405' %>
