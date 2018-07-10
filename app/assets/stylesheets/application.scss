@@ -17,6 +17,8 @@
 @import 'jquery-ui';
 @import 'lib/animate';
 
+@import 'galleries';
+
 $menucolor:#fff;
 
 body{
@@ -42,10 +44,6 @@ body{
 .animation-paused{
   animation-play-state: paused;
 }
-.animation-running{
-  animation-play-state: running;
-}
-
 
 .menu-toggle{
     width: 60px;
@@ -134,40 +132,3 @@ body{
 }
 // E slideout menu
 
-// S gallery item
-.item{
-  overflow:hidden;
-  .mask{
-    width: 100%;
-    height: 100%;
-    position:absolute;
-    
-    // transform: translate(0%, 0%);
-  }
-  .maskBlindInLeft{
-    animation:0.4s maskBlindInLeft;
-    background: #fff;
-  }
-  .maskBlindOutRight{
-    animation:0.4s maskBlindOutRight;
-    background: #fff;
-  }
-}
-
-@keyframes maskBlindInLeft{
-    from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes maskBlindOutRight{
-    from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}

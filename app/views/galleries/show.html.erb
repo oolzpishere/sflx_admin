@@ -1,4 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="row no-gutters">
 
-<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
-<%= link_to 'Back', galleries_path %>
+	<% first_img = @gallery.first_img.empty? ? @gallery.images.first : @gallery.images.select {|img| img.image.filename == @gallery.first_img}.first %>
+	<div class="first-img col-12" style="background-image: url(<%= url_for first_img.image %>);">
+		<div class="mask"></div>
+
+		<div class="row h-100 flex-direction-column justify-content-between ">
+			<div></div>
+			<div class="row">
+				<div class="col-12">
+					<div class="gallery_title text-white">
+						<h3><%= @gallery.title %></h3>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12">
+					<div class="scroll-icon">
+						<a href="">
+							<span></span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<%# image_tag first_img.image, class: 'first_img img-fluid' %>
+	</div>
+
+
+	<%= @gallery.body %>
+	<%= @gallery.side_body %>
+	<% @gallery.images.each do |img| %>
+	<div class="col-12">
+		<%= image_tag img.image, class: 'img-fluid' %>
+	</div>
+	<% end -%>
+
+
+
+	<%= link_to 'Back', galleries_path %>
+</div>

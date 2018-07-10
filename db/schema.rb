@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_12_095047) do
+ActiveRecord::Schema.define(version: 2018_07_09_044815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_06_12_095047) do
     t.datetime "updated_at", null: false
     t.string "avatars"
     t.string "cover"
+    t.string "first_img", default: ""
     t.index ["id"], name: "index_galleries_on_id"
   end
 

@@ -12,7 +12,7 @@
 <body>
   <div id="menu">
     <div class="row justify-content-center no-gutters p-3">
-      <%= image_tag("LOGO.svg") %>
+      <a href="/"><%= image_tag("LOGO.svg") %></a>
     </div>
     <div class="external-icons row no-gutters justify-content-center p-3 my-2  border-bottom border-top border-white text-white">
       
@@ -24,7 +24,8 @@
       </div>
       
     </div>
-    <%= SlideoutPresenter.new(  Menus.new.menu_array, self ).to_html %>
+    
+      <%= SlideoutPresenter.new(  Menus.new.menu_array, self ).to_html %>
     <div class="sidenav-bg mask-strong"></div>
   </div>
 

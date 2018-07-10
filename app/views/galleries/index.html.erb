@@ -1,7 +1,7 @@
 <div class="submenu-fadein blue" >
   <div class="submenu-bar blue lighten-4">
     <nav class="container d-flex justify-content-between">
-      <div class="navbar-brand">GALLERIES</div>
+      <div class="navbar-brand blue-text">GALLERIES</div>
       <div class="submenus">
         <% Menus.new.gallery_types.sort{|x,y| x["position"] <=> y["position"]}.each do |gt| %>
         <%= link_to gt[:title], "", class: "btn", "data-classify" => gt[:title] %>
@@ -14,14 +14,18 @@
 <div class="row no-gutters">
   <% @galleries.each_with_index do |g, index| %>
 
-  <div class="item col-md-6 col-lg-4" data-classify="<%= g.gallery_types.map {|gt| gt.gallery_type}.join(",") %>" >
-
-    <div class="mask"></div>
-
-    <!-- <%= "<div classify=#{g.gallery_types.join(",")} >" %> -->
-    <% cover = g.cover.empty? ? g.images.first : g.images.select {|img| img.image.filename == g.cover}.first  %>
-    <% cover_size = '720x405' %>
-    <%= image_tag cover.image.variant(resize: "#{cover_size}^", gravity: 'Center', crop: "#{cover_size}+0+0"), class: "img-fluid" %>
+  <% gallery_types = g.gallery_types.map {|gt| gt.gallery_type} %>
+  <div class="item col-md-6 col-lg-4" data-classify="<%= gallery_types.join(",") %>" >
+    <%= link_to g do %>
+      <div class="mask"></div>
+      <div class="gallery-text d-flex align-items-center">
+        <h5 class="mx-auto"><%= "#{g.title}-#{gallery_types.join('/')}" %></h5>
+      </div>
+      <% cover = g.cover.empty? ? g.images.first : g.images.select {|img| img.image.filename == g.cover}.first  %>
+      <% cover_size = '720x405' %>
+      <!-- <div style="overflow: hidden;"> -->
+      <%= image_tag cover.image.variant(resize: "#{cover_size}^", gravity: 'Center', crop: "#{cover_size}+0+0"), class: "img-fluid cover-img", style: "width:100%" %>
+    <% end -%>
   </div>
   <% end %>
 </div>
@@ -31,4 +35,3 @@
   <% end %>
 </div> -->
 
-<h1>Galleries</h1>

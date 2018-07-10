@@ -27,6 +27,7 @@ class GalleryDashboard < Administrate::BaseDashboard
   # ),
   # images: Field::Paperclip,
   cover: Field::String,
+  first_img: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -54,6 +55,7 @@ class GalleryDashboard < Administrate::BaseDashboard
     :gallery_types,
     :position,
     :cover,
+    :first_img,
     :created_at,
     :updated_at,
   ].freeze
@@ -68,6 +70,7 @@ class GalleryDashboard < Administrate::BaseDashboard
     :position,
     :gallery_types,
     :cover,
+    :first_img,
     # :images,
     # :avatars,
   ].freeze
