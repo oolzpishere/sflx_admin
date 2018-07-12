@@ -14,6 +14,7 @@ It displays a header, and renders the `_form` partial to do the heavy lifting.
 
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
 %>
+<%= stylesheet_link_tag 'administrate/galleries' %>
 
 <% content_for(:title) { t("administrate.actions.edit_resource", name: page.page_title) } %>
 
@@ -21,7 +22,6 @@ It displays a header, and renders the `_form` partial to do the heavy lifting.
   <h1 class="main-content__page-title">
     <%= content_for(:title) %>
   </h1>
-<%= stylesheet_link_tag 'administrate/galleries' %>
   <div>
     <%= link_to(
       t("administrate.actions.show_resource", name: page.page_title),

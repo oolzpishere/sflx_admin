@@ -10,14 +10,31 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
-//= require jquery_ujs
-//= require jquery-ui
-//= require jquery-fileupload
-//= require selectize
-//= require moment
-//= require datetime_picker
-//= require_tree .
-$('select').selectize();
+
+//= require summernote/dist/summernote-lite
+//= require lib/Font-Awesome/svg-with-js/js/fontawesome-all
+
+
+$(document).ready(function() {
+	$('select').selectize();
+  $('#gallery_body').summernote({
+  	height: 250, 
+  	toolbar: [
+	    // [groupName, [list of button]]
+	    ['style', ['style','bold', 'italic', 'underline', 'clear']],
+	    ['font', ['strikethrough', 'superscript', 'subscript']],
+	    ['fontsize', ['fontsize']],
+	    ['color', ['color']],
+	    ['para', ['ul', 'ol', 'paragraph']],
+	    ['table',['table']],
+	    ['height', ['height']],
+	    ['media',['link','picture','video']],
+	    ['operation',['codeview','undo','redo','help']],
+    ],
+  });
+
+	// $('#gallery_body').summernote('lineHeight', '2em');
+
+
+});
+

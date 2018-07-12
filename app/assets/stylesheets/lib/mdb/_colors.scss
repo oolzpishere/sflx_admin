@@ -628,6 +628,9 @@ $enable_full_palette: true !default;
         .#{$color_name}.#{$color_type} {
           background-color: $color_value !important;
         }
+        .#{$color_name}-#{$color_type}-text{
+            color: $color_value !important;
+        }
       }
     }
   }

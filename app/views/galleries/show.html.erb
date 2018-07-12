@@ -1,43 +1,54 @@
-<div class="row no-gutters">
+<div class="gallery-show">
+	
+	<div class="row no-gutters">
 
-	<% first_img = @gallery.first_img.empty? ? @gallery.images.first : @gallery.images.select {|img| img.image.filename == @gallery.first_img}.first %>
-	<div class="first-img col-12" style="background-image: url(<%= url_for first_img.image %>);">
-		<div class="mask"></div>
+		<% first_img = @gallery.first_img.empty? ? @gallery.images.first : @gallery.images.select {|img| img.image.filename == @gallery.first_img}.first %>
+		<div class="first-img col-12" style="background-image: url(<%= url_for first_img.image %>);">
+			<div class="mask"></div>
 
-		<div class="row h-100 flex-direction-column justify-content-between ">
-			<div></div>
-			<div class="row">
-				<div class="col-12">
-					<div class="gallery_title text-white">
-						<h3><%= @gallery.title %></h3>
+			<div class="row h-100 flex-direction-column justify-content-between ">
+				<div></div>
+				<div class="row">
+					<div class="col-12">
+						<div class="gallery_title text-white">
+							<h3><%= @gallery.title %></h3>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-12">
+						<div class="scroll-icon">
+							<a href="">
+								<span></span>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-12">
-					<div class="scroll-icon">
-						<a href="">
-							<span></span>
-						</a>
-					</div>
-				</div>
+			<%# image_tag first_img.image, class: 'first_img img-fluid' %>
+		</div>
+	</div>
+
+	<div class="row no-gutters">
+		<div class="gallery-text col-12 p-5">
+			<h3 class="gallery-title "><%= @gallery.title %></h3>
+			<div class="gallery-types grey-darken-2-text py-3">
+				<%= @gallery.gallery_types.map {|gt| gt.gallery_type}.join(' · ') %>
 			</div>
+			<%= raw @gallery.body %>
 		</div>
 
-		<%# image_tag first_img.image, class: 'first_img img-fluid' %>
+		<%= @gallery.side_body %>
+		<% @gallery.images.each do |img| %>
+		<div class="col-12">
+			<%= image_tag img.image, class: 'img-fluid' %>
+		</div>
+		<% end -%>
 	</div>
-
-
-	<%= @gallery.body %>
-	<%= @gallery.side_body %>
-	<% @gallery.images.each do |img| %>
-	<div class="col-12">
-		<%= image_tag img.image, class: 'img-fluid' %>
-	</div>
-	<% end -%>
-
 
 
 	<%= link_to 'Back', galleries_path %>
+
 </div>
