@@ -26,9 +26,9 @@ class MenuPresenter
   self.last_css = :last
 
   self.link_tag_css = 'nav-link'
-  self.link_dropdown_id = 'navbarDropdownMenuLink'
-  self.link_dropdown_tag_css = 'nav-link dropdown-toggle'
-  self.dropdown_css = 'nav-item dropdown'
+  # self.link_dropdown_id = 'navbarDropdownMenuLink'
+  # self.link_dropdown_tag_css = 'nav-link dropdown-toggle'
+  # self.dropdown_css = 'nav-item dropdown'
 
   attr_accessor :context, :collection
   delegate :output_buffer, :output_buffer=, :to => :context
@@ -74,9 +74,20 @@ class MenuPresenter
 
   def render_dropdown_menu_item_content(menu)
     # dropdownid = "dropdown#{menu_item.id}"
-    content_tag(:li, class: dropdown_css) do
+    content_tag(:li, class: "nav-item dropdown") do
       buffer = ActiveSupport::SafeBuffer.new
-      buffer << link_to( menu[:title], context.url_for(menu[:path]), id: link_dropdown_id, class: link_dropdown_tag_css, 'aria-haspopup'=> "true", 'aria-expanded' => "false", data: {toggle: "dropdown"} )
+      buffer << link_to( "", class: 'nav-link' ) do
+        raw %{ #{menu[:title]}
+        <svg version="1.1" class="plus-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+        viewBox="0 0 18 18">
+          <line fill="none" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="10" y1="9" x2="17" y2="9"/>
+          <line fill="none" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="9" y1="9" x2="9" y2="1"/>
+          <g id="lineGroup_1">
+          <line fill="none" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="1" y1="9" x2="8" y2="9"/>
+          <line fill="none" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="9" y1="17" x2="9" y2="9" />
+          </g> 
+        </svg>}
+      end
       buffer << render_dropdown_content(menu[:children])
       buffer
     end
@@ -100,7 +111,7 @@ class MenuPresenter
 
   def render_dropdown_content(menu)
     # dropdownid = "dropdown#{menu.first.parent}"
-    content_tag(:div, class: "dropdown-menu dropdown-primary",  "aria-labelledby" => "navbarDropdownMenuLink") do
+    content_tag(:ol, class: "sub-menu") do
       menu.inject(ActiveSupport::SafeBuffer.new) do |buffer, item|
         buffer << render_dropdown_menu_item(item)
       end
@@ -108,7 +119,10 @@ class MenuPresenter
   end
 
   def render_dropdown_menu_item(menu)
-    link_to(menu[:title], context.url_for(menu[:path]), class: "dropdown-item", "data-turbolinks" => menu[:data_turbolinks])
+    content_tag(:li, class: "sub-menu-item") do
+      link_to(menu[:title], context.url_for(menu[:path]), "data-turbolinks" => menu[:data_turbolinks] )
+      
+    end
   end
 
 end

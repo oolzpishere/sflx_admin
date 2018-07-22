@@ -19,8 +19,9 @@ var point = new BMap.Point(108.394269,22.806673);
 map.centerAndZoom(point, 16);
 // 初始化地图，设置中心点坐标和地图级别  
 <%# "#{image_path('LOGO.svg')}" %>
+// "https://www.sflx.com.cn/LOGO.svg"
 function addMarker(point, index){  // 创建图标对象   
-	var myIcon = new BMap.Icon("https://www.sflx.com.cn/LOGO.svg", new BMap.Size(158, 56), {    
+	var myIcon = new BMap.Icon("<%= image_path('logo_for_map.svg') %>", new BMap.Size(70, 70), {    
         // 指定定位位置。   
         // 当标注显示在地图上时，其所指向的地理位置距离图标左上    
         // 角各偏移10像素和25像素。您可以看到在本例中该位置即是   
@@ -34,7 +35,7 @@ function addMarker(point, index){  // 创建图标对象
         // imageOffset: new BMap.Size(0, 10)  
       });      
 	// Mine 设置Icon偏移坐标量，(x,y)
-  var offset =  new BMap.Size(0, 20)
+  var offset =  new BMap.Size(55, -35)
     // 创建标注对象并添加到地图  
   var marker = new BMap.Marker(point, {icon: myIcon, offset: offset}); 
   map.addOverlay(marker);

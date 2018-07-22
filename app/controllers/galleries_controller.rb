@@ -4,12 +4,13 @@ class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.json
   def index
-    @galleries = Gallery.all
+    @galleries = Gallery.order(:position, :id)
   end
 
   # GET /galleries/1
   # GET /galleries/1.json
   def show
+    @galleries = Gallery.order(:position, :id)
   end
 
   # GET /galleries/new

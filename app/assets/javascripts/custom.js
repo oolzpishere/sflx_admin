@@ -8,8 +8,19 @@ document.addEventListener("turbolinks:load", function() {
     $(this).toggleClass('white-text z-depth-2 rounded bg-primary');
   })
 
+  var tl = new TimelineMax(),
+    links = document.querySelectorAll('.nav-item'),
+    pIcon = document.querySelectorAll('.plus-icon');
 
+  $('.nav-item.dropdown').on('mouseenter',function(){
+    TweenMax.to(pIcon[0],0.15,{rotation:-45,ease:Power1.easeIn})
+    TweenMax.to('#lineGroup_1',0.20,{attr:{'stroke-dashoffset':'8','stroke-dasharray' :'8'},ease:Power1.easeIn})
+  });
 
+  $('.nav-item.dropdown').on('mouseleave',function(){
+    TweenMax.to(pIcon[0],0.15,{rotation:0,ease:Power1.easeIn})
+    TweenMax.to('#lineGroup_1',0.20,{attr:{'stroke-dashoffset':'0','stroke-dasharray' :'0'},ease:Power1.easeIn})
+  });
 
   //Initialization waves effect
   Waves.attach('.btn:not(.btn-flat), .btn-floating', ['waves-light']);
