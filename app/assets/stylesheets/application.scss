@@ -6,6 +6,8 @@
 @import "lib/mdb/navbars";
 @import "lib/mdb/footers";
 
+@import 'variables';
+
 @import "bootstrap";
 
 @import "slideout";
@@ -19,6 +21,7 @@
 
 @import 'galleries';
 
+
 $menucolor:#fff;
 
 body{
@@ -30,7 +33,8 @@ body{
   padding: .5rem;}
 
 .navbar .dropdown-menu .white-text {
-      color: #fff !important;}
+      color: #fff !important;
+}
 
 // .navbar.navbar-dark .navbar-nav .nav-item .nav-link{
 //   color: #fff;
@@ -115,7 +119,7 @@ body{
     list-style-type:none;
     display:block;
     margin:15px;
-    position:relative;  
+    position:relative;
     transform:translateY(-10px);
     opacity:0;
     transition:0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.10s;
@@ -143,8 +147,8 @@ body{
       &:first-child {
         transform:translateY(0px);
         opacity:1;
-        transition-delay:0.15s;  
-        visibility:visible;  
+        transition-delay:0.15s;
+        visibility:visible;
       }
       &:nth-child(2)  {
         transform:translateY(0px);
@@ -208,4 +212,69 @@ body{
 }
 // E slideout menu
 
+// web
+.web-page{
+  .web-image{
+    background: center center no-repeat;
+    background-size: cover;
+  }
+}
 
+// </web
+
+// slick
+.slick-slider{
+  margin: 0;
+}
+.slider-bg{
+  background: center center no-repeat;
+  background-size: cover;
+  height: 800px;
+}
+.slider-nav-wrap{
+  position: absolute;
+  bottom: 0;
+}
+// </slick
+
+.scroll-down-animation a span {
+ position: absolute;
+ top: 0;
+ left: 50%;
+ width: 30px;
+ height: 50px;
+ margin-left: -15px;
+ border: 2px solid #fff;
+ border-radius: 50px;
+ box-sizing: border-box;
+}
+.scroll-down-animation a span::before {
+ position: absolute;
+ top: 10px;
+ left: 50%;
+ content: '';
+ width: 6px;
+ height: 6px;
+ margin-left: -3px;
+ background-color: #fff;
+ border-radius: 100%;
+ -webkit-animation: sdb10 2s infinite;
+ animation: sdb10 2s infinite;
+ box-sizing: border-box;
+}
+@keyframes sdb10 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    transform: translate(0, 20px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

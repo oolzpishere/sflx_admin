@@ -36,14 +36,27 @@ document.addEventListener("turbolinks:load", function() {
   //  slick
   /////////////
   // p index slick
-  $('.index-slider-wrap').slick({
-    dots: true,
-    speed: 500,
-    arrows: true
-  });
+  $('.index-slider-for').slick({
+     slidesToShow: 1,
+     slidesToScroll: 1,
+     arrows: false,
+     fade: true,
+     asNavFor: '.index-slider-nav'
+   });
+   $('.index-slider-nav').slick({
+     slidesToShow: 4,
+     slidesToScroll: 1,
+     asNavFor: '.index-slider-for',
+     arrows: false,
+     focusOnSelect: true
+   });
+   var sliderNavItemWidth = $('.slider-nav .slick-slide').width();
+   $('.slider-nav-wrap .move-line').css({"width": sliderNavItemWidth + "px" });
+   $('.index-slider-nav').on('afterChange', function(event, slick, currentSlide){
+     //currentSlide is index of current slide.
 
-
-
+     $('.slider-nav-wrap .move-line').css({"transform": "translate3d(" + (sliderNavItemWidth * currentSlide) + "px, 0px, 0px)"});
+   });
   // $('.submenus').find(`[data-classify='${current-submenu}']`)
 
 });

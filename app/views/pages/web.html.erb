@@ -1,4 +1,19 @@
-<p id="notice"><%= notice %></p>
-web
-<%# link_to 'Edit', edit_page_path(@page) %> |
-<%# link_to 'Back', pages_path %>
+<div class="row no-gutters">
+  <div class="web-image col-12" style="background-image: url(<%=image_path('web/web1.jpg')%>); height: 800px;">
+    <div class="row p-5 no-gutters justify-content-end">
+        <%= image_tag("web/web1.svg", style: "width:500px;") %>
+    </div>
+  </div>
+
+  <div class="web-image col-12" style="background-image: url(<%=image_path('web/web2.jpg')%>); height: 800px;">
+    <div class="row p-5 no-gutters justify-content-start">
+        <%= image_tag("web/web2.svg", style: "width:500px;") %>
+    </div>
+  </div>
+
+  <div class="web-image col-12" style="background-image: url(<%=image_path('web/web3.jpg')%>); height: 800px;">
+    <div class="row p-5 no-gutters justify-content-start">
+        <%= image_tag("web/web3.svg", style: "width:450px;") %>
+    </div>
+  </div>
+</div>

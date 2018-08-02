@@ -8,28 +8,29 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'defer': true %>
 </head>
 
-
 <body>
   <div id="menu">
     <div class="row justify-content-center no-gutters p-3">
       <a href="/"><%= image_tag("LOGO.svg") %></a>
     </div>
     <div class="external-icons row no-gutters justify-content-center p-3 my-2  border-bottom border-top border-white text-white">
-      
+
       <div class="col-1 mx-1">
         <i class="fab fa-weixin"></i>
       </div>
       <div class="col-1 mx-1">
         <i class="fab fa-qq"></i>
       </div>
-      
+
     </div>
-    
+
       <%= SlideoutPresenter.new(  Menus.new.menu_array, self ).to_html %>
     <div class="sidenav-bg mask-strong"></div>
   </div>
 
-  <main id="panel">
+  <%# request.path.split('/') generate ["", "web"] %>
+  <% path_first_name = request.path.split('/')[1] ? request.path.split('/')[1]+"-page" : "" %>
+  <main id="panel" class=<%= path_first_name %>>
     <header>
       <%= render "layouts/header" %>
     </header>

@@ -1,11 +1,49 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Pages</h1>
+<div class="position-relative">
+  <div class="slider-for index-slider-for">
+    <div class="slider-bg" style="background-image: url(<%= rails_blob_path(Gallery.first.images.first.image) %> );">
+      1 your content
+      <%# image_tag Gallery.first.images.first.image %>
+    </div>
+    <div class="slider-bg" style="background-image: url(<%= rails_blob_path(Gallery.second.images.first.image) %> );">
+      2 your content
+      <%# image_tag Gallery.second.images.first.image %>
+    </div>
+    <div class="slider-bg" style="background-image: url(<%= rails_blob_path(Gallery.all[3].images.first.image) %> );">
+      3 your content
+      <%# image_tag Gallery.all[3].images.first.image %>
+    </div>
+    <div class="slider-bg" style="background-image: url(<%= rails_blob_path(Gallery.all[4].images.first.image) %> );">
+      4 your content
+      <%# image_tag Gallery.all[3].images.first.image %>
+    </div>
+  </div>
+  <div class="slider-nav-wrap w-100">
+    <div class="container border-top border-white">
+      <div class="row no-gutters">
+        <div class="slider-nav index-slider-nav col-11 text-white">
+          <div class="py-4">
+            <div style="width:26px; height:26px; position:relative;text-align: center; margin-left: 5px;">
+              1
+              <span class="border border-white" style="width:100%; height:100%;position: absolute;left: 0;top: 0;z-index: -1; transform: rotate(45deg);">
+              </span>
+            </div>
 
-<div class="index-slider-wrap" data-slideout-ignore>
-  <div>your content</div>
-  <div>your content</div>
-  <div>your content</div>
+            your content
+          </div>
+          <div class="py-4">2 your content</div>
+          <div class="py-4">3 your content</div>
+          <div class="py-4">4 your content</div>
+        </div>
+        <div class="col-md-auto" >
+          <div class="scroll-down-animation">
+            <a href="#"><span></span></a>
+          </div>
+        </div>
+      </div>
+
+      <span class="move-line" style="height: 4px; position: absolute; background-color: rgb(255, 255, 255); opacity: 0.75; transition: transform 0.35s ease; top: 0px; transform: translate3d(0px, 0px, 0px); " data-radium="true" data-reactid="150">
+      </span>
+    </div>
+  </div>
 </div>
-
-<br>
