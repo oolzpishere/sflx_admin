@@ -5,11 +5,11 @@
       1 your content
       <%# image_tag Gallery.first.images.first.image %>
     </div>
-    <div class="slider-bg" style="background-image: url(<%= rails_blob_path(Gallery.second.images.first.image) %> );">
+    <div class="slider-bg" style="background-image: url(<%= image_path("index/网站-会展会议.jpg") %> );">
       2 your content
       <%# image_tag Gallery.second.images.first.image %>
     </div>
-    <div class="slider-bg" style="background-image: url(<%= rails_blob_path(Gallery.all[3].images.first.image) %> );">
+    <div class="slider-bg" style="background-image: url(<%= image_path("index/网站-网络技术.jpg") %> );">
       3 your content
       <%# image_tag Gallery.all[3].images.first.image %>
     </div>
@@ -18,26 +18,37 @@
       <%# image_tag Gallery.all[3].images.first.image %>
     </div>
   </div>
-  <div class="slider-nav-wrap w-100">
-    <div class="container border-top border-white">
+  <div class="slider-nav-wrap  w-100">
+    <div class="container p-0">
       <div class="row no-gutters">
-        <div class="slider-nav index-slider-nav col-11 text-white">
-          <div class="py-4">
-            <div style="width:26px; height:26px; position:relative;text-align: center; margin-left: 5px;">
-              1
-              <span class="border border-white" style="width:100%; height:100%;position: absolute;left: 0;top: 0;z-index: -1; transform: rotate(45deg);">
-              </span>
+        <div class="slider-nav index-slider-nav col text-white">
+          <div class="row no-gutters">
+            <div class="p-lg-5 p-4 col-3 slider-nav-item">
+              <% index_img_path0 = "index/网站-设计策划icon" %>
+              <%= image_tag index_img_path0, class: "img-fluid  ", 'data-md': image_path(index_img_path0 + "-s"), 'data-src': image_path(index_img_path0) %>
             </div>
-
-            your content
+            <div class="p-lg-5 p-4 col-3 slider-nav-item">
+              <% index_img_path1 = "index/网站-会展会议icon" %>
+              <%= image_tag index_img_path1, class: "img-fluid  ", 'data-md': image_path(index_img_path1 + "-s"), 'data-src': image_path(index_img_path1)  %>
+            </div>
+            <div class="p-lg-5 p-4 col-3 slider-nav-item">
+              <% index_img_path2 = "index/网站-网络技术icon" %>
+              <%= image_tag index_img_path2, class: "img-fluid  ", 'data-md': image_path(index_img_path2 + "-s"), 'data-src': image_path(index_img_path2)  %>
+            </div>
+            <div class="p-lg-5 p-4 col-3 slider-nav-item">
+              <% index_img_path3 = "index/网站-关于我们icon" %>
+              <%= image_tag index_img_path3, class: "img-fluid  ", 'data-md': image_path(index_img_path3 + "-s"), 'data-src': image_path(index_img_path3)  %>
+            </div>
           </div>
-          <div class="py-4">2 your content</div>
-          <div class="py-4">3 your content</div>
-          <div class="py-4">4 your content</div>
         </div>
-        <div class="col-md-auto" >
-          <div class="scroll-down-animation">
-            <a href="#"><span></span></a>
+        <div class="slider-nav-scroll col-md-1 d-none d-md-block" >
+          <div class="scroll-down-animation-wrap">
+            <div class="scroll-down-animation">
+              <a href="#"><span></span></a>
+            </div>
+            <section class="section07">
+              <a href="#"><span></span><span></span></a>
+            </section>
           </div>
         </div>
       </div>

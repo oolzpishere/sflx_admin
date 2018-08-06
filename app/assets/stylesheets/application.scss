@@ -229,17 +229,30 @@ body{
 .slider-bg{
   background: center center no-repeat;
   background-size: cover;
-  height: 800px;
+  height: 950px;
 }
 .slider-nav-wrap{
   position: absolute;
   bottom: 0;
+  border-top: 1px solid;
+  border-image: linear-gradient(90deg, rgba(255,255,255,.0), rgba(255,255,255,.9) 20%, rgba(255,255,255,.9) 80%, rgba(255,255,255,.0)) 1;
+  background: linear-gradient(90deg, rgba(0,0,0,.0), rgba(0,0,0,.3) 20%, rgba(0,0,0,.3) 80%, rgba(0,0,0,.0));
+  .slider-nav-scroll{
+    border-left: 1px solid;
+    border-image: linear-gradient(0deg, rgba(255,255,255,.0), rgba(255,255,255,.0) 20%, rgba(255,255,255,.9) 20%, rgba(255,255,255,.9) 80%,rgba(255,255,255,.0) 80%, rgba(255,255,255,.0)) 1;
+  }
 }
 // </slick
 
+.scroll-down-animation-wrap{
+  position: relative;
+  top:50%;
+  margin-top: -50px;
+}
+
 .scroll-down-animation a span {
  position: absolute;
- top: 0;
+ top: 1rem;
  left: 50%;
  width: 30px;
  height: 50px;
@@ -273,6 +286,43 @@ body{
   80% {
     transform: translate(0, 20px);
     opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.section07 a span {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb07 2s infinite;
+  animation: sdb07 2s infinite;
+  opacity: 0;
+  box-sizing: border-box;
+}
+.section07 a span:nth-of-type(1) {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+.section07 a span:nth-of-type(2) {
+  top: 76px;
+  -webkit-animation-delay: .15s;
+  animation-delay: .15s;
+}
+@keyframes sdb07 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
   }
   100% {
     opacity: 0;

@@ -5,7 +5,7 @@ $grid-breakpoints: (
   lg: 992px,
   xl: 1200px,
   xxl: 1380px
-) !default;
+);
 
 $container-max-widths: (
   sm: 540px,
@@ -13,4 +13,6 @@ $container-max-widths: (
   lg: 960px,
   xl: 1140px,
   xxl: 1280px
-) !default;
+);
+
+$enable-gradients:  true;
