@@ -62,7 +62,7 @@ document.addEventListener("turbolinks:load", function() {
    });
    var viewportWidth = window.innerWidth;
    var viewportHeight = window.innerHeight;
-   var navbarHeight = $('.navbar').innerHeight();
+   var navbarHeight = $('.navbar').outerHeight();
    $(window).on('resize',function(){
      viewportWidth = window.innerWidth;
      viewportHeight = window.innerHeight;
@@ -71,7 +71,11 @@ document.addEventListener("turbolinks:load", function() {
      indexSlickMD();
    });
    function resizeSlick(){
-     $('.slider-bg').css({height: viewportHeight - navbarHeight})
+     var sliderHeight = viewportHeight - navbarHeight;
+     var sliderInfoHeight = sliderHeight - $('.slider-nav-wrap').outerHeight();
+     $('.slider-for .slick-slide').css({height: sliderHeight});
+     $('.slider-bg').css({height: sliderHeight});
+     $('.slider-info').css({height: sliderInfoHeight});
    }
    resizeSlick();
 
@@ -100,7 +104,31 @@ document.addEventListener("turbolinks:load", function() {
    $('.index-slider-for').on('beforeChange', function(event, slick, currentSlide, nextSlide){
      //currentSlide is index of current slide.
      $('.slider-nav-wrap .move-line').css({"transform": "translate3d(" + (sliderNavItemWidth * nextSlide) + "px, 0px, 0px)"});
+
+     // $('.slider-info').eq(nextSlide).find('img').css({'opacity': 0});
    });
+
+   $('.slider-info').find('img').css({'opacity': 0, 'transform': 'translateY(200px)'});
+   $('.index-slider-for').on('afterChange', function(event, slick, currentSlide){
+     // $(this).animateCss('fadeInUp')
+     // var _ = $('.slider-info').eq(currentSlide);
+
+     // $('.slider-info').eq(currentSlide).find('img').each(function(index){
+     //   $(this).css({"animation-delay": index+'s'});
+     //   $(this).animateCss('fadeInUp');
+     // });
+
+     var tl = new TimelineMax();
+     $('.slider-info').eq(currentSlide).find('img').each(function(index){
+       var _ = this;
+       // $(_).css({'opacity': 1});
+       tl.add(TweenMax.to( _, .6, {y:"0px", opacity: 1 } ))
+     })
+
+   });
+   // $('.slider-info img').each(function(){
+   //    $(this).animateCss('fadeInUp')
+   // })
 
 
   // $('.submenus').find(`[data-classify='${current-submenu}']`)
