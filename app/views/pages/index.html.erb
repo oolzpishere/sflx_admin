@@ -1,44 +1,59 @@
 
 <div class="position-relative">
   <div class="slider-for index-slider-for">
-    <div class="slider-bg" style="background-image: url(<%= rails_blob_path(Gallery.first.images.first.image) %> );">
-      <div class="slider-info row no-gutters ">
-      </div>
+    <div class="slider-bg" style="background-image: url(<%= image_path("index/网站-设计策划.jpg") %> );">
+      <a href="">
+        <div class="slider-info row no-gutters ">
+          <div class="col-10 mx-auto" style="margin-top: 5%">
+            <%= image_tag "index/网站-L-设计策划icon", class: 'w-100' %>
+          </div>
+        </div>
+      </a>
       <%# image_tag "" %>
       <%# image_tag Gallery.first.images.first.image %>
     </div>
     <div class="slider-bg" style="background-image: url(<%= image_path("index/网站-会展会议.jpg") %> );">
-      <div class="slider-info row no-gutters">
-        <div class="col px-3 pt-5">
-          <%= image_tag "index/网站-L-会展会议icon", class: 'img-fluid' %>
+      <a href="">
+        <div class="slider-info row no-gutters">
+          <div class="col px-3 pt-5">
+            <%= image_tag "index/网站-L-会展会议icon", class: 'img-fluid mx-auto ' %>
+          </div>
         </div>
-      </div>
+      </a>
       <%# image_tag Gallery.second.images.first.image %>
     </div>
     <div class="slider-bg" style="background-image: url(<%= image_path("index/网站-网络技术.jpg") %> );">
-      <div class="slider-info row no-gutters">
-        <div class="col-5 p-5">
-          <%= image_tag "index/网站-L-网络技术icon", class: 'img-fluid' %>
+      <a href="">
+        <div class="slider-info row no-gutters">
+          <div class="col-5 p-5">
+            <%= image_tag "index/网站-L-网络技术icon", class: 'img-fluid' %>
+          </div>
         </div>
-      </div>
+      </a>
       <%# image_tag Gallery.all[3].images.first.image %>
     </div>
     <div class="slider-bg" style="background-image: url(<%= image_path("index/网站-关于我们-1.jpg") %> );">
-      <div class="slider-info row no-gutters ">
-        <div class="col-5 pt-5 pl-5">
-          <%= image_tag "index/网站-关于我们-2", class: 'img-fluid' %>
-        </div>
-        <div class="col-7 py-5 pr-5">
-          <div class="row no-gutters">
-            <div class="col-12 col-lg-11">
-              <%= image_tag "index/网站-L-关于我们icon", class: 'img-fluid pb-4' %>
-            </div>
-            <div class="col-8 col-lg-5 ml-auto px-5 pb-5">
-              <%= image_tag "index/网站-关于我们-3", class: 'img-fluid' %>
+      <a href="">
+        <div class="slider-info row no-gutters justify-content-center">
+          <div class="col-11 ">
+            <div class="row no-gutters h-100 align-items-center">
+              <div class="col-5 pt-xl-0 pt-5">
+                <%= image_tag "index/网站-关于我们-2", class: 'img-fluid' %>
+              </div>
+              <div class="col-7 py-5 pr-5">
+                <div class="row no-gutters">
+                  <div class="col-11 col-xl-11 pb-xl-5 pb-4 m-auto">
+                    <%= image_tag "index/网站-L-关于我们icon", class: 'img-fluid ' %>
+                  </div>
+                  <div class="col-8 col-xl-5 col-xl-7 ml-auto px-5">
+                    <%= image_tag "index/网站-关于我们-3", class: 'w-100' %>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </a>
       <%# image_tag Gallery.all[3].images.first.image %>
     </div>
   </div>

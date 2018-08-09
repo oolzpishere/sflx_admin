@@ -40,6 +40,11 @@ document.addEventListener("turbolinks:load", function() {
   //  slick
   /////////////
   // p index slick
+  $('.index-slider-for').on('init', function(){
+    var _ = $('.slider-info').eq(0).find('img');
+    TweenMax.to( _, 1, {y:"0px", opacity: 1 });
+  })
+
   $('.index-slider-for').slick({
      slidesToShow: 1,
      slidesToScroll: 1,
@@ -107,6 +112,7 @@ document.addEventListener("turbolinks:load", function() {
 
      // $('.slider-info').eq(nextSlide).find('img').css({'opacity': 0});
    });
+
 
    $('.slider-info').find('img').css({'opacity': 0, 'transform': 'translateY(200px)'});
    $('.index-slider-for').on('afterChange', function(event, slick, currentSlide){
