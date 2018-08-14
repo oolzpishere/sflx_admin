@@ -54,18 +54,19 @@ document.addEventListener("turbolinks:load", function() {
       })
     }
   };
-  
+
   // initialize delay
   addDelay($('.item'));
 
   // submenu
   $('.item').animateCss('fadeInUp');
-  $('.submenus a').on( "click", function(e) {
+  $('.submenu a').on( "click", function(e) {
     e.preventDefault();
     var menu = $(this);
+
     // add active classnn
-    $('.submenus a').removeClass("active");
-    menu.addClass("active");
+    $('.submenu-item ').removeClass("active");
+    menu.parent('.submenu-item ').addClass("active");
 
     var clicked_classify = menu.data('classify');
 
@@ -97,8 +98,8 @@ document.addEventListener("turbolinks:load", function() {
         if(self.hasClass('d-none')){
 
         } else{
-        // if showed   
-        self.find('.mask').animateCss('maskBlindInLeft', function(){ 
+        // if showed
+        self.find('.mask').animateCss('maskBlindInLeft', function(){
           selectedItems.removeClass('d-none');
           unselectedItems.addClass('d-none');
           _blindInCount += 1

@@ -5,6 +5,8 @@ class GalleriesController < ApplicationController
   # GET /galleries.json
   def index
     @galleries = Gallery.order(:position, :id)
+
+    @gallery_type = params[:gallery_type]
   end
 
   # GET /galleries/1

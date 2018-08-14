@@ -1,7 +1,7 @@
 document.addEventListener("turbolinks:load", function() {
 	// svg selecter
 	// $('img[src$=".svg"]')
-  $('img[src$=".svg"]').each(function() {
+  $('img[src$=".svg"].svg').each(function() {
       var $img = jQuery(this);
       var imgURL = $img.attr('src');
       var attributes = $img.prop("attributes");
