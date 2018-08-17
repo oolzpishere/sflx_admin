@@ -118,7 +118,6 @@ document.addEventListener("turbolinks:load", function() {
     });
   }
 
-
   function slickWindowResize(){
     viewportWidth = window.innerWidth;
     viewportHeight = window.innerHeight;
@@ -130,8 +129,8 @@ document.addEventListener("turbolinks:load", function() {
   function resizeSlick(){
     var sliderHeight = viewportHeight - navbarHeight;
     var sliderInfoHeight = sliderHeight - $('.slider-nav-wrap').outerHeight();
-    $('.slider-for .slick-slide').css({height: sliderHeight});
-    $('.slider-bg').css({height: sliderHeight});
+    // $('.slider-for .slick-slide').css({height: sliderHeight});
+    // $('.slider-bg').css({height: sliderHeight});
     $('.slider-info').css({height: sliderInfoHeight});
   }
 

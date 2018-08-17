@@ -58,7 +58,7 @@ document.addEventListener("turbolinks:load", function() {
   // initialize delay
   addDelay($('.item'));
 
-  // submenu
+  // <submenu
   $('.item').animateCss('fadeInUp');
   $('.submenu a').on( "click", function(e) {
     e.preventDefault();
@@ -69,17 +69,6 @@ document.addEventListener("turbolinks:load", function() {
     menu.parent('.submenu-item ').addClass("active");
 
     var clicked_classify = menu.data('classify');
-
-    function itemFilter(classify) {
-      var items = $(".item").filter(function(i) {
-        if (classify.match(/全部/)) {
-          return $(this);
-        } else {
-          return $(this).data('classify').split(",").includes(classify);
-        }
-      });
-      return items;
-    };
 
     var selectedItems = itemFilter(clicked_classify);
     var unselectedItems = $('.item').not(selectedItems);
@@ -113,6 +102,17 @@ document.addEventListener("turbolinks:load", function() {
       }
     });
   });
+
+  function itemFilter(classify) {
+    var items = $(".item").filter(function(i) {
+      if (classify.match(/全部/)) {
+        return $(this);
+      } else {
+        return $(this).data('classify').split(",").includes(classify);
+      }
+    });
+    return items;
+  };
 
   // var viewportWidth = window.innerWidth;
   var viewportHeight = window.innerHeight;

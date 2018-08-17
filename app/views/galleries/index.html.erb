@@ -99,7 +99,7 @@
 <% end %>
 
 <div class="container-fluid black">
-  <div class="container d-flex black text-white justify-content-around">
+  <div class="container d-flex black text-white justify-content-around" style="font-size: 0.8rem;">
     <% submenu_text = %w(D E S I G N S E R V I C E) %>
     <% submenu_text.each do |letter|  %>
       <span class=""><%= letter %></span>
@@ -109,7 +109,12 @@
 
     <% submenu_colors = ['none', 'rgba(3, 169, 244, 0.7)', 'rgba(244, 67, 54, 0.7)', 'rgba(121, 85, 72, 0.7)','rgba(76, 175, 80, 0.7)' ] %>
     <% Menus.new.gallery_types.sort{|x,y| x["position"] <=> y["position"]}.each_with_index do |gt, index| %>
-      <div class="submenu-item py-2" tabindex="1" style="background-image: url(<%= image_path('design/nav/' + index.to_s + '.jpg') %>)">
+      <% if @gallery_type.to_s.empty? %>
+        <% active = (gt["eng_name"] == "all" ? "active" : "") %>
+      <% else %>
+        <% active = (gt["eng_name"] == @gallery_type.to_s ? "active" : "") %>
+      <% end %>
+      <div class="submenu-item py-2 <%= active %>" tabindex="1" style="background-image: url(<%= image_path('design/nav/' + index.to_s + '.jpg') %>)">
         <%= link_to "", "", class: "", "data-classify" => gt[:title] %>
         <span style="background-color: <%= submenu_colors[index] %>"></span>
         <%= image_tag('design/nav/' + index.to_s + '.svg', class: 'svg img-fluid h-100') %>

@@ -19,7 +19,7 @@ class MenuPresenter
   self.css = ''
   self.menu_tag = :nav
   self.list_tag = :ul
-  self.list_tag_css = 'navbar-nav mr-auto'
+  self.list_tag_css = 'navbar-nav'
   self.active_css = :active
   self.selected_css = :selected
   self.first_css = :first
@@ -78,14 +78,14 @@ class MenuPresenter
       buffer = ActiveSupport::SafeBuffer.new
       buffer << link_to( "", class: 'nav-link' ) do
         raw %{ #{menu[:title]}
-        <svg version="1.1" class="plus-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+        <svg version="1.1" class="plus-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 18 18">
           <line fill="none" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="10" y1="9" x2="17" y2="9"/>
           <line fill="none" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="9" y1="9" x2="9" y2="1"/>
           <g id="lineGroup_1">
           <line fill="none" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="1" y1="9" x2="8" y2="9"/>
           <line fill="none" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="9" y1="17" x2="9" y2="9" />
-          </g> 
+          </g>
         </svg>}
       end
       buffer << render_dropdown_content(menu[:children])
@@ -121,7 +121,7 @@ class MenuPresenter
   def render_dropdown_menu_item(menu)
     content_tag(:li, class: "sub-menu-item") do
       link_to(menu[:title], context.url_for(menu[:path]), "data-turbolinks" => menu[:data_turbolinks] )
-      
+
     end
   end
 

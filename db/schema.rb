@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_044815) do
+ActiveRecord::Schema.define(version: 2018_08_14_092637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2018_07_09_044815) do
   create_table "gallery_types", id: :serial, force: :cascade do |t|
     t.string "gallery_type"
     t.integer "position"
+    t.string "eng_name"
   end
 
   create_table "images", id: :serial, force: :cascade do |t|

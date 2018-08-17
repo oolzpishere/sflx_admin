@@ -12,6 +12,7 @@ class GalleryTypeDashboard < Administrate::BaseDashboard
     # galleries: Field::HasMany,
     id: Field::Number,
     gallery_type: Field::String,
+    eng_name: Field::String,
     position: Field::Number,
   }.freeze
 
@@ -25,6 +26,7 @@ class GalleryTypeDashboard < Administrate::BaseDashboard
     # :galleries,
     :id,
     :gallery_type,
+    :eng_name,
     :position,
   ].freeze
 
@@ -35,6 +37,7 @@ class GalleryTypeDashboard < Administrate::BaseDashboard
     # :galleries,
     :id,
     :gallery_type,
+    :eng_name,
     :position,
   ].freeze
 
@@ -45,6 +48,7 @@ class GalleryTypeDashboard < Administrate::BaseDashboard
     # :gallery_gallery_types,
     # :galleries,
     :gallery_type,
+    :eng_name,
     :position,
   ].freeze
 
