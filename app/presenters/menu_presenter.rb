@@ -19,7 +19,7 @@ class MenuPresenter
   self.css = ''
   self.menu_tag = :nav
   self.list_tag = :ul
-  self.list_tag_css = 'navbar-nav'
+  self.list_tag_css = 'navbar-nav justify-content-center'
   self.active_css = :active
   self.selected_css = :selected
   self.first_css = :first
@@ -111,15 +111,23 @@ class MenuPresenter
 
   def render_dropdown_content(menu)
     # dropdownid = "dropdown#{menu.first.parent}"
-    content_tag(:ol, class: "sub-menu") do
-      menu.inject(ActiveSupport::SafeBuffer.new) do |buffer, item|
-        buffer << render_dropdown_menu_item(item)
+      # <ul class="list-group list-group-flush">
+      #   <li class="list-group-item">Cras justo odio</li>
+      #   <li class="list-group-item">Dapibus ac facilisis in</li>
+      #   <li class="list-group-item">Vestibulum at eros</li>
+      # </ul>
+
+    content_tag(:div, class: "sub-menu card", style: "width: 18rem;") do
+      content_tag(:ul, class: "list-group list-group-flush") do
+        menu.inject(ActiveSupport::SafeBuffer.new) do |buffer, item|
+          buffer << render_dropdown_menu_item(item)
+        end
       end
     end
   end
 
   def render_dropdown_menu_item(menu)
-    content_tag(:li, class: "sub-menu-item") do
+    content_tag(:li, class: "sub-menu-item list-group-item") do
       link_to(menu[:title], context.url_for(menu[:path]), "data-turbolinks" => menu[:data_turbolinks] )
 
     end

@@ -3,7 +3,7 @@
 <!--Navbar-->
 <nav class="navbar-wrap position-relative container-fluid p-0">
 
-  <div class="navbar navbar-expand-lg navbar-dark row no-gutters align-items-center rgba-blue-strong w-100 h-100">
+  <div class="navbar navbar-expand-lg navbar-dark row no-gutters align-items-center rgba-blue-strong w-100 h-100" >
     <%= image_tag "header/导航-边", class: "d-none d-xl-block position-absolute h-100", style: "left:0;" %>
     <%= image_tag "header/导航-边", class: "d-none d-xl-block position-absolute h-100", style: "right:0; transform: rotate(0.5turn);" %>
     <!-- <button class="toggle-button">☰</button> -->
@@ -18,12 +18,13 @@
 
 
 
-    <div class="d-none d-lg-block col-4 text-center">
+    <div class="d-none d-lg-block col text-center">
       <%= image_tag "header/导航-定位语", class: "", style: "height: 1.3rem" %>
     </div>
     <!-- Navbar brand -->
-    <div class="col col-sm-4 text-right text-lg-center">
-      <a class="navbar-brand " href="/"><%= image_tag("header/导航-LOGO", class: "mx-auto", style: "height: 3.5rem")   %></a>
+    <!-- col col-sm-4  -->
+    <div class="">
+      <a class="navbar-brand mr-lg-0" href="/"><%= image_tag("header/导航-LOGO", class: "mx-auto", style: "height: 3.5rem") %></a>
     </div>
 
     <!-- Collapse button -->
@@ -33,7 +34,7 @@
   </button> -->
 
     <!-- Collapsible content -->
-    <div class="d-none d-lg-block col-4" id="basicExampleNav">
+    <div class="d-none d-lg-block col" id="basicExampleNav">
       <div class="">
         <%= MenuPresenter.new(  Menus.new.menu_array, self ).to_html %>
       </div>

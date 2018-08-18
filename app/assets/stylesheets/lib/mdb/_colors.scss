@@ -628,7 +628,8 @@ $enable_full_palette: true !default;
         .#{$color_name}.#{$color_type} {
           background-color: $color_value !important;
         }
-        .#{$color_name}-#{$color_type}-text{
+        // pp eg. .text-grey-darken-3
+        .text-#{$color_name}-#{$color_type}{
             color: $color_value !important;
         }
       }
