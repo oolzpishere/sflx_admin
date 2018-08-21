@@ -37,9 +37,9 @@ document.addEventListener("turbolinks:load", function() {
 
 
   function addDelay(items, opts){
-    var interval = 0.1;
+    var interval = 0.1, time;
     if (typeof(opts) != "undefined") {
-      var time = opts.time;
+      time = opts.time;
       interval = opts.interval;
     }
 
@@ -48,9 +48,12 @@ document.addEventListener("turbolinks:load", function() {
         $(this).css({"animation-delay": time, "-webkit-animation-delay": time });
       });
     } else {
+      var _time = 0;
       items.each(function(i){
-        var _time = interval*i + "s"
-        $(this).css({"animation-delay": _time, "-webkit-animation-delay": _time })
+        if ($(this).hasClass('d-none')) { return true; }
+        _time += interval;
+        $(this).css({"animation-delay": _time + "s", "-webkit-animation-delay": _time + "s" })
+        $(this).animateCss('fadeInUp');
       })
     }
   };
@@ -58,8 +61,7 @@ document.addEventListener("turbolinks:load", function() {
   // initialize delay
   addDelay($('.item'));
 
-  // <submenu
-  $('.item').animateCss('fadeInUp');
+  // <<submenu
   $('.submenu a').on( "click", function(e) {
     e.preventDefault();
     var menu = $(this);

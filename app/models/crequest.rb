@@ -1,0 +1,2 @@
+class Crequest < ApplicationRecord
+end

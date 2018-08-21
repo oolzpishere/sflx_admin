@@ -9,9 +9,9 @@ document.addEventListener("turbolinks:load", function() {
   }
 
   // for navbar's dropdown menu
-  $('.dropdown-item').on('mouseenter mouseleave', function(){
-    $(this).toggleClass('white-text z-depth-2 rounded bg-primary');
-  })
+  // $('.dropdown-item').on('mouseenter mouseleave', function(){
+  //   $(this).toggleClass('white-text z-depth-2 rounded bg-primary');
+  // })
 
   var tl = new TimelineMax(),
   links = document.querySelectorAll('.nav-item'),
@@ -28,7 +28,7 @@ document.addEventListener("turbolinks:load", function() {
   });
 
   //Initialization waves effect
-  Waves.attach('.btn:not(.btn-flat), .btn-floating', ['waves-light']);
+  Waves.attach('.btn:not(.btn-flat):not(.not-waves), .btn-floating', ['waves-light']);
   Waves.attach('.btn-flat', ['waves-effect']);
   Waves.attach('.view a .mask', ['waves-light']);
   Waves.attach('.waves-light', ['waves-light']);
@@ -37,7 +37,7 @@ document.addEventListener("turbolinks:load", function() {
   Waves.attach('.pagination .page-item .page-link', ['waves-effect']);
   Waves.init();
 
-  //  <slick index slick
+  //  <<slick index slick
 
   // $('.index-slider-nav').slick({
   //   slidesToShow: 4,
@@ -166,7 +166,7 @@ document.addEventListener("turbolinks:load", function() {
   //    $(this).animateCss('fadeInUp')
   // })
 
-  //</slick
+  // <</slick
   // $('.submenus').find(`[data-classify='${current-submenu}']`)
 
 });

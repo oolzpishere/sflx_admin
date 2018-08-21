@@ -19,17 +19,24 @@ include ActiveSupport::Configurable
     #   [{:path =>'contact',:title => '联系我们', dropdown: true, :parent => 'self'},
     #     {:path =>'contact/find_us',:title => '找到我们', :parent => 'contact'}]]
 
-    @menu_array = [ 
+    @menu_array = [
       # {:path => '/', :title => '主页', fontawesome: "fas fa-home"},
-      {:path =>'/galleries',:title => '设计服务', fontawesome: "fas fa-palette"},
+      {:path =>'/galleries',:title => '设计服务', fontawesome: "fas fa-palette",
+        children: [
+          {:path => '/galleries?gallery_type=all',:title => '全部作品', fontawesome: "fas fa-info-circle"},
+          {:path => '/galleries?gallery_type=logo',:title => 'LOGO', fontawesome: "fas fa-info-circle"},
+          {:path => '/galleries?gallery_type=vi',:title => 'VI设计', fontawesome: "fas fa-info-circle"},
+          {:path => '/galleries?gallery_type=album',:title => '画册设计', fontawesome: "fas fa-info-circle"},
+          {:path => '/galleries?gallery_type=packaging',:title => '包装设计', fontawesome: "fas fa-info-circle"},
+        ]},
       {:path =>'/conference',:title => '会议会展', fontawesome: "fas fa-microphone-alt"},
       {:path =>'/web',:title => '网络技术', fontawesome: "fas fa-sitemap"},
-      {:path => '/us',:title => '我们', fontawesome: "fas fa-info-circle", 
-        children: [
-          {:path => '/about',:title => '关于', fontawesome: "fas fa-info-circle"},
-          {:path =>'/contact',:title => '联系我们', fontawesome: "fas fa-info-circle",  data_turbolinks: false}
-        ]},
-      
+      {:path => '/contact',:title => '联系我们', fontawesome: "fas fa-info-circle",  data_turbolinks: false},
+        # {:path => '/us',:title => '我们', fontawesome: "fas fa-info-circle",
+        #   children: [
+        #     {:path => '/about',:title => '关于', fontawesome: "fas fa-info-circle"},
+        #     {:path =>'/contact',:title => '联系我们', fontawesome: "fas fa-info-circle",  data_turbolinks: false}
+        #   ]}
       # {:path =>'/contact',:title => '联系我们',
       #   children: [{:path =>'/contact/find_us',:title => '找到我们', :parent => 'contact', data_turbolinks: true}]
       # }

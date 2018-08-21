@@ -25,7 +25,7 @@ class MenuPresenter
   self.first_css = :first
   self.last_css = :last
 
-  self.link_tag_css = 'nav-link'
+  self.link_tag_css = 'nav-link px-3'
   # self.link_dropdown_id = 'navbarDropdownMenuLink'
   # self.link_dropdown_tag_css = 'nav-link dropdown-toggle'
   # self.dropdown_css = 'nav-item dropdown'
@@ -76,7 +76,7 @@ class MenuPresenter
     # dropdownid = "dropdown#{menu_item.id}"
     content_tag(:li, class: "nav-item dropdown") do
       buffer = ActiveSupport::SafeBuffer.new
-      buffer << link_to( "", class: 'nav-link' ) do
+      buffer << link_to( context.url_for(menu[:path]), class: 'nav-link' ) do
         raw %{ #{menu[:title]}
         <svg version="1.1" class="plus-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 18 18">
@@ -117,17 +117,20 @@ class MenuPresenter
       #   <li class="list-group-item">Vestibulum at eros</li>
       # </ul>
 
-    content_tag(:div, class: "sub-menu card", style: "width: 18rem;") do
-      content_tag(:ul, class: "list-group list-group-flush") do
+    content_tag(:div, class: "sub-menu py-2 card", style: "width: 18rem;") do
+      _buffer = ActiveSupport::SafeBuffer.new
+      _buffer << raw(%{ <div class="triangle-up"></div> })
+      _buffer << content_tag(:ul, class: "list-group list-group-flush") do
         menu.inject(ActiveSupport::SafeBuffer.new) do |buffer, item|
           buffer << render_dropdown_menu_item(item)
         end
       end
+      _buffer
     end
   end
 
   def render_dropdown_menu_item(menu)
-    content_tag(:li, class: "sub-menu-item list-group-item") do
+    content_tag(:li, class: "sub-menu-item p-1 mx-3 list-group-item") do
       link_to(menu[:title], context.url_for(menu[:path]), "data-turbolinks" => menu[:data_turbolinks] )
 
     end

@@ -151,12 +151,21 @@
 </div>
 
 
-<div class="gallery_items_wrap container">
+<div class="gallery_items_wrap <%= "container" unless @gallery_type  %>">
   <div class=" row no-gutters">
     <% @galleries.each_with_index do |g, index| %>
 
     <% gallery_types = g.gallery_types.map {|gt| gt.gallery_type} %>
-    <div class="item col-md-6 col-lg-4" data-classify="<%= gallery_types.join(",") %>" >
+    <% gallery_types_eng = g.gallery_types.map {|gt| gt.eng_name} %>
+    <%# byebug %>
+    <% if ["all", ""].include?(@gallery_type.to_s) %>
+      <% d_none = "" %>
+    <% elsif gallery_types_eng.include?(@gallery_type) %>
+      <%  d_none = "" %>
+    <% else %>
+      <%  d_none = "d-none" %>
+    <% end %>
+    <div class="item col-md-6 col-lg-4 <%= d_none %>" data-classify="<%= gallery_types.join(",") %>" >
       <%= link_to g do %>
         <div class="mask"></div>
         <div class="gallery-text d-flex align-items-center">

@@ -1,0 +1,17 @@
+<%= form_with(model: crequest, local: true) do |form| %>
+  <% if crequest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(crequest.errors.count, "error") %> prohibited this crequest from being saved:</h2>
+
+      <ul>
+      <% crequest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

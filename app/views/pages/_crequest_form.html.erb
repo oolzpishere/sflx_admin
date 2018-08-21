@@ -1,0 +1,16 @@
+<%= form_for(:crequest, url: crequests_path, method: :post) do |f| %>
+  <div class="form-row">
+    <div class="col-2">
+      <%= f.text_field :name, class: "form-control", placeholder: "您的姓名" %>
+    </div>
+    <div class="col-2">
+      <%= f.telephone_field :phone, class: "form-control", placeholder: "联系电话"%>
+    </div>
+    <div class="col-4">
+      <%= f.text_field :request, class: "form-control", placeholder: "描述您的需求，如VI设计、会议服务、网站建设等。" %>
+    </div>
+    <div class="col-2">
+      <%= f.submit "提交项目需求", class: "btn btn-success not-waves" %>
+    </div>
+  </div>
+<% end %>
