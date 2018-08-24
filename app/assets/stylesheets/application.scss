@@ -37,6 +37,14 @@ body{
 .w-80{ width: 80%;}
 .w-90{ width: 90%;}
 
+.notice{
+  position: absolute;
+  left: 0;
+  top:6rem;
+  z-index: 100;
+  width: 100%;
+  text-align: center;
+}
 
 // dropdown nav
 .dropdown-menu {
@@ -166,12 +174,14 @@ body{
     transition: background-color .2s;
     visibility:hidden;
     opacity:1;
+    border-top: 0.04rem solid rgba(0, 0, 0, 0.125);
+    border-bottom: 0.04rem solid rgba(0, 0, 0, 0.125);
     &:after{
       content: "";
       width: calc(100% + 2rem);
-      height: 100%;
+      height: calc(100% + 0.04rem);
       left: -1rem;
-      top: 0;
+      top: -0.02rem;
       position: absolute;
       z-index: -1;
     }
@@ -181,6 +191,8 @@ body{
     a{
       word-break: keep-all;
       color: #424242;
+      width:100%;
+      height:100%;
       &:hover {
         // color:lighten(#424242,20);
         text-decoration: none;
@@ -363,3 +375,99 @@ body{
   }
 }
 // </scroll button
+
+$social-color-pallete: (
+     weixin: #09BB07,
+     qq: #1f8ec6
+);
+
+$social-default-icon-color: #fff;
+$social-default-btn-color: #666;
+$social-icon-size: 60px;
+$social-icon-border: 2px;
+$social-icon-border-radius: 5px;
+
+.icon-link {
+    width: $social-icon-size;
+    height: $social-icon-size;
+    background-color: $social-default-btn-color;
+    line-height: $social-icon-size;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    border: $social-icon-border solid transparent;
+    position: relative;
+   // @include box-sizing(content-box);
+   & svg{
+     color: $social-default-icon-color;
+     width: 70% !important;
+     height: 70% !important;
+     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   }
+    &.fill {
+
+      @each $social-alias, $social-color in $social-color-pallete {
+        &.#{$social-alias} {
+          background-color: $social-color;
+          &:hover {
+            background-color: #fff;
+            .fa-#{$social-alias} {
+              color: $social-color;
+              @include transition(color 150ms ease-in-out);
+            }
+          }
+        }
+      }
+    }
+
+  // &.brand {
+  //   background-color: #fff;
+  //   .fa {
+  //     color: $brand-color;
+  //   }
+  // }
+
+    &.round {
+      border-radius: 50%;
+    }
+
+    &.round-corner {
+      border-radius: $social-icon-border-radius;
+    }
+
+    &:hover {
+      @include transition(background-color 150ms ease-in-out);
+      // height: $social-icon-size - $social-icon-border * 2;
+      line-height: $social-icon-size - $social-icon-border * 2;
+      // width: $social-icon-size - $social-icon-border * 2;
+      background-color: #fff;
+
+      @each $social-alias, $social-color in $social-color-pallete {
+        &.#{$social-alias} {
+          border: $social-icon-border solid $social-color;
+        }
+      }
+
+      .fa {
+        line-height: $social-icon-size - $social-icon-border * 2;
+      }
+
+      @each $social-alias, $social-color in $social-color-pallete {
+        .fa-#{$social-alias} {
+            color: $social-color;
+            @include transition(color 150ms ease-in-out);
+        }
+      }
+  }
+  // .fa{
+  //   color: $social-default-icon-color;
+  //   line-height: $social-icon-size;
+  //   font-size: $social-icon-size - $social-icon-size * 0.40;
+  // }
+}

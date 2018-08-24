@@ -27,7 +27,19 @@ document.addEventListener("turbolinks:load", function() {
     TweenMax.to('#lineGroup_1',0.20,{attr:{'stroke-dashoffset':'0','stroke-dasharray' :'0'},ease:Power1.easeIn})
   });
 
+  // hide notice after a while.
+  function hideNotice(){
+    if ($('.notice')) {
+      setTimeout(function(){
+        $('.notice').alert('close');
+      }, 3000);
+    };
+  };
+  hideNotice();
+
+
   //Initialization waves effect
+  // disable waves button by add .not-waves
   Waves.attach('.btn:not(.btn-flat):not(.not-waves), .btn-floating', ['waves-light']);
   Waves.attach('.btn-flat', ['waves-effect']);
   Waves.attach('.view a .mask', ['waves-light']);
@@ -36,6 +48,13 @@ document.addEventListener("turbolinks:load", function() {
   Waves.attach('.pager li a', ['waves-light']);
   Waves.attach('.pagination .page-item .page-link', ['waves-effect']);
   Waves.init();
+
+  // delete default style for input. use: add .btn-input to .btn class.
+  function btnInput(){
+    var color = $('.btn-input').css('color');
+    $('.btn-input').find('input').css({'background': 'rgba(0,0,0,0)', 'border': 'none', 'color': color})
+  };
+  btnInput();
 
   //  <<slick index slick
 

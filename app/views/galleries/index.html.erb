@@ -98,15 +98,15 @@
 </div>
 <% end %>
 
-<div class="container-fluid black">
-  <div class="container d-flex black text-white justify-content-around" style="font-size: 0.8rem;">
+<div class="container-fluid p-0 black">
+  <div class="container p-0 d-flex black text-white justify-content-around" style="font-size: 0.8rem;">
     <% submenu_text = %w(D E S I G N S E R V I C E) %>
     <% submenu_text.each do |letter|  %>
       <span class=""><%= letter %></span>
     <% end %>
   </div>
-  <div class="submenu container">
 
+  <div class="submenu container p-0">
     <% submenu_colors = ['none', 'rgba(3, 169, 244, 0.7)', 'rgba(244, 67, 54, 0.7)', 'rgba(121, 85, 72, 0.7)','rgba(76, 175, 80, 0.7)' ] %>
     <% Menus.new.gallery_types.sort{|x,y| x["position"] <=> y["position"]}.each_with_index do |gt, index| %>
       <% if @gallery_type.to_s.empty? %>

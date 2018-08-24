@@ -6,11 +6,14 @@
     <div class="col-2">
       <%= f.telephone_field :phone, class: "form-control", placeholder: "联系电话"%>
     </div>
-    <div class="col-4">
+    <div class="col">
       <%= f.text_field :request, class: "form-control", placeholder: "描述您的需求，如VI设计、会议服务、网站建设等。" %>
     </div>
-    <div class="col-2">
-      <%= f.submit "提交项目需求", class: "btn btn-success not-waves" %>
+    <div class="col-auto">
+      <label class="btn btn-primary btn-input">
+        <i class="fas fa-paper-plane"></i>
+        <%= f.submit "提交项目需求", class: "" %>
+      </label>
     </div>
   </div>
 <% end %>

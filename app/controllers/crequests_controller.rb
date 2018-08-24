@@ -28,7 +28,8 @@ class CrequestsController < ApplicationController
 
     respond_to do |format|
       if @crequest.save
-        format.html { redirect_to @crequest, notice: 'Crequest was successfully created.' }
+        format.html { redirect_to '/contact', notice: '项目需求提交成功。' }
+        # format.html { redirect_to @crequest, notice: 'Crequest was successfully created.' }
         format.json { render :show, status: :created, location: @crequest }
       else
         format.html { render :new }

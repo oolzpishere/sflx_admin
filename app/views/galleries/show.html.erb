@@ -1,5 +1,5 @@
 <div class="gallery-show">
-	
+
 	<div class="row no-gutters">
 
 		<div class="first-img col-12" style="background-image: url(<%= url_for first_img(@gallery).image %>);">
@@ -30,25 +30,30 @@
 		</div>
 	</div>
 
-	<div class="row no-gutters">
-		<div class="gallery-text col-12 p-5">
-			<h3 class="gallery-title "><%= @gallery.title %></h3>
-			<div class="gallery-types grey-darken-2-text py-3">
-				<%= @gallery.gallery_types.map {|gt| gt.gallery_type}.join(' · ') %>
+	<div class="container">
+		<div class="row ">
+			<div class="gallery-text col-12 p-5">
+				<h3 class="gallery-title "><%= @gallery.title %></h3>
+				<div class="gallery-types grey-darken-2-text py-3">
+					<%= @gallery.gallery_types.map {|gt| gt.gallery_type}.join(' · ') %>
+				</div>
+				<%= raw @gallery.body %>
 			</div>
-			<%= raw @gallery.body %>
+
+			<%= @gallery.side_body %>
+			<% @gallery.images.order(:position).select {|img| img.position > 0 }.each do |img| %>
+			<div class="col-12 py-2">
+				<%= image_tag img.image, class: 'img-fluid' %>
+			</div>
+			<% end -%>
 		</div>
 
-		<%= @gallery.side_body %>
-		<% @gallery.images.each do |img| %>
-		<div class="col-12">
-			<%= image_tag img.image, class: 'img-fluid' %>
-		</div>
-		<% end -%>
+		<%= link_to '返回作品集', galleries_path, class: 'btn btn-outline-secondary my-3' %>
 	</div>
 
 
-	<%= link_to 'Back', galleries_path %>
+
+
 
 	<div class="row no-gutters">
 		<% next_gallery_index = @galleries.index(@gallery) + 1 %>
@@ -60,7 +65,7 @@
 
 					<div class="position-absolute col-12 h-100 d-flex justify-content-center align-items-center">
 						<div class="gallery_title text-white">
-							<h3><%= @gallery.title %></h3>
+							<h3><%= next_gallery.title %></h3>
 						</div>
 					</div>
 
@@ -68,6 +73,6 @@
 				<% end -%>
 
 			</div>
-	</div>	
+	</div>
 
 </div>
