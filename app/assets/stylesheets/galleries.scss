@@ -256,4 +256,7 @@
 .next-gallery-img{
 	height: 80vh;
 	overflow: hidden;
+	img{
+		z-index: -1;
+	}
 }

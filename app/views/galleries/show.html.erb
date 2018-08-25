@@ -43,7 +43,7 @@
 			<%= @gallery.side_body %>
 			<% @gallery.images.order(:position).select {|img| img.position > 0 }.each do |img| %>
 			<div class="col-12 py-2">
-				<%= image_tag img.image, class: 'img-fluid' %>
+				<%= image_tag img.image, class: 'w-100' %>
 			</div>
 			<% end -%>
 		</div>
@@ -69,7 +69,7 @@
 						</div>
 					</div>
 
-					<%= image_tag first_img(next_gallery).image, class: 'img-fluid' %>
+					<%= image_tag first_img(next_gallery).image, class: 'w-100', style: "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" %>
 				<% end -%>
 
 			</div>

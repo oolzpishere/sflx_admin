@@ -27,7 +27,7 @@ class SlideoutPresenter
 
   self.link_tag_css = 'list-group-item list-group-item-action waves-effect text-white'
   self.link_dropdown_id = 'navbarDropdownMenuLink'
-  self.link_dropdown_tag_css = 'list-group-item list-group-item-action waves-effect'
+  self.link_dropdown_tag_css = 'list-group-item list-group-item-action waves-effect text-white'
   self.dropdown_css = 'nav-item dropdown'
 
   attr_accessor :context, :collection
@@ -70,7 +70,7 @@ class SlideoutPresenter
 
   def render_menu_item_content(menu)
     buffer = ActiveSupport::SafeBuffer.new
-    content_tag(:li, class: link_tag_css) do 
+    content_tag(:li, class: link_tag_css) do
       buffer << raw("<div class='w-15 d-inline-block'><i class=\"#{menu[:fontawesome]}\"></i></div>")
       buffer << link_to(menu[:title], menu[:path], class: "text-white d-inline-block", "data-turbolinks" => menu.fetch(:data_turbolinks,nil))
       buffer
@@ -82,7 +82,10 @@ class SlideoutPresenter
     # dropdownid = "dropdown#{menu_item.id}"
 
       buffer = ActiveSupport::SafeBuffer.new
-      buffer << link_to( menu[:title], context.url_for(menu[:path]), id: link_dropdown_id, class: link_dropdown_tag_css, data: {toggle: "collapse", target: "#collapse#{i}"}, "aria-expanded" => "true", "aria-controls" => "collapse#{i}" )
+
+      buffer << link_to( context.url_for(menu[:path]), id: link_dropdown_id, class: link_dropdown_tag_css, data: {toggle: "collapse", target: "#collapse#{i}"}, "aria-expanded" => "true", "aria-controls" => "collapse#{i}" ) do
+        raw("<div class='w-15 d-inline-block'><i class=\"#{menu[:fontawesome]}\"></i></div> #{menu[:title]}")
+      end
 
       buffer << render_dropdown_content(menu[:children], i)
       buffer
@@ -107,7 +110,7 @@ class SlideoutPresenter
 
   def render_dropdown_content(menu, i)
     # dropdownid = "dropdown#{menu.first.parent}"
-    content_tag(:div, id: "collapse#{i}", class: "collapse",  "aria-labelledby" => "headingOne") do
+    content_tag(:div, id: "collapse#{i}", class: "collapse ",  "aria-labelledby" => "headingOne") do
       menu.inject(ActiveSupport::SafeBuffer.new) do |buffer, item|
         buffer << render_dropdown_menu_item(item)
       end
@@ -115,7 +118,7 @@ class SlideoutPresenter
   end
 
   def render_dropdown_menu_item(menu)
-    link_to(menu[:title], context.url_for(menu[:path]), class: "dropdown-item", "data-turbolinks" => menu[:data_turbolinks])
+    link_to(menu[:title], context.url_for(menu[:path]), class: "dropdown-item text-white", "data-turbolinks" => menu[:data_turbolinks])
   end
 
 end
