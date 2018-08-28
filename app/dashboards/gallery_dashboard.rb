@@ -10,6 +10,7 @@ class GalleryDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     title: Field::String,
+    title_eng: Field::String,
     body: Field::Text,
     side_body: Field::Text,
     gallery_types: Field::HasMany,
@@ -40,6 +41,7 @@ class GalleryDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :title,
+    :title_eng,
     :body,
     :side_body,
     :gallery_types,
@@ -50,6 +52,7 @@ class GalleryDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :title,
+    :title_eng,
     :body,
     :side_body,
     :gallery_types,
@@ -65,6 +68,7 @@ class GalleryDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :title,
+    :title_eng,
     :body,
     :side_body,
     :position,

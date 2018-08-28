@@ -1,21 +1,48 @@
+<% gallery_types = @gallery.gallery_types %>
+
 <div class="gallery-show">
 
 	<div class="row no-gutters">
 
-		<div class="first-img col-12" style="background-image: url(<%= url_for first_img(@gallery).image %>);">
+		<div class="first-img col-12 text-white" style="background-image: url(<%= url_for first_img(@gallery).image %>);">
 			<div class="mask"></div>
 
-			<div class="row h-100 flex-direction-column justify-content-between ">
-				<div></div>
-				<div class="row">
-					<div class="col-12">
-						<div class="gallery_title text-white">
-							<h3><%= @gallery.title %></h3>
+			<div class="row h-100" style="padding-top: 5%;">
+				<div class="col-12">
+					<!-- #1de9b6 teal accent-3 -->
+					<div class="col-10 mx-auto p-3" style="border: solid #1de9b6 4px;">
+						<div class="w-100" style="border: solid white 2px;">
+							<div class="gallery_title" style="">
+								<h1 style="line-height:120px;">《 <%= @gallery.title %> 》</h1>
+							</div>
 						</div>
 					</div>
+
+
+					<div class="col-12">
+						<h3 style="line-height:40px;">
+							<div class="c-rounded-circle mx-1"></div>
+							<div class="c-rounded-circle mx-1"></div>
+							<div class="c-rounded-circle ml-1 mr-4 "></div>
+							<%= gallery_types.map {|gt| gt.gallery_type}.join('  ') %>  设计方案
+							<div class="c-rounded-circle mr-1 ml-4"></div>
+							<div class="c-rounded-circle mx-1"></div>
+							<div class="c-rounded-circle mx-1"></div>
+						</h3>
+					</div>
+
+					<div class="col-12">
+						<%= @gallery.title_eng unless @gallery.title_eng.to_s.empty?%>
+					</div>
+
+					<div class="col-12">
+						<%= gallery_types.map {|gt| gt.eng_name.upcase}.join('  ') %>
+					</div>
+
 				</div>
 
-				<div class="row">
+
+				<!-- <div class="row">
 					<div class="col-12">
 						<div class="scroll-icon">
 							<a href="">
@@ -23,7 +50,8 @@
 							</a>
 						</div>
 					</div>
-				</div>
+				</div> -->
+
 			</div>
 
 			<%# image_tag first_img.image, class: 'first_img img-fluid' %>
@@ -35,7 +63,7 @@
 			<div class="gallery-text col-12 p-5">
 				<h3 class="gallery-title "><%= @gallery.title %></h3>
 				<div class="gallery-types grey-darken-2-text py-3">
-					<%= @gallery.gallery_types.map {|gt| gt.gallery_type}.join(' · ') %>
+					<%= gallery_types.map {|gt| gt.gallery_type}.join(' · ') %>
 				</div>
 				<%= raw @gallery.body %>
 			</div>
@@ -48,7 +76,9 @@
 			<% end -%>
 		</div>
 
-		<%= link_to '返回作品集', galleries_path, class: 'btn btn-outline-secondary my-3' %>
+		<%= link_to galleries_path, class: 'btn btn-outline-secondary my-3' do
+			raw '<i class="fas fa-th mr-2"></i>返回作品集'
+		end %>
 	</div>
 
 
