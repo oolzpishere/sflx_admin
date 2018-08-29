@@ -149,4 +149,7 @@ document.addEventListener("turbolinks:load", function() {
   });
 
 
+  $('.first-img').find('.h1')
+
+
 });

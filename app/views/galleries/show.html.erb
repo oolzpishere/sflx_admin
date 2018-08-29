@@ -7,42 +7,52 @@
 		<div class="first-img col-12 text-white" style="background-image: url(<%= url_for first_img(@gallery).image %>);">
 			<div class="mask"></div>
 
-			<div class="row h-100" style="padding-top: 5%;">
-				<div class="col-12">
+			<div class="row h-100" >
+				<div class="col-12 h-70" style="margin-top: 5%;">
 					<!-- #1de9b6 teal accent-3 -->
-					<div class="col-10 mx-auto p-3" style="border: solid #1de9b6 4px;">
+					<div class="col-md-10 col-11 mx-auto p-md-3 p-1" style="border: solid #1de9b6 4px;">
 						<div class="w-100" style="border: solid white 2px;">
 							<div class="gallery_title" style="">
-								<h1 style="line-height:120px;">《 <%= @gallery.title %> 》</h1>
+								<p class="h1-md h2" style="line-height:120px;">
+								《 <%= @gallery.title %> 》
+								</p>
 							</div>
 						</div>
 					</div>
 
-
-					<div class="col-12">
-						<h3 style="line-height:40px;">
-							<div class="c-rounded-circle mx-1"></div>
-							<div class="c-rounded-circle mx-1"></div>
-							<div class="c-rounded-circle ml-1 mr-4 "></div>
+					<div class="col-12 py-5">
+						<p class="h3-md h4 " style="line-height:40px;">
+							<span class="c-rounded-circle mx-1 d-xs-none"></span>
+							<span class="c-rounded-circle mx-1 d-xs-none"></span>
+							<span class="c-rounded-circle ml-1 mr-sm-4 mr-2 "></span>
 							<%= gallery_types.map {|gt| gt.gallery_type}.join('  ') %>  设计方案
-							<div class="c-rounded-circle mr-1 ml-4"></div>
-							<div class="c-rounded-circle mx-1"></div>
-							<div class="c-rounded-circle mx-1"></div>
-						</h3>
+							<span class="c-rounded-circle mr-1 ml-sm-4 ml-2"></span>
+							<span class="c-rounded-circle mx-1 d-xs-none "></span>
+							<span class="c-rounded-circle mx-1 d-xs-none "></span>
+						</p>
 					</div>
 
 					<div class="col-12">
-						<%= @gallery.title_eng unless @gallery.title_eng.to_s.empty?%>
-					</div>
-
-					<div class="col-12">
-						<%= gallery_types.map {|gt| gt.eng_name.upcase}.join('  ') %>
+						<p class="h3-md h4">
+							<% @gallery.title_eng.upcase.split(" \\N ").each do |eng| %>
+								<%= eng %> <br>
+							<% end unless @gallery.title_eng.to_s.empty?%>
+						</p>
 					</div>
 
 				</div>
 
+				<!-- h-20 -->
+				<div class="col-12" >
+					<div class="row">
+					<div class="col-12" >
+						<div class="w-100 h-100 position-absolute" style="background:rgba(29, 233, 182, 0.3); top:0; left:0;"></div>
+						<p class="h3-md h4 font-weight-normal" style="line-height:40px; z-index: -1;">
+							<%= gallery_types.map {|gt| gt.eng_name.upcase}.join('  ') %> DESIGN
+						</p>
+					</div>
 
-				<!-- <div class="row">
+
 					<div class="col-12">
 						<div class="scroll-icon">
 							<a href="">
@@ -50,7 +60,11 @@
 							</a>
 						</div>
 					</div>
-				</div> -->
+					</row>
+				</div>
+
+
+
 
 			</div>
 
