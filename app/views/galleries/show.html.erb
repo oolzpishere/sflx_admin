@@ -99,24 +99,23 @@
 
 
 	<% next_gallery_index = @galleries.index(@gallery) + 1
-	next_gallery = @galleries[next_gallery_index]
-	if next_gallery %>
-	<div class="row no-gutters">
-			<div class="next-gallery-img col-12 ">
-				<%= link_to next_gallery do %>
+		next_gallery = @galleries[next_gallery_index] %>
+		<%#byebug%>
+	<% if next_gallery %>
+		<div class="next-gallery-img col-12 ">
+			<%= link_to next_gallery do %>
 
-					<div class="mask position-absolute col-12 h-100 rgba-black-light "></div>
+				<div class="mask position-absolute col-12 h-100 rgba-black-light "></div>
 
-					<div class="position-absolute col-12 h-100 d-flex justify-content-center align-items-center">
-						<div class="gallery_title text-white">
-							<h3><%= next_gallery.title %></h3>
-						</div>
+				<div class="position-absolute col-12 h-100 d-flex justify-content-center align-items-center">
+					<div class="gallery_title text-white">
+						<h3><%= next_gallery.title %></h3>
 					</div>
+				</div>
 
-					<%= image_tag first_img(next_gallery).image, class: 'w-100', style: "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" %>
-				<% end -%>
-			</div>
-	</div>
+				<%= image_tag first_img(next_gallery).image, class: 'w-100', style: "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" %>
+			<% end -%>
+		</div>
 	<% end %>
 
 </div>

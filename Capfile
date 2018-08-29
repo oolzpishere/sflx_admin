@@ -39,8 +39,8 @@ Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 
 # capistrano/rails include all below three
 # require 'capistrano/rails'
-# require 'capistrano/bundler' # Rails needs Bundler, right?
-# require 'capistrano/rails/assets'
-# require 'capistrano/rails/migrations'
+require 'capistrano/bundler' # Rails needs Bundler, right?
+require 'capistrano/rails/assets'
+require 'capistrano/rails/migrations'
 
 require 'capistrano/rbenv'
