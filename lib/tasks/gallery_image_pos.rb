@@ -1,3 +1,4 @@
+# require_relative 'lib/tasks/gallery_image_pos'  # paste to console
 module Sflx
   def update_gallery_image_pos
     Gallery.all.each do |g|

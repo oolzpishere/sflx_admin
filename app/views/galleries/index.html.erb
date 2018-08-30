@@ -171,7 +171,9 @@
         <div class="gallery-text d-flex align-items-center">
           <h5 class="mx-auto"><%= "#{g.title}-#{gallery_types.join('/')}" %></h5>
         </div>
-        <% cover = g.cover.empty? ? g.images.first : g.images.select {|img| img.image.filename == g.cover}.first  %>
+        <% cover = g.images.select {|img| img.image.filename == g.cover}.first
+        cover = g.images.first : if cover.empty?
+        %>
         <% cover_size = '720x405' %>
         <!-- <div style="overflow: hidden;"> -->
         <%= image_tag cover.image.variant(resize: "#{cover_size}^", gravity: 'Center', crop: "#{cover_size}+0+0"), class: "img-fluid cover-img", style: "width:100%" %>
