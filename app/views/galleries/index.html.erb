@@ -172,7 +172,7 @@
           <h5 class="mx-auto"><%= "#{g.title}-#{gallery_types.join('/')}" %></h5>
         </div>
         <% cover = g.images.select {|img| img.image.filename == g.cover}.first
-        cover = g.images.first : if cover.empty?
+        cover = g.images.first if cover.empty?
         %>
         <% cover_size = '720x405' %>
         <!-- <div style="overflow: hidden;"> -->
