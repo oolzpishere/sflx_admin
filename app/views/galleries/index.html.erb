@@ -174,9 +174,11 @@
         <% cover = g.images.select {|img| img.image.filename == g.cover}.first
         cover = g.images.first if cover.to_s.empty?
         %>
-        <% cover_size = '720x405' %>
+        <% cover_size = '640x450' %> <!-- '720x405' -->
         <!-- <div style="overflow: hidden;"> -->
-        <%= image_tag cover.image.variant(resize: "#{cover_size}^", gravity: 'Center', crop: "#{cover_size}+0+0"), class: "img-fluid cover-img", style: "width:100%" %>
+        <% if cover %>
+          <%= image_tag cover.image.variant(combine_options: {resize: "#{cover_size}^", gravity: 'center', crop: "#{cover_size}+0+0"} ), class: "img-fluid cover-img", style: "width:100%" %>
+        <% end %>
       <% end -%>
     </div>
     <% end %>
