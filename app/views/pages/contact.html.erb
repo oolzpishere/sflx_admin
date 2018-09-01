@@ -1,7 +1,7 @@
 
 <div class="row no-gutters" style="margin-top: -6rem;">
 	<div class="col-12">
-		<div class="position-absolute col-1" style="top:6rem; left: 25%; z-index: 1;">
+		<div class="position-absolute col-xl-1 col-lg-2 col-md-2 col-4" style="top:6rem; left: 15%; z-index: 1;">
 			<%= image_tag "contact/咨询.png", class: "img-fluid" %>
 		</div>
 		<div id="map-container" style="height: 70vh"></div>
@@ -9,16 +9,18 @@
 
 
 
-	<div class="col-12  p-5 grey lighten-4">
-		<div class="row justify-content-center">
-			<div class="col-9 py-4">
-				<h3>请填写您的服务需求获取项目报价。</h3>
-			</div>
-			<div class="col-9 py-4">
-				<%= render 'crequest_form' %>
-			</div>
-			<div class="col-9 py-4">
-				<p>* 请认真填写需求信息，我们会在24小时内与您取得联系。</p>
+	<div class="col-12 p-lg-5 px-1 py-4 grey lighten-4">
+		<div class="row m-0 justify-content-center">
+			<div class="col-xl-9 col-12">
+				<div class="col-12 py-sm-4 py-2">
+					<h3>请填写您的服务需求获取项目报价。</h3>
+				</div>
+				<div class="col-12 py-sm-4 py-2">
+					<%= render 'crequest_form' %>
+				</div>
+				<div class="col-12 py-sm-4 py-2">
+					<p>* 请认真填写需求信息，我们会在24小时内与您取得联系。</p>
+				</div>
 			</div>
 		</div>
 	</div>
