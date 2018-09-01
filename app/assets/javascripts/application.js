@@ -24,3 +24,5 @@
 //= require lib/moveit
 //= require lib/GreenSock-JS/TweenMax
 //= require lib/GreenSock-JS/TimelineMax
+//= require lib/lazysizes
+//= require lib/wow

@@ -483,4 +483,36 @@ $social-icon-border-radius: 5px;
   //   line-height: $social-icon-size;
   //   font-size: $social-icon-size - $social-icon-size * 0.40;
   // }
+
+}
+
+@-webkit-keyframes slideInUp20 {
+  from {
+    -webkit-transform: translate3d(0, 20%, 0);
+    transform: translate3d(0, 20%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInUp20 {
+  from {
+    -webkit-transform: translate3d(0, 20%, 0);
+    transform: translate3d(0, 20%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInUp20 {
+  -webkit-animation-name: slideInUp20;
+  animation-name: slideInUp20;
 }

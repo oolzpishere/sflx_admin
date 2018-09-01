@@ -83,9 +83,10 @@
 			</div>
 
 			<%= @gallery.side_body %>
-			<% @gallery.images.order(:position).select {|img| img.position > 0 }.each do |img| %>
+			<% @gallery.images.order(:position).select {|img| img.position > 0 if img.position }.each do |img| %>
 			<div class="col-12 py-2">
-				<%= image_tag img.image, class: 'w-100' %>
+				<% url_768 = url_for(img.image.variant(resize: "768"))%>
+				<%= image_tag "", class: 'w-100 lazyload wow slideInUp20', "data-sizes" => "auto","data-src" => url_768, "data-srcset" => "#{url_768} 768w, #{url_for(img.image)} 769w" %>
 			</div>
 			<% end -%>
 		</div>
