@@ -118,7 +118,8 @@ class SlideoutPresenter
   end
 
   def render_dropdown_menu_item(menu)
-    link_to(menu[:title], context.url_for(menu[:path]), class: "dropdown-item text-white", "data-turbolinks" => menu[:data_turbolinks])
+    _path = menu[:slideout_path] ? menu[:slideout_path] : menu[:path]
+    link_to(menu[:title], context.url_for( _path ), class: "dropdown-item text-white inline-block waves-effect", "data-turbolinks" => menu[:data_turbolinks])
   end
 
 end

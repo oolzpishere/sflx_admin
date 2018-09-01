@@ -23,7 +23,7 @@ include ActiveSupport::Configurable
       # {:path => '/', :title => '主页', fontawesome: "fas fa-home"},
       {:path =>'/galleries',:title => '设计服务', fontawesome: "fas fa-palette",
         children: [
-          {:path => '/galleries?gallery_type=all',:title => '全部作品', fontawesome: "fas fa-info-circle"},
+          {:path => '/galleries?gallery_type=all', :slideout_path => '/galleries',:title => '全部作品', fontawesome: "fas fa-info-circle"},
           {:path => '/galleries?gallery_type=logo',:title => 'LOGO', fontawesome: "fas fa-info-circle"},
           {:path => '/galleries?gallery_type=vi',:title => 'VI设计', fontawesome: "fas fa-info-circle"},
           {:path => '/galleries?gallery_type=album',:title => '画册设计', fontawesome: "fas fa-info-circle"},
