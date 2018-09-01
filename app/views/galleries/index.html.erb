@@ -177,7 +177,7 @@
         <% cover_size = '640x450' %> <!-- '720x405' -->
         <!-- <div style="overflow: hidden;"> -->
         <% if cover %>
-          <%= image_tag cover.image.variant(combine_options: {resize: "#{cover_size}^", gravity: 'center', crop: "#{cover_size}+0+0"} ), class: "img-fluid cover-img", style: "width:100%" %>
+          <%= image_tag cover.image.variant(combine_options: {resize: "#{cover_size}^", gravity: 'center', crop: "#{cover_size}+0+0"} ), class: "w-100 cover-img", style: "" %>
         <% end %>
       <% end -%>
     </div>
