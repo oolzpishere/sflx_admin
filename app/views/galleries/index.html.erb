@@ -98,7 +98,7 @@
 </div>
 <% end %>
 
-<div class="container-fluid p-0 black">
+<div id="gallery-types-nav" class="container-fluid p-0 black">
   <div class="container p-0 d-flex black text-white justify-content-around" style="font-size: 0.8rem;">
     <% submenu_text = %w(D E S I G N S E R V I C E) %>
     <% submenu_text.each do |letter|  %>
@@ -184,3 +184,5 @@
     <% end %>
   </div>
 </div>
+
+<%= javascript_include_tag 'galleries', 'data-turbolinks-track': 'reload' %>

@@ -116,6 +116,7 @@ document.addEventListener("turbolinks:load", function() {
     return items;
   };
 
+  // <</submenu
   // var viewportWidth = window.innerWidth;
   var viewportHeight = window.innerHeight;
   var navbarHeight = $('.navbar').innerHeight();
@@ -131,24 +132,52 @@ document.addEventListener("turbolinks:load", function() {
   }
   resizeFirstImage();
 
-  var lastScrollTop = 0;
-  $(window).on('scroll',function(){
-    var scrollTop = $(window).scrollTop(),
-      firstImgOffset = $('.first-img').offset().top,
-      distance = (firstImgOffset - scrollTop),
-      st = window.pageYOffset || document.documentElement.scrollTop;
+  // <<first-img
+  if ( $('.first-img').length > 0 ) { firstImgScroll() };
+  function firstImgScroll(){
+    var lastScrollTop = 0,
+      _firstImgScrollLock = false;
+    $(window).on('scroll',function(){
+      if ( !_firstImgScrollLock ) {
+        var scrollTop = $(window).scrollTop(),
+          firstImgOffset = $('.first-img').offset().top;
+          // windowTop = window.pageYOffset || document.documentElement.scrollTop,
+          // distance = (firstImgOffset - windowTop);
 
-    if( st > lastScrollTop && distance > 0 ) {
-      // downscroll code
-      window.scrollTo({top:viewportHeight,behavior: "smooth"})
-    } else if ( st < lastScrollTop && st < 150 ) {
-      // upscroll code
-      window.scrollTo({top:0,behavior: "smooth"})
-    }
-    lastScrollTop = st <= 0 ? 0 : st;
+        if( scrollTop > lastScrollTop && scrollTop < 100 ) {
+          // downscroll code
+
+          _firstImgScrollLock = true;
+          $(window).scrollTo(viewportHeight, 400, {easing: "easeInOutCubic",
+            always: function(){ _firstImgScrollLock = false; }
+          });
+          // window.scrollTo({top:viewportHeight,behavior: "smooth"})
+        } else if ( scrollTop < lastScrollTop && scrollTop < 150 ) {
+          // upscroll code
+          _firstImgScrollLock = true;
+          $(window).scrollTo(0, 400, {easing: "easeInOutCubic",
+            always: function(){ _firstImgScrollLock = false; lastScrollTop = 0 }
+          });
+          // window.scrollTo({top:0,behavior: "smooth"})
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      }
+    });
+  }
+  // <</first-img
+
+  // <<scrollTo
+  // gallery index scroll
+  $('.slider-nav-scroll').on('click', function(e){
+    e.preventDefault();
+    $(window).scrollTo('#gallery-types-nav', 400, {easing: "easeInOutCubic"});
+  });
+  // gallery show scroll
+  $('.scroll-icon').on('click', function(e){
+    e.preventDefault();
+    $(window).scrollTo('.info-container', 400, {easing: "easeInOutCubic"});
   });
 
-
-
+  // <</scrollTo
 
 });

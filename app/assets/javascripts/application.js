@@ -26,3 +26,4 @@
 //= require lib/GreenSock-JS/TimelineMax
 //= require lib/lazysizes
 //= require lib/wow
+//= require lib/jquery.scrollTo

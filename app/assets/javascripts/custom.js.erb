@@ -1,4 +1,4 @@
-//= require galleries
+
 //= require lib/Font-Awesome/svg-with-js/js/fontawesome-all
 //= require lib/img_to_svg
 
@@ -205,5 +205,14 @@ document.addEventListener("turbolinks:load", function() {
   );
   wow.init();
   // <</ wow
+
+  // <<scrollTo
+  // gallery index scroll
+  $('.slider-nav-scroll').on('click', function(e){
+    e.preventDefault();
+    $(window).scrollTo('footer', 400, {easing: "easeInOutCubic"});
+  });
+
+  // <</scrollTo
 
 });

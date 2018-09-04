@@ -24,7 +24,10 @@
     <!-- Navbar brand -->
     <!-- col col-sm-4  -->
     <div class="">
-      <a class="navbar-brand mr-lg-0" href="/"><%= image_tag("header/导航-LOGO.svg", class: "mx-auto", style: "height: 3.5rem") %></a>
+      <%= link_to "/", class: "navbar-brand mr-lg-0", data_turbolinks: false do
+        image_tag("header/导航-LOGO.svg", class: "mx-auto", style: "height: 3.5rem")
+      end %>
+
     </div>
 
     <!-- Collapse button -->
