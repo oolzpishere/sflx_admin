@@ -168,7 +168,7 @@ document.addEventListener("turbolinks:load", function() {
 
   // <<scrollTo
   // gallery index scroll
-  $('.slider-nav-scroll').on('click', function(e){
+  $('#gallery-slider-nav-scroll').on('click', function(e){
     e.preventDefault();
     $(window).scrollTo('#gallery-types-nav', 400, {easing: "easeInOutCubic"});
   });
