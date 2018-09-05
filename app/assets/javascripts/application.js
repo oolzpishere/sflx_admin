@@ -27,3 +27,4 @@
 //= require lib/lazysizes
 //= require lib/wow
 //= require lib/jquery.scrollTo
+//= require lib/baidu_tongji
