@@ -16,10 +16,14 @@
     <div class="external-icons row no-gutters justify-content-center p-3 my-2  border-bottom border-top border-white text-white">
 
       <div class="col-1 mx-1">
-        <i class="fab fa-weixin"></i>
+        <div id="slideout-weixin-icon">
+          <i class="fab fa-weixin"></i>
+        </div>
       </div>
       <div class="col-1 mx-1">
-        <i class="fab fa-qq"></i>
+        <%= link_to "http://wpa.qq.com/msgrd?v=3&uin=877881120&site=qq&menu=yes", target: "_blank", class: "text-white" do %>
+          <i class="fab fa-qq"></i>
+        <% end %>
       </div>
 
     </div>
