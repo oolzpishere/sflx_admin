@@ -4,6 +4,12 @@
   <title><%= content_for(:title) || "四方连续文化传媒" %></title>
   <meta charset="UTF-8">
   <%= csrf_meta_tags %>
+  <% if content_for(:description) %>
+    <meta name="description" content="<%= content_for(:description) %>">
+  <% end %>
+  <% if content_for(:keywords) %>
+    <meta name="keywords" content="<%= content_for(:keywords) %>">
+  <% end %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'defer': true %>
