@@ -5,7 +5,7 @@ class GalleriesController < ApplicationController
   # GET /galleries.json
   def index
     @galleries = Gallery.order(:position, :id)
-    @gallery_type = CGI::escapeHTML params[:gallery_type]
+    @gallery_type = CGI::escapeHTML params[:gallery_type] if params[:gallery_type]
   end
 
   # GET /galleries/1

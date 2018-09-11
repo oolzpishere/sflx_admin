@@ -143,10 +143,8 @@ document.addEventListener("turbolinks:load", function() {
           firstImgOffset = $('.first-img').offset().top;
           // windowTop = window.pageYOffset || document.documentElement.scrollTop,
           // distance = (firstImgOffset - windowTop);
-
         if( scrollTop > lastScrollTop && scrollTop < 100 ) {
           // downscroll code
-
           _firstImgScrollLock = true;
           $(window).scrollTo(viewportHeight, 400, {easing: "easeInOutCubic",
             always: function(){ _firstImgScrollLock = false; }
@@ -156,7 +154,10 @@ document.addEventListener("turbolinks:load", function() {
           // upscroll code
           _firstImgScrollLock = true;
           $(window).scrollTo(0, 400, {easing: "easeInOutCubic",
-            always: function(){ _firstImgScrollLock = false; lastScrollTop = 0 }
+            always: function(){
+              _firstImgScrollLock = false;
+              lastScrollTop = 0;
+            }
           });
           // window.scrollTo({top:0,behavior: "smooth"})
         }
