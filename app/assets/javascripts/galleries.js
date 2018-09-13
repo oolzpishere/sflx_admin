@@ -134,34 +134,42 @@ document.addEventListener("turbolinks:load", function() {
 
   // <<first-img
   if ( $('.first-img').length > 0 ) { firstImgScroll() };
-  function firstImgScroll(){
-    var lastScrollTop = 0,
-      _firstImgScrollLock = false;
+  function firstImgScroll() {
+    var WindowScroll = function(){
+      this.scrolled = [];
+      this.scrollLock = false;
+      this.scrollTop = 0;
+      this.lastScrollTop = 0;
+      this.scrollDown = function(){
+        return this.scrollTop > this.lastScrollTop
+      };
+    }
+    var windowScroll = new WindowScroll;
+
     $(window).on('scroll',function(){
-      if ( !_firstImgScrollLock ) {
-        var scrollTop = $(window).scrollTop(),
-          firstImgOffset = $('.first-img').offset().top;
-          // windowTop = window.pageYOffset || document.documentElement.scrollTop,
-          // distance = (firstImgOffset - windowTop);
-        if( scrollTop > lastScrollTop && scrollTop < 100 ) {
-          // downscroll code
-          _firstImgScrollLock = true;
+      windowScroll.scrollTop = $(window).scrollTop();
+      windowScroll.scrolled.push( windowScroll.scrollTop );
+      windowScroll.lastScrollTop = windowScroll.scrolled[ windowScroll.scrolled.length - 2 ];
+      // keep scrolled length < 5
+      if (windowScroll.scrolled.length > 5) {
+        windowScroll.scrolled.shift();
+      }
+
+      if ( windowScroll.scrollTop < 150 && !windowScroll.scrollLock) {
+        if ( windowScroll.scrollDown() ) {
+          windowScroll.scrollLock = true;
           $(window).scrollTo(viewportHeight, 400, {easing: "easeInOutCubic",
-            always: function(){ _firstImgScrollLock = false; }
+            always: function(){ windowScroll.scrollLock = false; }
           });
-          // window.scrollTo({top:viewportHeight,behavior: "smooth"})
-        } else if ( scrollTop < lastScrollTop && scrollTop < 150 ) {
-          // upscroll code
-          _firstImgScrollLock = true;
+        } else {
+          windowScroll.scrollLock = true;
           $(window).scrollTo(0, 400, {easing: "easeInOutCubic",
             always: function(){
-              _firstImgScrollLock = false;
-              lastScrollTop = 0;
+              windowScroll.scrollLock = false;
+              windowScroll.lastScrollTop = 0;
             }
           });
-          // window.scrollTo({top:0,behavior: "smooth"})
         }
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
       }
     });
   }
