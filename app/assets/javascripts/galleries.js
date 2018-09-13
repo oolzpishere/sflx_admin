@@ -136,37 +136,37 @@ document.addEventListener("turbolinks:load", function() {
   if ( $('.first-img').length > 0 ) { firstImgScroll() };
   function firstImgScroll() {
     var WindowScroll = function(){
-      this.scrolled = [];
+      this.scrolled = [0,1];
       this.scrollLock = false;
-      this.scrollTop = 0;
-      this.lastScrollTop = 0;
+      this.scrollTop = this.scrolled[1];
+      this.lastScrollTop = this.scrolled[0];
       this.scrollDown = function(){
         return this.scrollTop > this.lastScrollTop
       };
     }
-    var windowScroll = new WindowScroll;
+    var ws = new WindowScroll;
 
     $(window).on('scroll',function(){
-      windowScroll.scrollTop = $(window).scrollTop();
-      windowScroll.scrolled.push( windowScroll.scrollTop );
-      windowScroll.lastScrollTop = windowScroll.scrolled[ windowScroll.scrolled.length - 2 ];
+      ws.scrollTop = $(window).scrollTop();
+      ws.scrolled.push( ws.scrollTop );
+      ws.lastScrollTop = ws.scrolled[ ws.scrolled.length - 2 ];
       // keep scrolled length < 5
-      if (windowScroll.scrolled.length > 5) {
-        windowScroll.scrolled.shift();
+      if (ws.scrolled.length > 5) {
+        ws.scrolled.shift();
       }
 
-      if ( windowScroll.scrollTop < 150 && !windowScroll.scrollLock) {
-        if ( windowScroll.scrollDown() ) {
-          windowScroll.scrollLock = true;
+      if ( ws.scrollTop < 150 && !ws.scrollLock) {
+        if ( ws.scrollDown() ) {
+          ws.scrollLock = true;
           $(window).scrollTo(viewportHeight, 400, {easing: "easeInOutCubic",
-            always: function(){ windowScroll.scrollLock = false; }
+            always: function(){ ws.scrollLock = false; }
           });
         } else {
-          windowScroll.scrollLock = true;
+          ws.scrollLock = true;
           $(window).scrollTo(0, 400, {easing: "easeInOutCubic",
             always: function(){
-              windowScroll.scrollLock = false;
-              windowScroll.lastScrollTop = 0;
+              ws.scrollLock = false;
+              ws.lastScrollTop = 0;
             }
           });
         }
