@@ -23,6 +23,9 @@
   .h5-md { font-size: $h5-font-size !important;  }
   .h6-md { font-size: $h6-font-size !important;  }
  }
+  .justify-content-md-around{
+    justify-content: space-around !important;
+  }
 @include media-breakpoint-up(lg) {  }
 @include media-breakpoint-up(xl) {  }
 
