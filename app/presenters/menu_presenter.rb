@@ -76,7 +76,7 @@ class MenuPresenter
     # dropdownid = "dropdown#{menu_item.id}"
     content_tag(:li, class: "nav-item dropdown") do
       buffer = ActiveSupport::SafeBuffer.new
-      buffer << link_to( context.url_for(menu[:path]), class: 'nav-link' ) do
+      buffer << link_to( context.url_for(menu[:path]), class: 'nav-link', "data-turbolinks" => menu.fetch(:data_turbolinks,nil) ) do
         raw %{ #{menu[:title]}
         <svg version="1.1" class="plus-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 18 18">
