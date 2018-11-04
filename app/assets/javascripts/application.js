@@ -28,3 +28,4 @@
 //= require lib/wow
 //= require lib/jquery.scrollTo
 //= require lib/baidu_tongji
+//= require lib/baidu_push
