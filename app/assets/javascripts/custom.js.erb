@@ -8,6 +8,13 @@ document.addEventListener("turbolinks:load", function() {
     window.scrollTo(0, 0);
   }
 
+  // disable image save
+  $('img').mousedown(function (e) {
+    if(e.button == 2) { // right click
+      return false; // do nothing!
+    }
+  })
+
   // for navbar's dropdown menu
   // $('.dropdown-item').on('mouseenter mouseleave', function(){
   //   $(this).toggleClass('white-text z-depth-2 rounded bg-primary');
