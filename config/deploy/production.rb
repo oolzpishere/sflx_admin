@@ -60,7 +60,7 @@
 #     # password: "please use keys"
 #   }
 
-server "sflx.com.cn",
+server "www.sflx.com.cn",
        user: "ubuntu",
        roles: %w{web app},
        ssh_options: {
