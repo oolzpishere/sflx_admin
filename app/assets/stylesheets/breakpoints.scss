@@ -22,10 +22,17 @@
   .h4-md { font-size: $h4-font-size !important;  }
   .h5-md { font-size: $h5-font-size !important;  }
   .h6-md { font-size: $h6-font-size !important;  }
- }
+
   .justify-content-md-around{
     justify-content: space-around !important;
   }
+
+  @for $i from 1 through 10 {
+    .mt-md-#{$i}0 { margin-top: #{$i}0%; }
+  }
+
+}
+
 @include media-breakpoint-up(lg) {  }
 @include media-breakpoint-up(xl) {  }
 
