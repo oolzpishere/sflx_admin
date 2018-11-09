@@ -29,3 +29,4 @@
 //= require lib/jquery.scrollTo
 //= require lib/baidu_tongji
 //= require lib/baidu_push
+//= require lib/jquery.magnific-popup.min.js

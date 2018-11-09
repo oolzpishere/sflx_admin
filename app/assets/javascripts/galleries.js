@@ -1,5 +1,16 @@
 document.addEventListener("turbolinks:load", function() {
 
+  var WindowScroll = function(){
+    this.scrollLock = false;
+    this.scrollTop = 0;
+    this.lastScrollTop = 0;
+    this.scrollDown = function(){
+      return this.scrollTop > this.lastScrollTop
+    };
+    this.viewportHeight = window.innerHeight;
+  }
+  var ws = new WindowScroll;
+
   // animateCss syntax suger
   $.fn.extend({
     animateCss: function(animationName, callback) {
@@ -118,47 +129,37 @@ document.addEventListener("turbolinks:load", function() {
 
   // <</submenu
   // var viewportWidth = window.innerWidth;
-  var viewportHeight = window.innerHeight;
+  // var viewportHeight = window.innerHeight;
   var navbarHeight = $('.navbar').innerHeight();
 
   $(window).on('resize',function(){
     // viewportWidth = window.innerWidth;
-    viewportHeight = window.innerHeight;
+    ws.viewportHeight = window.innerHeight;
     resizeFirstImage();
   });
 
   function resizeFirstImage(){
-    $('.first-img').css({width: "100%", height: viewportHeight - navbarHeight})
+    $('.first-img').css({width: "100%", height: ws.viewportHeight - navbarHeight})
   }
   resizeFirstImage();
+
+
+  $(window).on('scroll',function(){
+    ws.lastScrollTop = ws.scrollTop
+
+    ws.scrollTop = $(window).scrollTop();
+
+  });
 
   // <<first-img
   if ( $('.first-img').length > 0 ) { firstImgScroll() };
   function firstImgScroll() {
-    var WindowScroll = function(){
-      this.scrolled = [0,1];
-      this.scrollLock = false;
-      this.scrollTop = this.scrolled[1];
-      this.lastScrollTop = this.scrolled[0];
-      this.scrollDown = function(){
-        return this.scrollTop > this.lastScrollTop
-      };
-    }
-    var ws = new WindowScroll;
 
     $(window).on('scroll',function(){
-      ws.scrollTop = $(window).scrollTop();
-      ws.scrolled.push( ws.scrollTop );
-      ws.lastScrollTop = ws.scrolled[ ws.scrolled.length - 2 ];
-      // keep scrolled length < 5
-      if (ws.scrolled.length > 5) {
-        ws.scrolled.shift();
-      }
-
       if ( ws.scrollTop < 150 && !ws.scrollLock) {
         if ( ws.scrollDown() ) {
           ws.scrollLock = true;
-          $(window).scrollTo(viewportHeight, 400, {easing: "easeInOutCubic",
+          $(window).scrollTo(ws.viewportHeight, 400, {easing: "easeInOutCubic",
             always: function(){ ws.scrollLock = false; }
           });
         } else {
@@ -188,5 +189,34 @@ document.addEventListener("turbolinks:load", function() {
   });
 
   // <</scrollTo
+
+  // back to top
+  $(window).on('scroll',function(){
+
+    reachFooter = (ws.viewportHeight + ws.scrollTop) > $('footer').offset().top
+
+    if (ws.scrollTop <= 1000 || reachFooter) {
+      $('.fixed-button-wrap').addClass('d-none');
+    } else if (ws.scrollTop > 1000) {
+      $('.fixed-button-wrap').removeClass('d-none');
+    }
+
+
+  })
+
+  $('.back-to-top').on('click',function(){
+    ws.scrollLock = true;
+    $(window).scrollTo(0, 400, {easing: "easeInOutCubic",
+      always: function(){
+        ws.scrollLock = false;
+        ws.lastScrollTop = 0;
+       }
+    });
+  });
+
+  $('.open-popup-link').magnificPopup({
+    type:'inline',
+    midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+  });
 
 });

@@ -19,3 +19,12 @@
 @for $i from 1 through 10 {
   .h-#{$i}0 { height: #{$i}0%; }
 }
+
+.a-no-effect{
+  &:active, &:focus {
+  outline: 0;
+  border: none;
+  box-shadow:none;
+  -moz-outline-style: none;
+  }
+}

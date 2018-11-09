@@ -45,6 +45,8 @@
     <header>
       <%= render "layouts/header" %>
     </header>
+
+
     <% if notice %>
     <p class="notice alert alert-success fade show" role="alert"><%= notice %></p>
     <% end %>
@@ -52,6 +54,8 @@
     <p class="alert"><%= alert %></p>
     <% end %>
     <%= yield %>
+
+
     <!-- <footer> -->
     <%= render "layouts/footer" %>
 

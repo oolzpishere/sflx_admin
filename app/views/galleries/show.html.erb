@@ -1,6 +1,7 @@
 <% content_for :title, @gallery.title %>
 <% gallery_types = @gallery.gallery_types %>
 
+
 <div class="row no-gutters">
 
 	<div class="first-img col-12 text-white" style="background-image: url(<%= url_for first_img(@gallery).image %>);">
@@ -103,21 +104,60 @@
 	<%#byebug%>
 <% if next_gallery %>
 <div class="container-fluid next-gallery-img position-relative">
-		<div class="row ">
-			<%= link_to next_gallery do %>
-			<div class="mask position-absolute col-12 h-100 rgba-black-light "></div>
+	<div class="row ">
+		<%= link_to next_gallery do %>
+		<div class="mask position-absolute col-12 h-100 rgba-black-light "></div>
 
-			<div class="position-absolute col-12 h-100 d-flex justify-content-center align-items-center">
-				<div class="gallery_title text-white">
-					<h3><%= next_gallery.title %></h3>
-				</div>
+		<div class="position-absolute col-12 h-100 d-flex justify-content-center align-items-center">
+			<div class="gallery_title text-white">
+				<h3><%= next_gallery.title %></h3>
 			</div>
+		</div>
 
-			<%= image_tag first_img(next_gallery).image, class: 'w-100', style: "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" %>
-			<% end -%>
+		<%= image_tag first_img(next_gallery).image, class: 'w-100', style: "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" %>
+		<% end -%>
 	</div>
 </div>
 <% end %>
+
+<!-- <div class="back-to-top position-fixed d-none" style="">
+	<i class="fas fa-chevron-circle-up w-100 h-100"></i>
+</div> -->
+<div class="fixed-button-wrap position-fixed d-none btn-group btn-group-toggle" data-toggle="buttons">
+
+  <label class="back-to-top btn btn-dark">
+		<div class="" style="">
+			<i class="fas fa-arrow-up"></i>
+			<!-- Top -->
+		</div>
+  </label>
+
+			<a href="#popup" class="open-popup-link btn btn-dark a-no-effect">
+				<i class="fas fa-phone"></i>
+			</a>
+			<!-- Contact -->
+
+  </label>
+</div>
+
+<div id="popup" class="row no-gutters mx-auto white-popup mfp-hide position-relative" style="max-width: 350px;">
+	<div class="col">
+		<div class="card">
+		  <h5 class="card-header">联系我们</h5>
+		  <div class="card-body">
+		    <!-- <h5 class="card-title">Special title treatment</h5> -->
+				<p><i class="fas fa-phone mr-2"></i>156-7700-8080</p>
+				<p><i class="fas fa-envelope mr-2"></i>877881120@qq.com</p>
+				<a class="icon-link round weixin fill z-depth-1">
+					<i class="fab fa-weixin"></i>
+				</a>
+				<a href="http://wpa.qq.com/msgrd?v=3&uin=877881120&site=qq&menu=yes" target="_blank" class="icon-link round qq fill z-depth-1">
+					<i class="fab fa-qq"></i>
+				</a>
+		  </div>
+		</div>
+	</div>
+</div>
 
 
 <%= javascript_include_tag 'galleries', 'data-turbolinks-track': 'reload' %>
