@@ -1,6 +1,6 @@
 document.addEventListener("turbolinks:load", function() {
 
-  var WindowScroll = function(){
+  var WindowStatus = function(){
     this.scrollLock = false;
     this.scrollTop = 0;
     this.lastScrollTop = 0;
@@ -9,7 +9,7 @@ document.addEventListener("turbolinks:load", function() {
     };
     this.viewportHeight = window.innerHeight;
   }
-  var ws = new WindowScroll;
+  var ws = new WindowStatus;
 
   // animateCss syntax suger
   $.fn.extend({
