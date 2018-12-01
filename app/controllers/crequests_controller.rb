@@ -31,6 +31,7 @@ class CrequestsController < ApplicationController
         format.html { redirect_to '/contact', notice: '项目需求提交成功。' }
         # format.html { redirect_to @crequest, notice: 'Crequest was successfully created.' }
         format.json { render :show, status: :created, location: @crequest }
+        CustomerMailer.crequest(@crequest.attributes).deliver!
       else
         format.html { render :new }
         format.json { render json: @crequest.errors, status: :unprocessable_entity }
