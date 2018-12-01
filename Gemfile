@@ -99,3 +99,6 @@ gem 'haml'
 gem 'bootstrap'
 
 gem "jquery-slick-rails"
+
+gem 'sidekiq'
+gem 'sinatra'

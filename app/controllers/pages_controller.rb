@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   # GET /pages.json
   def index
     @pages = Page.all
+    # MailWorker.perform_async('2017', '2018')
   end
 
   # GET /pages/1

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => "sidekiq"
+
   namespace :admin do
     resources :users
     resources :galleries
@@ -17,6 +20,8 @@ Rails.application.routes.draw do
   resources :galleries, only: [:index, :show]
   resources :crequests, only: [:new, :create]
 
+
+  # last line
   get 'conference', 'web', 'about', 'contact', 'contact/find_us', to: 'pages#show'
 
 end
