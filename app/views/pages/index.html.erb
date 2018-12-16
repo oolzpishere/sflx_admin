@@ -1,6 +1,6 @@
 <% content_for :title, "广西四方连续文化传媒-南宁品牌策划|VI设计|画册设计|网站设计|会议会展|印刷" %>
 
-<% content_for :description, "四方连续创享品牌，专注品牌形象量身定制，是一家注重实效的新锐设计公司。核心服务:标志设计、包装设计、室内设计、摄影摄像、喷绘、印刷、商务活动等" %>
+<% content_for :description, "四方连续创享品牌，专注品牌形象量身定制，是一家注重实效的新锐设计公司。核心服务:标志设计、包装设计、网页设计、室内设计、摄影摄像、喷绘、印刷、商务活动等" %>
 
 <% content_for :keywords, "广西广告设计, 南宁广告设计, 南宁网页设计, 南宁网站设计, 南宁logo设计, 南宁vi设计, 南宁画册设计, 南宁包装设计, 南宁喷绘, 南宁彩印, 南宁印刷, 南宁会议, 南宁会展, 南宁展会, 南宁商务活动, 南宁桁架, 广西网页设计, 广西网站设计, 广西logo设计, 广西vi设计, 广西画册设计, 广西包装设计, 广西喷绘, 广西彩印, 广西印刷, 广西会议, 广西会展, 广西展会, 广西商务活动, 广西桁架, 南宁四方连续, 广西四方连续, 四方连续广告" %>
 <div class="slider-wrap position-relative">
@@ -100,5 +100,37 @@
       <span class="move-line" style="height: 4px; position: absolute; background-color: rgb(255, 255, 255); opacity: 0.75; transition: transform 0.35s ease; top: 0px; transform: translate3d(0px, 0px, 0px); " data-radium="true" data-reactid="150">
       </span>
     </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row my-5 ">
+    <div class="col-12 mb-3 border-bottom">
+      <p class="font-weight-bold">四方连续文化传媒始于2013，位于广西南宁，是一家注重实效的新锐设计公司，我们以设计和创意为驱动力，为企业市场与运营提供以下服务：</p>
+    </div>
+
+    <% services = [{title: "品牌形象建立与升级", content: "品牌策划 + 标志设计<br>VIS设计 + 商业空间设计"},
+      {title: "推广物料设计", content: "画册样本设计 + 展会形象设计<br>包装设计 + 网站设计"},
+      {title: "广告设计代理", content: "专业地产整合推广以及<br>品牌形象年度设计管理"},
+      {title: "会议会展", content: "提供专业的会议与商业活动服务<br>全程策划与执行"},
+      {title: "高端网站建设", content: "高端品牌网站建设<br>电商视觉设计"},
+      {title: "more", content: "……"}
+      ] %>
+    <% services.each_with_index do |s,i| %>
+      <div class="col-lg-4 col-12 text-center border-left border-right ">
+        <span class="font-weight-bold h5">
+        <%= s[:title] %>
+        </span>
+
+        <p>
+        <%= s[:content] && raw(s[:content]) %>
+        </p>
+      </div>
+      <%# output a row border when third div%>
+      <%= raw '<div class="col-12 d-xs-none d-sm-none d-md-none d-lg-block my-3 border-bottom"></div>' if i == 2 %>
+    <% end %>
+
+    <div class="col-12 mt-3 border-bottom"></div>
+
   </div>
 </div>
