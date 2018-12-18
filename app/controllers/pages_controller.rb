@@ -5,6 +5,8 @@ class PagesController < ApplicationController
   # GET /pages.json
   def index
     @pages = Page.all
+    @galleries = Gallery.order(:position, :id)
+    @galleries = @galleries[0..11] if @galleries.count >= 12
   end
 
   # GET /pages/1

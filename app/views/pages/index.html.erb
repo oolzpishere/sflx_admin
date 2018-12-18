@@ -104,7 +104,7 @@
 </div>
 
 <div class="container">
-  <div class="row my-5 ">
+  <div class="row my-5 no-gutters">
     <div class="col-12 mb-3 border-bottom">
       <p class="font-weight-bold">四方连续文化传媒始于2013，位于广西南宁，是一家注重实效的新锐设计公司，我们以设计和创意为驱动力，为企业市场与运营提供以下服务：</p>
     </div>
@@ -132,5 +132,56 @@
 
     <div class="col-12 mt-3 border-bottom"></div>
 
+  </div>
+
+  <!-- galleries  -->
+  <div class=" row no-gutters">
+    <% @galleries.each_with_index do |g, index| %>
+
+    <% gallery_types = g.gallery_types.map {|gt| gt.gallery_type} %>
+    <% gallery_types_eng = g.gallery_types.map {|gt| gt.eng_name} %>
+    <%# byebug %>
+    <% if ["all", ""].include?(@gallery_type.to_s) %>
+      <% d_none = "" %>
+    <% elsif gallery_types_eng.include?(@gallery_type) %>
+      <%  d_none = "" %>
+    <% else %>
+      <%  d_none = "d-none" %>
+    <% end %>
+    <div class="item col-md-6 col-lg-4 <%= d_none %>" data-classify="<%= gallery_types.join(",") %>" >
+      <%= link_to g do %>
+        <div class="mask"></div>
+        <div class="gallery-text d-flex align-items-center">
+          <h5 class="mx-auto"><%= "#{g.title}-#{gallery_types.join('/')}" %></h5>
+        </div>
+        <% cover = g.images.select {|img| img.image.filename == g.cover}.first
+        cover = g.images.first if cover.to_s.empty?
+        %>
+        <% cover_size = '640x450' %> <!-- '720x405' -->
+        <!-- <div style="overflow: hidden;"> -->
+        <% if cover %>
+          <%= image_tag cover.image.variant(combine_options: {resize: "#{cover_size}^", gravity: 'center', crop: "#{cover_size}+0+0"} ), class: "w-100 cover-img", style: "" %>
+        <% end %>
+      <% end -%>
+    </div>
+    <% end %>
+  </div>
+
+</div>
+
+<!-- form -->
+<div class="col-12 p-lg-5 px-1 py-4 grey lighten-4">
+  <div class="row m-0 justify-content-center">
+    <div class="col-xl-9 col-12">
+      <div class="col-12 py-sm-4 py-2">
+        <h3>请填写您的服务需求获取项目报价。</h3>
+      </div>
+      <div class="col-12 py-sm-4 py-2">
+        <%= render 'crequest_form' %>
+      </div>
+      <div class="col-12 py-sm-4 py-2">
+        <p>* 请认真填写需求信息，我们会在24小时内与您取得联系。</p>
+      </div>
+    </div>
   </div>
 </div>
