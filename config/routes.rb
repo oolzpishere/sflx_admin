@@ -16,10 +16,13 @@ Rails.application.routes.draw do
   devise_for :users, only: :sessions
   # devise_for :users, skip: [:registrations, :confirmations]
 
-  resources :pages, only: [:index, :show]
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "pages#index"
-  resources :galleries, only: [:index, :show]
+  # resources :galleries, only: [:index, :show]
+  mount Frontend::Engine   => '/', as: 'frontend'
+  mount Cgallery::Engine   => '/', as: 'gallery'
+  # resources :pages, only: [:index, :show]
+
+  # root to: "pages#index"
+
   resources :crequests, only: [:new, :create]
 
 

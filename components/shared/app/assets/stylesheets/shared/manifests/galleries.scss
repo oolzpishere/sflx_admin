@@ -1,0 +1,282 @@
+// Place all the styles related to the galleries controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// animation-fill-mode: forwards;
+// animation-duration: 3s;
+.submenu{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-around;
+	height: 80px;
+	.submenu-item{
+		display:flex;
+		align-items: center;
+		justify-content:center;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		cursor: pointer;
+		width: calc(100% / 5);
+		height: 100%;
+		position: relative;
+		transition: width .4s cubic-bezier(.47,0,.48,1.33);
+		svg * {
+    	transition: all .4s ease-in-out;
+		}
+		svg{
+			z-index: 5;
+			path {
+				fill: #000;
+			}
+			polygon {
+				fill: #000;
+			}
+		}
+		span{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			opacity: 0;
+			transition: all .4s ease-in-out;
+		}
+		a{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index: 6;
+		}
+		&:before{
+			content: '';
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-color: rgba(255,255,255,.8);
+			transition: background-color .4s ease-in-out;
+		}
+		&:hover{
+			&:before{
+				background-color: rgba(255, 255, 255, 0);
+			}
+			svg{
+				path {
+					fill: #fff;
+				}
+				polygon {
+					fill: #fff;
+				}
+			}
+			span{
+				opacity: 1;
+			}
+		}
+
+		&.active{
+			width: 40%;
+			&:before{
+				background-color: rgba(255, 255, 255, 0);
+			}
+			span{
+				opacity: 1;
+			}
+			svg{
+				path {
+					fill: #fff;
+				}
+				polygon {
+					fill: #fff;
+				}
+			}
+		}
+	}
+}
+
+.submenu-fadein{
+	animation-duration:0.6s;
+}
+.submenu-bar{
+	animation-duration:0.6s;
+	animation-delay:0.6s;
+}
+
+// S gallery item
+.item{
+  overflow:hidden;
+  // &:before{
+  // 	content:"";
+  // 	width: 100%;
+  //   height: 100%;
+  //   z-index:9;
+  //   position:absolute;
+  //   transition: background .4s ease;
+  // }
+  // &:hover:before{
+  // 	background: rgba(0,0,0,.5);
+  // }
+	// position: relative;
+  .gallery-text{
+  	width: 100%;
+    height: 100%;
+    z-index:9;
+    position:absolute;
+    transition: all .4s ease;
+  }
+  .gallery-text h5{
+  	opacity: 0;
+    color: #fff;
+    border: 3px solid #fff;
+    width: 60%;
+    padding: 10px 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transform: scale(1.5);
+    transition: all .4s ease;
+  }
+  &:hover .gallery-text{
+  	background: rgba(0,0,0,.5);
+  	h5{
+  		transform: scale(1);
+  		opacity: 1;
+  	}
+  }
+  .mask{
+    width: 100%;
+    height: 100%;
+    position:absolute;
+		z-index: 12;
+    // transform: translate(0%, 0%);
+  }
+  .maskBlindInLeft{
+    animation:0.4s maskBlindInLeft;
+    background: #fff;
+  }
+  .maskBlindOutRight{
+    animation:0.4s maskBlindOutRight;
+    background: #fff;
+  }
+	img {
+		    vertical-align: middle;
+	}
+  .cover-img {
+    transition: transform 1.8s ease;
+    width:100%;
+  }
+  &:hover .cover-img {
+    transform: scale(1.2);
+  }
+  // .cover-img{
+  //   transition: transform .8s ease;
+
+  //   &:hover{
+  //     transform: scale(1.15);
+  //   }
+  // }
+}
+
+@keyframes maskBlindInLeft{
+    from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes maskBlindOutRight{
+    from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.first-img{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    text-align: center;
+    overflow: hidden;
+    .mask{
+      width: 100%;
+      height: 100%;
+      position:absolute;
+      background: rgba(0,0,0,.5);
+    }
+    .gallery_title{
+      z-index:5;
+    }
+    .scroll-icon{
+			width: 30px;
+      height:60px;
+			cursor: pointer;
+    }
+    .scroll-icon a span {
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      margin-left: -12px;
+      border-left: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+      transform: rotateZ(-45deg);
+      animation: sdb06 1.5s infinite;
+      box-sizing: border-box;
+    }
+}
+
+@keyframes sdb06 {
+  0% {
+    transform: rotateY(0) rotateZ(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+
+.flex-direction-column{
+  flex-direction:  column;
+}
+.galleries-page{
+  .gallery-text{
+  line-height: 2em;
+  }
+
+  .gallery-types{
+    font-size: 0.9em;
+  }
+}
+
+.gallery_items_wrap{
+	// transition: all 4s ease;
+}
+
+.next-gallery-img{
+	height: 80vh;
+	overflow: hidden;
+	img{
+		z-index: -1;
+	}
+}
+
+.c-rounded-circle{
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	border-radius: 50%;
+	border: solid #1de9b6 2px; //#1de9b6 teal accent-3
+}
+
+.fixed-button-wrap{
+	z-index: 10;
+	bottom: 3%;
+	right: 3%;
+}

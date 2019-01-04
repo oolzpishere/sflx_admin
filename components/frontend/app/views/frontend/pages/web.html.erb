@@ -1,0 +1,116 @@
+<% content_for :title, "网络技术" %>
+<div class="slider-wrap position-relative">
+  <div class="slider-for index-slider-for">
+    <div class="slider-bg" style="background-image: url(<%= image_path("web/web1.jpg") %> );">
+      <!-- <a href=""> -->
+        <div class="slider-info row ">
+          <div class="col-lg-10 mx-auto" style="margin-top: 5%">
+            <div class="row">
+              <div class="col-lg-4 col-sm-6 col-12 ml-auto px-sm-5 px-4">
+                <%= image_tag "web/web1.svg", class: 'w-100' %>
+              </div>
+            </div>
+            <%# image_tag("web/web1.svg", style: "width:500px;") %>
+          </div>
+        </div>
+      <!-- </a> -->
+    </div>
+    <div class="slider-bg" style="background-image: url(<%= image_path("web/web2.jpg") %> );">
+      <!-- <a href=""> -->
+        <div class="slider-info row no-gutters">
+          <div class="col-lg-10 col-11 mx-auto" style="margin-top: 5%">
+            <div class="row">
+              <div class="col-lg-4 col-sm-6 col-12 ">
+                <%= image_tag "web/web2.svg", class: 'w-100' %>
+              </div>
+            </div>
+            <%# image_tag("web/web1.svg", style: "width:500px;") %>
+          </div>
+        </div>
+      <!-- </a> -->
+      <%# image_tag Gallery.second.images.first.image %>
+    </div>
+    <div class="slider-bg" style="background-image: url(<%= image_path("web/web3.jpg") %> );">
+      <!-- <a href=""> -->
+        <div class="slider-info row no-gutters">
+          <div class="col-lg-10 col-11 mx-auto" style="margin-top: 5%">
+            <div class="row">
+              <div class="col-lg-3 col-sm-5 col-11">
+                <%= image_tag "web/web3.svg", class: 'w-100' %>
+              </div>
+            </div>
+            <%# image_tag("web/web1.svg", style: "width:500px;") %>
+          </div>
+        </div>
+      <!-- </a> -->
+      <%# image_tag Gallery.all[3].images.first.image %>
+    </div>
+
+  </div>
+
+  <div class="slider-nav-wrap  w-100">
+    <div class="container p-0">
+      <div class="row no-gutters">
+        <div class="slider-nav index-slider-nav col text-white">
+          <div class="row no-gutters">
+            <div class="py-5 col-4 slider-nav-item">
+              <% index_img_path0 = "index/网站-设计策划icon" %>
+              <div class="w-50 mx-auto">
+                <%= image_tag (index_img_path0 + ".svg"), class: "img-fluid  ", 'data-md': image_path(index_img_path0 + "-s.svg"), 'data-src': image_path(index_img_path0 + ".svg") %>
+              </div>
+            </div>
+            <div class="py-5 col-4 slider-nav-item">
+              <% index_img_path1 = "index/网站-会展会议icon" %>
+              <div class="w-50 mx-auto">
+                <%= image_tag (index_img_path1 + ".svg"), class: "img-fluid  ", 'data-md': image_path(index_img_path1 + "-s.svg"), 'data-src': image_path(index_img_path1 + ".svg")  %>
+              </div>
+            </div>
+            <div class="py-5 col-4 slider-nav-item">
+              <% index_img_path2 = "index/网站-网络技术icon" %>
+              <div class="w-50 mx-auto">
+                <%= image_tag (index_img_path2 + ".svg"), class: "img-fluid  ", 'data-md': image_path(index_img_path2 + "-s.svg"), 'data-src': image_path(index_img_path2 + ".svg")  %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- <div class="slider-nav-scroll col-md-1 d-none d-md-block" >
+          <div class="scroll-down-animation-wrap">
+            <div class="scroll-down-animation">
+              <a href="#"><span></span></a>
+            </div>
+            <section class="section07">
+              <a href="#"><span></span><span></span></a>
+            </section>
+          </div>
+        </div> -->
+      </div>
+
+      <span class="move-line" style="height: 4px; position: absolute; background-color: rgb(255, 255, 255); opacity: 0.75; transition: transform 0.35s ease; top: 0px; transform: translate3d(0px, 0px, 0px); " data-radium="true" data-reactid="150">
+      </span>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="row no-gutters">
+  <div class="web-image col-12" style="background-image: url(<%=image_path('web/web1.jpg')%>); height: 800px;">
+    <div class="row p-5 no-gutters justify-content-end">
+        <%= image_tag("web/web1.svg", style: "width:500px;") %>
+    </div>
+  </div>
+
+  <div class="web-image col-12" style="background-image: url(<%=image_path('web/web2.jpg')%>); height: 800px;">
+    <div class="row p-5 no-gutters justify-content-start">
+        <%= image_tag("web/web2.svg", style: "width:500px;") %>
+    </div>
+  </div>
+
+  <div class="web-image col-12" style="background-image: url(<%=image_path('web/web3.jpg')%>); height: 800px;">
+    <div class="row p-5 no-gutters justify-content-start">
+        <%= image_tag("web/web3.svg", style: "width:450px;") %>
+    </div>
+  </div>
+</div> -->

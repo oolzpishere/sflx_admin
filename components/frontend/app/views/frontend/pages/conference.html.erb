@@ -1,0 +1,94 @@
+<% content_for :title, "会议会展" %>
+<div class="slider-wrap position-relative">
+  <div class="slider-for index-slider-for">
+    <div class="slider-bg" style="background-image: url(<%= image_path("conf/网站-会议服务.jpg") %> );">
+      <!-- <a href=""> -->
+        <div class="slider-info row no-gutters ">
+          <div class="col-10 mx-auto" style="margin-top: 5%">
+            <div class="row">
+              <div class="col-11 m-auto">
+                <%= image_tag "conf/网站-会议服务.svg", class: 'w-100' %>
+              </div>
+            </div>
+            <%# image_tag("conf/web1.svg", style: "width:500px;") %>
+          </div>
+        </div>
+      <!-- </a> -->
+
+    </div>
+    <div class="slider-bg" style="background-image: url(<%= image_path("conf/网站-商业活动.jpg") %> );">
+      <!-- <a href=""> -->
+        <div class="slider-info row no-gutters">
+          <div class="col-10 mx-auto" style="margin-top: 5%">
+            <div class="row">
+              <div class="col-11 m-auto">
+                <%= image_tag "conf/网站-商业活动.svg", class: 'w-100' %>
+              </div>
+            </div>
+            <%# image_tag("conf/web1.svg", style: "width:500px;") %>
+          </div>
+        </div>
+      <!-- </a> -->
+      <%# image_tag Gallery.second.images.first.image %>
+    </div>
+    <div class="slider-bg" style="background-image: url(<%= image_path("conf/网站-会展策划.jpg") %> );">
+      <!-- <a href=""> -->
+        <div class="slider-info row no-gutters">
+          <div class="col-10 mx-auto" style="margin-top: 5%">
+            <div class="row">
+              <div class="col-11 m-auto">
+                <%= image_tag "conf/网站-会展策划.svg", class: 'w-100' %>
+              </div>
+            </div>
+            <%# image_tag("conf/web1.svg", style: "width:500px;") %>
+          </div>
+        </div>
+      <!-- </a> -->
+      <%# image_tag Gallery.all[3].images.first.image %>
+    </div>
+
+  </div>
+
+  <div class="slider-nav-wrap  w-100">
+    <div class="container p-0">
+      <div class="row no-gutters">
+        <div class="slider-nav index-slider-nav col text-white">
+          <div class="row no-gutters">
+            <div class="py-5 col-4 slider-nav-item">
+              <% index_img_path0 = "conf/网站-会议服务-icon" %>
+              <div class="w-50 mx-auto">
+                <%= image_tag (index_img_path0 + ".svg"), class: "img-fluid  ", 'data-md': image_path(index_img_path0 + "-s.svg"), 'data-src': image_path(index_img_path0 + ".svg") %>
+              </div>
+            </div>
+            <div class="py-5 col-4 slider-nav-item">
+              <% index_img_path1 = "conf/网站-商业活动-icon" %>
+              <div class="w-50 mx-auto">
+                <%= image_tag (index_img_path1 + ".svg"), class: "img-fluid  ", 'data-md': image_path(index_img_path1 + "-s.svg"), 'data-src': image_path(index_img_path1 + ".svg")  %>
+              </div>
+            </div>
+            <div class="py-5 col-4 slider-nav-item">
+              <% index_img_path2 = "conf/网站-会展策划-icon" %>
+              <div class="w-50 mx-auto">
+                <%= image_tag (index_img_path2 + ".svg"), class: "img-fluid  ", 'data-md': image_path(index_img_path2 + "-s.svg"), 'data-src': image_path(index_img_path2 + ".svg")  %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- <div class="slider-nav-scroll col-md-1 d-none d-md-block" >
+          <div class="scroll-down-animation-wrap">
+            <div class="scroll-down-animation">
+              <a href="#"><span></span></a>
+            </div>
+            <section class="section07">
+              <a href="#"><span></span><span></span></a>
+            </section>
+          </div>
+        </div> -->
+      </div>
+
+      <span class="move-line" style="height: 4px; position: absolute; background-color: rgb(255, 255, 255); opacity: 0.75; transition: transform 0.35s ease; top: 0px; transform: translate3d(0px, 0px, 0px); " data-radium="true" data-reactid="150">
+      </span>
+    </div>
+  </div>
+</div>
