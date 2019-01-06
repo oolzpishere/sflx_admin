@@ -149,7 +149,8 @@
       <%  d_none = "d-none" %>
     <% end %>
     <div class="item col-md-6 col-lg-4 <%= d_none %>" data-classify="<%= gallery_types.join(",") %>" >
-      <%= link_to gallery.gallery_path g do %>
+      <%# work.gallery_path == url_for(:action=>"show", :controller=>"work/galleries", id: 1) %>
+      <%= link_to work.gallery_path g do %>
         <div class="mask"></div>
         <div class="gallery-text d-flex align-items-center">
           <h5 class="mx-auto"><%= "#{g.title}-#{gallery_types.join('/')}" %></h5>

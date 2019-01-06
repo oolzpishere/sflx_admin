@@ -1,0 +1,190 @@
+<% _title = @gallery_type ? "#{GalleryType.where(eng_name: @gallery_type).first.gallery_type}设计" : "设计服务" %>
+<% content_for :title, _title %>
+<% unless @gallery_type %>
+<div class="slider-wrap position-relative">
+  <div class="slider-for index-slider-for ">
+    <div class="slider-bg" style="background-image: url(<%= image_path("design/网站-品牌标识LOGO设计.jpg") %> );">
+      <a href='/galleries?gallery_type=logo'>
+        <div class="slider-info row no-gutters ">
+          <div class="col-11 mx-auto py-lg-5 py-3" >
+            <div class="row">
+              <div class="col-lg-5 col-md-6 col-11 ml-auto">
+                <%= image_tag "design/网站-品牌标识LOGO设计.svg", class: 'w-100' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <%# image_tag "" %>
+      <%# image_tag Gallery.first.images.first.image %>
+    </div>
+    <div class="slider-bg" style="background-image: url(<%= image_path("design/网站-企业VI视觉设计.jpg") %> );">
+      <a href='/galleries?gallery_type=vi'>
+        <div class="slider-info row no-gutters justify-content-center align-items-center">
+          <div class="col-lg-3 col-md-4 col-9" >
+            <%= image_tag "design/网站-企业VI视觉设计.svg", class: 'w-100' %>
+          </div>
+        </div>
+      </a>
+      <%# image_tag Gallery.second.images.first.image %>
+    </div>
+    <div class="slider-bg" style="background-image: url(<%= image_path("design/网站-画册-手册设计.jpg") %> );">
+      <a href='/galleries?gallery_type=album'>
+        <div class="slider-info row no-gutters">
+          <div class="col-11 mx-auto" style="margin-top: 5%">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-10">
+                <%= image_tag "design/网站-画册-手册设计.svg", class: 'w-100' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <%# image_tag Gallery.all[3].images.first.image %>
+    </div>
+    <div class="slider-bg" style="background-image: url(<%= image_path("design/网站-包装设计.jpg") %> );">
+      <a href='/galleries?gallery_type=packaging'>
+        <div class="slider-info row no-gutters justify-content-center">
+          <div class="col-11 mx-auto" style="margin-top: 5%">
+            <div class="row">
+              <div class="col-lg-4 col-md-5 col-10 ml-auto">
+                <%= image_tag "design/网站-包装设计.svg", class: 'w-100' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      <%# image_tag Gallery.all[3].images.first.image %>
+    </div>
+  </div>
+
+  <div class="slider-nav-wrap  w-100">
+    <div class="container p-0">
+      <div class="row no-gutters">
+        <div class="slider-nav index-slider-nav col text-white">
+          <div class="row no-gutters">
+            <div class="p-lg-5 p-4 col-3 slider-nav-item">
+              <% index_img_path0 = "design/网站-品牌标识LOGO设计-icon" %>
+              <%= image_tag (index_img_path0 + ".svg"), class: "img-fluid  ", 'data-md': image_path(index_img_path0 + "-s.svg"), 'data-src': image_path(index_img_path0 + ".svg") %>
+            </div>
+            <div class="p-lg-5 p-4 col-3 slider-nav-item">
+              <% index_img_path1 = "design/网站-企业VI视觉设计-icon" %>
+              <%= image_tag (index_img_path1 + ".svg"), class: "img-fluid  ", 'data-md': image_path(index_img_path1 + "-s.svg"), 'data-src': image_path(index_img_path1 + ".svg")  %>
+            </div>
+            <div class="p-lg-5 p-4 col-3 slider-nav-item">
+              <% index_img_path2 = "design/网站-画册-手册设计-icon" %>
+              <%= image_tag (index_img_path2 + ".svg"), class: "img-fluid  ", 'data-md': image_path(index_img_path2 + "-s.svg"), 'data-src': image_path(index_img_path2 + ".svg")  %>
+            </div>
+            <div class="p-lg-5 p-4 col-3 slider-nav-item">
+              <% index_img_path3 = "design/网站-包装设计-icon" %>
+              <%= image_tag (index_img_path3 + ".svg"), class: "img-fluid  ", 'data-md': image_path(index_img_path3 + "-s.svg"), 'data-src': image_path(index_img_path3 + ".svg")  %>
+            </div>
+          </div>
+        </div>
+        <div id="gallery-slider-nav-scroll" class="slider-nav-scroll col-md-1 d-none d-md-block" >
+          <div class="scroll-down-animation-wrap">
+            <div class="scroll-down-animation">
+              <a href="#"><span></span></a>
+            </div>
+            <section class="section07">
+              <a href="#"><span></span><span></span></a>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <span class="move-line" style="height: 4px; position: absolute; background-color: rgb(255, 255, 255); opacity: 0.75; transition: transform 0.35s ease; top: 0px; transform: translate3d(0px, 0px, 0px); " data-radium="true" data-reactid="150">
+      </span>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<div id="gallery-types-nav" class="container-fluid p-0 black">
+  <div class="container p-0 d-flex black text-white justify-content-around" style="font-size: 0.8rem;">
+    <% submenu_text = %w(D E S I G N S E R V I C E) %>
+    <% submenu_text.each do |letter|  %>
+      <span class=""><%= letter %></span>
+    <% end %>
+  </div>
+
+  <div class="submenu container p-0">
+    <% submenu_colors = ['none', 'rgba(3, 169, 244, 0.7)', 'rgba(244, 67, 54, 0.7)', 'rgba(121, 85, 72, 0.7)','rgba(76, 175, 80, 0.7)' ] %>
+    <% Menus.new.gallery_types.sort{|x,y| x["position"] <=> y["position"]}.each_with_index do |gt, index| %>
+      <% if @gallery_type.to_s.empty? %>
+        <% active = (gt["eng_name"] == "all" ? "active" : "") %>
+      <% else %>
+        <% active = (gt["eng_name"] == @gallery_type.to_s ? "active" : "") %>
+      <% end %>
+      <div class="submenu-item py-2 <%= active %>" tabindex="1" style="background-image: url(<%= image_path('design/nav/' + index.to_s + '.jpg') %>)">
+        <%= link_to "", "", class: "", "data-classify" => gt[:title] %>
+        <span style="background-color: <%= submenu_colors[index] %>"></span>
+        <%= image_tag('design/nav/' + index.to_s + '.svg', class: 'svg img-fluid h-100') %>
+      </div>
+    <% end %>
+
+    <!-- <div class="submenu-item py-2" tabindex="1" style="background-image: url(<%# image_path('design/nav/网站-全部案例.jpg') %>)">
+      <a href=""></a>
+      <span style=""></span>
+      <%# image_tag('design/nav/网站-全部案例.svg', class: 'svg img-fluid h-100') %>
+
+    </div>
+    <div class="submenu-item py-2" tabindex="1" style="background-image: url(<%# image_path('design/nav/网站-标识LOGO设计.jpg') %>)">
+      <a href=""></a>
+      <span style="background-color: rgba(3, 169, 244, 0.7)"></span>
+      <%# image_tag('design/nav/网站-标识LOGO设计.svg', class: 'svg img-fluid h-100') %>
+    </div>
+    <div class="submenu-item py-2" tabindex="1" style="background-image: url(<%# image_path('design/nav/网站-VI视觉设计.jpg') %>)">
+      <a href=""></a>
+      <span style="background-color: rgba(244, 67, 54, 0.7)"></span>
+      <%# image_tag('design/nav/网站-VI视觉设计.svg', class: 'svg img-fluid h-100') %>
+    </div>
+    <div class="submenu-item py-2" tabindex="1" style="background-image: url(<%# image_path('design/nav/网站-画册-手册设计.jpg') %>)">
+      <a href=""></a>
+      <span style="background-color: rgba(121, 85, 72, 0.7)  "></span>
+      <%# image_tag('design/nav/网站-画册-手册设计.svg', class: 'svg img-fluid h-100') %>
+    </div>
+    <div class="submenu-item py-2" tabindex="1" style="background-image: url(<%# image_path('design/nav/网站-产品包装设计.jpg') %>)">
+      <a href=""></a>
+      <span style="background-color: rgba(76, 175, 80, 0.7)"></span>
+      <%# image_tag('design/nav/网站-产品包装设计.svg', class: 'svg img-fluid h-100') %>
+    </div> -->
+  </div>
+</div>
+
+
+<div class="gallery_items_wrap p-0 <%= "container" unless @gallery_type  %>">
+  <div class=" row no-gutters">
+    <% @galleries.each_with_index do |g, index| %>
+
+    <% gallery_types = g.gallery_types.map {|gt| gt.gallery_type} %>
+    <% gallery_types_eng = g.gallery_types.map {|gt| gt.eng_name} %>
+    <%# byebug %>
+    <% if ["all", ""].include?(@gallery_type.to_s) %>
+      <% d_none = "" %>
+    <% elsif gallery_types_eng.include?(@gallery_type) %>
+      <%  d_none = "" %>
+    <% else %>
+      <%  d_none = "d-none" %>
+    <% end %>
+    <div class="item col-md-6 col-lg-4 <%= d_none %>" data-classify="<%= gallery_types.join(",") %>" >
+      <%= link_to g do %>
+        <div class="mask"></div>
+        <div class="gallery-text d-flex align-items-center">
+          <h5 class="mx-auto"><%= "#{g.title}-#{gallery_types.join('/')}" %></h5>
+        </div>
+        <% cover = g.images.select {|img| img.image.filename == g.cover}.first
+        cover = g.images.first if cover.to_s.empty?
+        %>
+        <% cover_size = '640x450' %> <!-- '720x405' -->
+        <!-- <div style="overflow: hidden;"> -->
+        <% if cover %>
+          <%= image_tag main_app.url_for(cover.image.variant(combine_options: {resize: "#{cover_size}^", gravity: 'center', crop: "#{cover_size}+0+0"} )), class: "w-100 cover-img", style: "" %>
+        <% end %>
+      <% end -%>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<%= javascript_include_tag 'galleries', 'data-turbolinks-track': 'reload' %>

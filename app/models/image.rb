@@ -10,7 +10,6 @@ class Image < ApplicationRecord
   # attr_accessible :image
   include Rails.application.routes.url_helpers
   def to_jq_upload
-# byebug
 
     {
       "name" => image.filename,
@@ -21,4 +20,5 @@ class Image < ApplicationRecord
       "deleteType" => "DELETE"
     }
   end
+  
 end

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   # resources :galleries, only: [:index, :show]
   mount Frontend::Engine   => '/', as: 'frontend'
-  mount Cgallery::Engine   => '/', as: 'gallery'
+  mount Work::Engine   => '/', as: 'work'
   # resources :pages, only: [:index, :show]
 
   # root to: "pages#index"
@@ -27,6 +27,6 @@ Rails.application.routes.draw do
 
 
   # last line
-  get 'conference', 'web', 'about', 'contact', 'contact/find_us', to: 'pages#show'
+  # get 'conference', 'web', 'about', 'contact', 'contact/find_us', to: 'pages#show'
 
 end

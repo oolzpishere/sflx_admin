@@ -1,0 +1,163 @@
+<% content_for :title, @gallery.title %>
+<% gallery_types = @gallery.gallery_types %>
+
+
+<div class="row no-gutters">
+
+	<div class="first-img col-12 text-white" style="background-image: url(<%= main_app.url_for first_img(@gallery).image %>);">
+		<div class="mask"></div>
+
+		<div class="row h-100" >
+			<div class="col-12 h-70" style="margin-top: 5%;">
+				<!-- #1de9b6 teal accent-3 -->
+				<div class="col-md-10 col-11 mx-auto p-md-3 p-1" style="border: solid #1de9b6 4px;">
+					<div class="w-100" style="border: solid white 2px;">
+						<div class="gallery_title" style="">
+							<p class="h1-md h2" style="line-height:120px;">
+							《 <%= @gallery.title %> 》
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 py-5">
+					<p class="h3-md h4 " style="line-height:40px;">
+						<span class="c-rounded-circle mx-1 d-xs-none"></span>
+						<span class="c-rounded-circle mx-1 d-xs-none"></span>
+						<span class="c-rounded-circle ml-1 mr-sm-4 mr-2 "></span>
+						<%= gallery_types.map {|gt| gt.gallery_type}.join('  ') %>  设计方案
+						<span class="c-rounded-circle mr-1 ml-sm-4 ml-2"></span>
+						<span class="c-rounded-circle mx-1 d-xs-none "></span>
+						<span class="c-rounded-circle mx-1 d-xs-none "></span>
+					</p>
+				</div>
+
+				<div class="col-12">
+					<p class="h3-md h4">
+						<% @gallery.title_eng.upcase.split(" \\N ").each do |eng| %>
+							<%= eng %> <br>
+						<% end unless @gallery.title_eng.to_s.empty?%>
+					</p>
+				</div>
+
+			</div>
+
+			<!-- h-20 -->
+			<div class="col-12" >
+				<div class="row">
+					<div class="col-12" >
+						<div class="w-100 h-100 position-absolute" style="background:rgba(29, 233, 182, 0.3); top:0; left:0;"></div>
+						<p class="h3-md h4 font-weight-normal" style="line-height:40px; z-index: -1;">
+							<%= gallery_types.map {|gt| gt.eng_name.upcase}.join('  ') %> DESIGN
+						</p>
+					</div>
+
+
+					<div class="col-12 d-flex justify-content-center">
+						<div class="scroll-icon">
+							<a href="">
+								<span></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+		</div>
+
+		<%# image_tag first_img.image, class: 'first_img img-fluid' %>
+	</div>
+</div>
+
+<div class="container info-container">
+	<div class="row ">
+		<div class="gallery-text col-12 p-5">
+			<h3 class="gallery-title "><%= @gallery.title %></h3>
+			<div class="gallery-types grey-darken-2-text py-3">
+				<%= gallery_types.map {|gt| gt.gallery_type}.join(' · ') %>
+			</div>
+			<%= raw @gallery.body %>
+		</div>
+
+		<%= @gallery.side_body %>
+		<% @gallery.images.order(:position).select {|img| img.position > 0 if img.position }.each do |img| %>
+		<div class="col-12 py-2">
+			<% url_768 = main_app.url_for(img.image.variant(resize: "768"))%>
+			<%= image_tag "", class: 'w-100 lazyload wow slideInUp20', "data-sizes" => "auto","data-src" => url_768, "data-srcset" => "#{url_768} 768w, #{main_app.url_for(img.image)} 769w" %>
+		</div>
+		<% end -%>
+	</div>
+
+	<%= link_to galleries_path, class: 'btn btn-outline-secondary my-3', "data-turbolinks" => false do
+		raw '<i class="fas fa-th mr-2"></i>返回作品集'
+	end %>
+</div>
+
+
+
+
+<% next_gallery_index = @galleries.index(@gallery) + 1
+	next_gallery = @galleries[next_gallery_index] %>
+	<%#byebug%>
+<% if next_gallery %>
+<div class="container-fluid next-gallery-img position-relative">
+	<div class="row ">
+		<%= link_to next_gallery do %>
+		<div class="mask position-absolute col-12 h-100 rgba-black-light "></div>
+
+		<div class="position-absolute col-12 h-100 d-flex justify-content-center align-items-center">
+			<div class="gallery_title text-white">
+				<h3><%= next_gallery.title %></h3>
+			</div>
+		</div>
+
+		<%= image_tag main_app.url_for(first_img(next_gallery).image), class: 'w-100', style: "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" %>
+		<% end -%>
+	</div>
+</div>
+<% end %>
+
+<!-- <div class="back-to-top position-fixed d-none" style="">
+	<i class="fas fa-chevron-circle-up w-100 h-100"></i>
+</div> -->
+<div class="fixed-button-wrap position-fixed d-none btn-group btn-group-toggle" data-toggle="buttons">
+
+  <label class="back-to-top btn btn-dark">
+		<div class="" style="">
+			<i class="fas fa-arrow-up"></i>
+			<!-- Top -->
+		</div>
+  </label>
+
+			<a href="#popup" class="open-popup-link btn btn-dark a-no-effect">
+				<i class="fas fa-phone"></i>
+			</a>
+			<!-- Contact -->
+
+  </label>
+</div>
+
+<div id="popup" class="row no-gutters mx-auto white-popup mfp-hide position-relative" style="max-width: 350px;">
+	<div class="col">
+		<div class="card">
+		  <h5 class="card-header">联系我们</h5>
+		  <div class="card-body">
+		    <!-- <h5 class="card-title">Special title treatment</h5> -->
+				<p><i class="fas fa-phone mr-2"></i>156-7700-8080</p>
+				<p><i class="fas fa-envelope mr-2"></i>877881120@qq.com</p>
+				<a class="icon-link round weixin fill z-depth-1">
+					<i class="fab fa-weixin"></i>
+				</a>
+				<a href="http://wpa.qq.com/msgrd?v=3&uin=877881120&site=qq&menu=yes" target="_blank" class="icon-link round qq fill z-depth-1">
+					<i class="fab fa-qq"></i>
+				</a>
+		  </div>
+		</div>
+	</div>
+</div>
+
+
+<%= javascript_include_tag 'galleries', 'data-turbolinks-track': 'reload' %>

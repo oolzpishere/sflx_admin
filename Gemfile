@@ -104,6 +104,6 @@ gem 'sidekiq'
 gem 'sinatra'
 
 gem 'frontend', path: 'components/frontend'
-gem 'cgallery', path: 'components/cgallery'
-
 gem 'shared', path: 'components/shared'
+
+gem 'work', path: 'components/work'
