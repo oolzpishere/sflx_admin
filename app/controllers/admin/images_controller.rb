@@ -1,5 +1,5 @@
 module Admin
-  class ImagesController < Admin::ApplicationController
+  class WorkImagesController < Admin::ApplicationController
 
 
     def destroy
