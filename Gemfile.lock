@@ -1,4 +1,21 @@
 PATH
+  remote: components/account
+  specs:
+    account (0.1.0)
+      devise
+      rails (~> 5.2.2)
+
+PATH
+  remote: components/admin
+  specs:
+    admin (0.1.0)
+      account
+      bootstrap
+      devise
+      rails (~> 5.2.2)
+      work
+
+PATH
   remote: components/frontend
   specs:
     frontend (0.1.0)
@@ -377,13 +394,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  account!
+  admin!
   administrate
   administrate-field-carrierwave
   awesome_print
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
-  bootstrap
   byebug
   cancan
   capistrano (~> 3.11)

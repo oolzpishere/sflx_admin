@@ -96,14 +96,16 @@ gem 'cancan' # or cancancan
 gem 'administrate-field-carrierwave'
 gem 'haml'
 
-gem 'bootstrap'
+
 
 gem "jquery-slick-rails"
 
 gem 'sidekiq'
 gem 'sinatra'
 
+# my engines
 gem 'frontend', path: 'components/frontend'
 gem 'shared', path: 'components/shared'
-
 gem 'work', path: 'components/work'
+gem 'admin', path: 'components/admin'
+gem 'account', path: 'components/account'

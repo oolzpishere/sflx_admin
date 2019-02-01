@@ -1,0 +1,29 @@
+<%= form_with(model: gallery_type, local: true) do |form| %>
+  <% if gallery_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gallery_type.errors.count, "error") %> prohibited this gallery_type from being saved:</h2>
+
+      <ul>
+      <% gallery_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%# byebug %>
+  <% @attribute_types.each do |column_name, field_module_name| %>
+
+    
+      <% field = Admin::Field.new(column_name: column_name, field_module_name: field_module_name) %>
+      <%= render_field(field, form) %>
+    </div>
+  <% end %>
+
+  <%# form.text_field :gallery_type %>
+
+
+  <div class="actions">
+    <%= form.submit(class: "btn btn-primary") %>
+  </div>
+<% end %>

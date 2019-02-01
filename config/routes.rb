@@ -4,21 +4,22 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => "/sidekiq"
   end
 
-  namespace :admin do
-    resources :users
-    resources :galleries
-    resources :images
-    resources :gallery_types
+  # namespace :admin do
+  #   resources :users
+  #   resources :galleries
+  #   resources :images
+  #   resources :gallery_types
+  #
+  #   root to: "users#index"
+  # end
 
-    root to: "users#index"
-  end
-
-  devise_for :users, only: :sessions
+  # devise_for :users, only: :sessions
   # devise_for :users, skip: [:registrations, :confirmations]
 
   # resources :galleries, only: [:index, :show]
   mount Frontend::Engine   => '/', as: 'frontend'
   mount Work::Engine   => '/', as: 'work'
+  mount Admin::Engine => '/', as: 'admin'
   # resources :pages, only: [:index, :show]
 
   # root to: "pages#index"

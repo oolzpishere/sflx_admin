@@ -1,0 +1,41 @@
+
+<div class="row">
+  <div class="col">
+    <span class="h1">Galleries</span>
+    <span class="badge badge-pill badge-primary"><%= @galleries.count %></span>
+  </div>
+  <div class="col-auto">
+    <span>
+      <%= link_to 'New Gallery', new_gallery_path, class: "btn btn-success my-auto" %>
+    </span>
+  </div>
+</div>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <% @show_page_attributes.each do |spa| %>
+        <th scope="col"><%= spa.to_s %></th>
+      <% end %>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @galleries.each do |gallery| %>
+
+
+      <tr>
+        <% @show_page_attributes.each do |spa| %>
+          <td><%= gallery.try(spa) %></td>
+        <% end %>
+        <td>
+        <%= link_to 'Show', gallery %>
+        <%= link_to 'Edit', edit_gallery_path(gallery) %>
+        <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

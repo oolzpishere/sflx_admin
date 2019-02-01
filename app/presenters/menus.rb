@@ -46,7 +46,7 @@ include ActiveSupport::Configurable
   end
 
   def gallery_types
-    GalleryType.all.map do |gt|
+    Work::GalleryType.all.map do |gt|
       # return all string Hash
       gt = gt.attributes
       gallery_type = gt["gallery_type"]
