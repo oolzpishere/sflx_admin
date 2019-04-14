@@ -2,7 +2,8 @@ module Admin
   class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception, unless: Proc.new { |c| c.request.format == 'application/json'}
     # This is our new function that comes before Devise's one
-    before_action :authenticate_user_from_token!, if: Proc.new { |c| c.request.format == 'application/json'}
+    # not using yet. defined below.
+    # before_action :authenticate_user_from_token!, if: Proc.new { |c| c.request.format == 'application/json'}
 
     before_action :authenticate_user!
     # before_action :set_fields_hash, only: [:new, :edit]

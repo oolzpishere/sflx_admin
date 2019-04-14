@@ -1,4 +1,4 @@
-<%= form_with(model: gallery, local: true) do |form| %>
+<%= form_with(model: gallery, local: true, html: { :multipart => true, :id => "fileupload"}) do |form| %>
   <% if gallery.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(gallery.errors.count, "error") %> prohibited this gallery from being saved:</h2>
@@ -16,6 +16,48 @@
     <%= render_field(field, form) %>
   <% end %>
 
+  <div class="field-unit__label">
+    <%= form.label :images %>
+    <%# form.label field.attribute %>
+  </div>
+          <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+   <div class="row fileupload-buttonbar">
+      <div class="col-lg-7">
+          <!-- The fileinput-button span is used to style the file input field as button -->
+          <span class="btn btn-success fileinput-button">
+              <i class="icon-plus icon-white"></i>
+              <span>Add files...</span>
+              <%= form.file_field :images, multiple: true%>
+            </span>
+          <button type="submit" class="btn btn-primary start">
+              <i class="icon-upload icon-white"></i>
+              <span>Start upload</span>
+          </button>
+          <button type="reset" class="btn btn-warning cancel">
+              <i class="icon-ban-circle icon-white"></i>
+              <span>Cancel upload</span>
+          </button>
+          <button type="button" class="btn btn-danger delete">
+              <i class="icon-trash icon-white"></i>
+              <span>Delete</span>
+          </button>
+          <input type="checkbox" class="toggle">
+          <!-- The global file processing state -->
+          <span class="fileupload-process"></span>
+      </div>
+      <!-- The global progress state -->
+      <div class="col-lg-5 fileupload-progress">
+          <!-- The global progress bar -->
+          <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+          </div>
+          <!-- The extended global progress state -->
+          <div class="progress-extended">&nbsp;</div>
+      </div>
+    </div>
+    <!-- The table listing the files available for upload/download -->
+    <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+
   <div class="actions">
     <%= form.submit(class: "btn btn-primary") %>
   </div>
@@ -26,48 +68,8 @@
 <div class="container">
   <!-- The file upload form used as target for the file upload widget -->
   <%= form_with(model: gallery, local: true, html: { :multipart => true, :id => "fileupload"}) do |f| %>
-  <div class="field-unit__label">
-    <%= f.label :images %>
-    <%# f.label field.attribute %>
-  </div>
-            <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-         <div class="row fileupload-buttonbar">
-              <div class="col-lg-7">
-                  <!-- The fileinput-button span is used to style the file input field as button -->
-                  <span class="btn btn-success fileinput-button">
-                      <i class="icon-plus icon-white"></i>
-                      <span>Add files...</span>
-                      <%= f.file_field :images, multiple: true%>
-                    </span>
-                  <button type="submit" class="btn btn-primary start">
-                      <i class="icon-upload icon-white"></i>
-                      <span>Start upload</span>
-                  </button>
-                  <button type="reset" class="btn btn-warning cancel">
-                      <i class="icon-ban-circle icon-white"></i>
-                      <span>Cancel upload</span>
-                  </button>
-                  <button type="button" class="btn btn-danger delete">
-                      <i class="icon-trash icon-white"></i>
-                      <span>Delete</span>
-                  </button>
-                  <input type="checkbox" class="toggle">
-                  <!-- The global file processing state -->
-                  <span class="fileupload-process"></span>
-              </div>
-              <!-- The global progress state -->
-              <div class="col-lg-5 fileupload-progress">
-                  <!-- The global progress bar -->
-                  <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                      <div class="progress-bar progress-bar-success" style="width:0%;"></div>
-                  </div>
-                  <!-- The extended global progress state -->
-                  <div class="progress-extended">&nbsp;</div>
-              </div>
-          </div>
-          <!-- The table listing the files available for upload/download -->
-          <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
-          <% end %>
+
+      <% end %>
 </div>
     <script>
   var fileUploadErrors = {
