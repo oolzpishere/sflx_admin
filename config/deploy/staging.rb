@@ -82,3 +82,4 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
 
 set :nginx_server_name, "staging.sflx.com.cn"
+set :rails_env, 'production'

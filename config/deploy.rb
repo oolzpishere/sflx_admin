@@ -33,16 +33,6 @@ set :deploy_to, "/var/www/rails/#{fetch(:application)}"
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-####################
-# Defaults to :db role
-set :migration_role, :app
-
-# Defaults to the primary :db server
-set :migration_servers, -> { primary(fetch(:migration_role)) }
-
-# Defaults to false
-# Skip migration if files in db/migrate were not modified
-# set :conditionally_migrate, true
 # require 'capistrano/rails/migrations' if ENV['RUN_MIGRATIONS']
 # RUN_MIGRATIONS=1 bundle exec cap production deploy:migrate
 
