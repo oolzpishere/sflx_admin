@@ -43,6 +43,7 @@ group :development, :test do
   gem "capistrano", "~> 3.11", require: false
   gem "capistrano-rails", "~> 1.4", require: false
   gem 'capistrano-rbenv'
+  gem 'capistrano3-puma'
 
   gem 'rspec-rails'
   # guard detect chang need gem install rb-fsevent
