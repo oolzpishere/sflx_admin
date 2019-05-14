@@ -75,4 +75,10 @@ set :keep_assets, 2
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", 'public/uploads', 'public/assets', 'storage'
 
-append :rbenv_map_bins, 'puma', 'pumactl'
+# rbenv setting
+# set :rbenv_ruby, '2.4.1'
+# set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_prefix, "source ~/.zshrc; RBENV_ROOT=#{fetch(:rbenv_path)}  #{fetch(:rbenv_path)}/bin/rbenv exec"
+# set :rbenv_prefix, "source ~/.zshrc; RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails puma pumactl}
+set :rbenv_roles, :all # default value

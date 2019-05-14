@@ -73,13 +73,6 @@ server "staging.sflx.com.cn",
 
 set :deploy_to, "/var/www/rails/#{fetch(:application)}_staging"
 
-# rbenv setting
-# set :rbenv_ruby, '2.4.1'
-# set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_prefix, "source ~/.zshrc; RBENV_ROOT=#{fetch(:rbenv_path)}  #{fetch(:rbenv_path)}/bin/rbenv exec"
-# set :rbenv_prefix, "source ~/.zshrc; RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
-set :rbenv_map_bins, %w{rake gem bundle ruby rails}
-set :rbenv_roles, :all # default value
 
 set :nginx_server_name, "staging.sflx.com.cn"
 set :rails_env, 'production'
