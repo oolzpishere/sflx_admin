@@ -76,3 +76,6 @@ set :deploy_to, "/var/www/rails/#{fetch(:application)}_staging"
 
 set :nginx_server_name, "staging.sflx.com.cn"
 set :rails_env, 'production'
+
+set :puma_conf, "#{shared_path}/puma_staging.rb"
+set :puma_bind, File.join("unix://#{shared_path}", 'tmp', 'sockets', 'puma_staging.sock')

@@ -70,3 +70,6 @@ server "www.sflx.com.cn",
          auth_methods: %w(publickey)
          # password: "please use keys"
        }
+
+set :puma_conf, "#{shared_path}/puma_production.rb"
+# set :puma_bind, File.join("unix://#{shared_path}", 'tmp', 'sockets', 'puma_production.sock')
