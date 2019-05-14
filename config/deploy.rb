@@ -74,3 +74,5 @@ set :keep_assets, 2
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", 'public/uploads', 'public/assets', 'storage'
+
+append :rbenv_map_bins, 'puma', 'pumactl'
