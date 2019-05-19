@@ -24,12 +24,13 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe Admin::GalleriesController, type: :controller do
-
+  routes { Admin::Engine.routes }
   # This should return the minimal set of attributes required to create a valid
   # Gallery. As you add validations to Gallery, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {:title => "title",
+    {:id => 1,
+    :title => "title",
     :body => "body",
     :side_body => "side_body",
     :position => 1,
@@ -41,14 +42,33 @@ RSpec.describe Admin::GalleriesController, type: :controller do
     skip("Add a hash of attributes invalid for your model")
   }
 
+  let(:new_attributes) {
+    {:id => 1,
+    :title => "title-new",
+    :body => "body-new",
+    :side_body => "side_body-new",
+    :position => 2,
+    :cover => "cover-new",
+    :first_img => "first_img-new"}
+  }
+
+
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # GalleriesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  login_user
+
+  describe "Authenticate" do
+    it "Authenticate success" do
+      expect(subject.current_user).to_not eq(nil)
+    end
+  end
+
   describe "GET #index" do
-    xit "returns a success response" do
-      gallery = Gallery.create! valid_attributes
+    it "returns a success response" do
+      gallery = Work::Gallery.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
@@ -56,22 +76,22 @@ RSpec.describe Admin::GalleriesController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      gallery = Gallery.create! valid_attributes
+      gallery = Work::Gallery.create! valid_attributes
       get :show, params: {id: gallery.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
 
   describe "GET #new" do
-    xit "returns a success response" do
+    it "returns a success response" do
       get :new, params: {}, session: valid_session
       expect(response).to be_success
     end
   end
 
   describe "GET #edit" do
-    xit "returns a success response" do
-      gallery = Gallery.create! valid_attributes
+    it "returns a success response" do
+      gallery = Work::Gallery.create! valid_attributes
       get :edit, params: {id: gallery.to_param}, session: valid_session
       expect(response).to be_success
     end
@@ -81,18 +101,13 @@ RSpec.describe Admin::GalleriesController, type: :controller do
     context "with valid params" do
       it "creates a new Gallery" do
         expect {
-          post :create, params: {gallery: valid_attributes}, session: valid_session
-        }.to change(Gallery, :count).by(1)
-      end
-
-      xit "redirects to the created gallery" do
-        post :create, params: {gallery: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Gallery.last)
+          post :create, params: {gallery: valid_attributes}
+        }.to change(Work::Gallery, :count).by(1)
       end
     end
 
     context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
+      xit "returns a success response (i.e. to display the 'new' template)" do
         post :create, params: {gallery: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
@@ -101,27 +116,25 @@ RSpec.describe Admin::GalleriesController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
 
       it "updates the requested gallery" do
-        gallery = Gallery.create! valid_attributes
+        gallery = Work::Gallery.create! valid_attributes
         put :update, params: {id: gallery.to_param, gallery: new_attributes}, session: valid_session
+        gallery_org = gallery.dup
         gallery.reload
-        skip("Add assertions for updated state")
+        expect(gallery_org).to_not eq(gallery)
       end
 
-      it "redirects to the gallery" do
-        gallery = Gallery.create! valid_attributes
+      xit "redirects to the gallery" do
+        gallery = Work::Gallery.create! valid_attributes
         put :update, params: {id: gallery.to_param, gallery: valid_attributes}, session: valid_session
         expect(response).to redirect_to(gallery)
       end
     end
 
     context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        gallery = Gallery.create! valid_attributes
+      xit "returns a success response (i.e. to display the 'edit' template)" do
+        gallery = Work::Gallery.create! valid_attributes
         put :update, params: {id: gallery.to_param, gallery: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
@@ -130,14 +143,14 @@ RSpec.describe Admin::GalleriesController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested gallery" do
-      gallery = Gallery.create! valid_attributes
+      gallery = Work::Gallery.create! valid_attributes
       expect {
         delete :destroy, params: {id: gallery.to_param}, session: valid_session
-      }.to change(Gallery, :count).by(-1)
+      }.to change(Work::Gallery, :count).by(-1)
     end
 
-    it "redirects to the galleries list" do
-      gallery = Gallery.create! valid_attributes
+    xit "redirects to the galleries list" do
+      gallery = Work::Gallery.create! valid_attributes
       delete :destroy, params: {id: gallery.to_param}, session: valid_session
       expect(response).to redirect_to(galleries_url)
     end
