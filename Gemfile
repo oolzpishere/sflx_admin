@@ -50,6 +50,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'faker'
 
   gem 'awesome_print'
   gem 'better_errors'
