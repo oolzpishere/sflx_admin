@@ -72,4 +72,7 @@ server "www.sflx.com.cn",
        }
 
 set :puma_conf, "#{shared_path}/puma_production.rb"
-# set :puma_bind, File.join("unix://#{shared_path}", 'tmp', 'sockets', 'puma_production.sock')
+set :puma_bind, File.join("unix://#{shared_path}", 'tmp', 'sockets', 'puma_production.sock')
+
+set :nginx_server_name, "sflx.com.cn www.sflx.com.cn"
+set :nginx_use_ssl, true
