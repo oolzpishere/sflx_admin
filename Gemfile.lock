@@ -448,7 +448,7 @@ DEPENDENCIES
   pry
   puma (~> 3.11)
   railroady
-  rails (~> 5.2.2)
+  rails (>= 5.2.3)
   rails-controller-testing
   rspec-rails
   sass-rails (~> 5.0)
