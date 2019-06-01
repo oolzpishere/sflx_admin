@@ -106,7 +106,7 @@
 <div id="index-main-container" class="container pt-5">
   <div class="row mb-5 no-gutters">
     <div class="col-12 mb-3 border-bottom">
-      <p class="font-weight-bold">四方连续文化传媒始于2013，位于广西南宁，是一家注重实效的新锐设计公司，我们以设计和创意为驱动力，为企业市场与运营提供以下服务：</p>
+      <p class="font-weight-bold" style="text-indent:2em">四方连续文化传媒始于2013，位于广西南宁，是一家注重实效的新锐设计公司，我们以设计和创意为驱动力，为企业市场与运营提供以下服务：</p>
     </div>
 
     <% services = [{title: "品牌形象建立与升级", content: "品牌策划 + 标志设计<br>VIS设计 + 商业空间设计"},
@@ -114,10 +114,9 @@
       {title: "广告设计代理", content: "专业地产整合推广以及<br>品牌形象年度设计管理"},
       {title: "会议会展", content: "提供专业的会议与商业活动服务<br>全程策划与执行"},
       {title: "高端网站建设", content: "高端品牌网站建设<br>电商视觉设计"},
-      {title: "more", content: "……"}
-      ] %>
+      {title: "more", content: "……"}] %>
     <% services.each_with_index do |s,i| %>
-      <div class="col-lg-4 col-12 text-center border-left border-right ">
+      <div class="col-lg-4 col-12 text-center border-left border-right border-xs-0 ">
         <span class="font-weight-bold h5">
         <%= s[:title] %>
         </span>

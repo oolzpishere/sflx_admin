@@ -1,9 +1,8 @@
 <% content_for :title, @gallery.title %>
 <% gallery_types = @gallery.gallery_types %>
 
-
+<!-- 设计展示 -->
 <div class="row no-gutters">
-
 	<div class="first-img col-12 text-white" style="background-image: url(<%= main_app.url_for first_img(@gallery).image %>);">
 		<div class="mask"></div>
 
@@ -91,7 +90,7 @@
 		<% end -%>
 	</div>
 
-	<%= link_to galleries_path, class: 'btn btn-outline-secondary my-3', "data-turbolinks" => false do
+	<%= link_to work.galleries_path, class: 'btn btn-outline-secondary my-3', "data-turbolinks" => false do
 		raw '<i class="fas fa-th mr-2"></i>返回作品集'
 	end %>
 </div>
@@ -120,9 +119,6 @@
 </div>
 <% end %>
 
-<!-- <div class="back-to-top position-fixed d-none" style="">
-	<i class="fas fa-chevron-circle-up w-100 h-100"></i>
-</div> -->
 <div class="fixed-button-wrap position-fixed d-none btn-group btn-group-toggle" data-toggle="buttons">
 
   <label class="back-to-top btn btn-dark">
@@ -160,4 +156,4 @@
 </div>
 
 
-<%= javascript_include_tag 'galleries', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'shared/manifests/galleries', 'data-turbolinks-track': 'reload' %>

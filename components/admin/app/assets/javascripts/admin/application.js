@@ -16,4 +16,4 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery-fileupload
-//= require galleries
+//= require admin/galleries

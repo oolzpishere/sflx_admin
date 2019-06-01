@@ -6,6 +6,8 @@ module Shared
       # app.config.assets.precompile += ["shared/manifests/*"]
       app.config.assets.precompile += ["shared/manifests/application"]
       app.config.assets.precompile += ["shared/manifests/custom.js"]
+      app.config.assets.precompile += ["shared/manifests/galleries.js"]
+
     end
   end
 end
