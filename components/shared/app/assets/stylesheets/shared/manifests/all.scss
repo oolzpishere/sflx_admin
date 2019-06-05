@@ -1,4 +1,5 @@
 $menucolor:#fff;
+$navbar-height:6rem;
 
 body{
   font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
@@ -13,7 +14,7 @@ img {
 .notice{
   position: absolute;
   left: 0;
-  top:6rem;
+  top:$navbar-height;
   z-index: 100;
   width: 100%;
   text-align: center;
@@ -26,7 +27,7 @@ img {
 
 .navbar-wrap {
   z-index: 100;
-  height: 6rem;
+  height: $navbar-height;
   box-shadow: $z-depth-1;
   .dropdown-menu .white-text {
     color: #fff !important;
@@ -240,7 +241,7 @@ img {
 
 // slick
 .slider-wrap{
-  margin-top: -6rem;
+  margin-top: -$navbar-height;
 }
 .slick-slider{
   margin: 0;

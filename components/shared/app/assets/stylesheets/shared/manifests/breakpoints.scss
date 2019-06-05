@@ -1,11 +1,17 @@
+$navbar-height-xs:60px;
+
 @include media-breakpoint-down(xs) {
   .navbar-wrap {
-    height: auto;
+    height: $navbar-height-xs;
     .navbar{
       padding-top: 0;
       padding-bottom: 0;
     }
   }
+  .slider-wrap {
+    margin-top: -$navbar-height-xs;
+  }
+
   .navbar-brand{
     img{
       height: 40px !important;
