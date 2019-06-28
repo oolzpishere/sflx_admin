@@ -4,6 +4,11 @@
   <title><%= content_for(:title) || "四方连续文化传媒" %></title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <%= csrf_meta_tags %>
+
+  <% if content_for?(:turbolinks_reload) %>
+    <meta name="turbolinks-visit-control" content="reload">
+  <% end %>
+
   <% if content_for(:description) %>
     <meta name="description" content="<%= content_for(:description) %>">
   <% end %>
@@ -14,6 +19,8 @@
   <%= stylesheet_link_tag    'shared/manifests/application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= render_manifests('css') %>
   <%= javascript_include_tag 'shared/manifests/application', 'data-turbolinks-track': 'reload', 'defer': true %>
+
+
 </head>
 
 <body>

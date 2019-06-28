@@ -21,7 +21,7 @@ include ActiveSupport::Configurable
 
     @menu_array = [
       # {:path => '/', :title => '主页', fontawesome: "fas fa-home"},
-      {:path =>'/galleries',:title => '设计服务', fontawesome: "fas fa-palette", data_turbolinks: false,
+      {:path =>'/galleries',:title => '设计服务', fontawesome: "fas fa-palette",
         children: [
           {:path => '/galleries?gallery_type=all', :slideout_path => '/galleries',:title => '全部作品', fontawesome: "fas fa-info-circle"},
           {:path => '/galleries?gallery_type=logo',:title => 'LOGO', fontawesome: "fas fa-info-circle"},
@@ -29,9 +29,9 @@ include ActiveSupport::Configurable
           {:path => '/galleries?gallery_type=album',:title => '画册设计', fontawesome: "fas fa-info-circle"},
           {:path => '/galleries?gallery_type=packaging',:title => '包装设计', fontawesome: "fas fa-info-circle"},
         ]},
-      {:path =>'/conference',:title => '会议会展', fontawesome: "fas fa-microphone-alt", data_turbolinks: false },
-      {:path =>'/web',:title => '网络技术', fontawesome: "fas fa-sitemap", data_turbolinks: false},
-      {:path => '/contact',:title => '联系我们', fontawesome: "fas fa-info-circle", data_turbolinks: false},
+      {:path =>'/conference',:title => '会议会展', fontawesome: "fas fa-microphone-alt"},
+      {:path =>'/web',:title => '网络技术', fontawesome: "fas fa-sitemap"},
+      {:path => '/contact',:title => '联系我们', fontawesome: "fas fa-info-circle"},
         # {:path => '/us',:title => '我们', fontawesome: "fas fa-info-circle",
         #   children: [
         #     {:path => '/about',:title => '关于', fontawesome: "fas fa-info-circle"},

@@ -18,6 +18,9 @@
 //= require jquery.slick
 //= require jquery-fileupload
 //= require turbolinks
+//= require shared/manifests/site
+//= require shared/manifests/turbolink_initialize
+//= require shared/manifests/slick
 //= require shared/manifests/mslideout
 //= require shared/manifests/lib/slideout
 //= require shared/manifests/lib/waves
