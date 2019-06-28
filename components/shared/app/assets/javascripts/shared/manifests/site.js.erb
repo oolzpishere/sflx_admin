@@ -1,0 +1,24 @@
+//= require shared/manifests/lib/Font-Awesome/svg-with-js/js/fontawesome-all
+//= require shared/manifests/lib/img_to_svg
+
+document.addEventListener("turbolinks:load", function() {
+
+
+  // dropdown arrow animation
+  var tl = new TimelineMax(),
+  links = document.querySelectorAll('.nav-item'),
+  pIcon = document.querySelectorAll('.plus-icon');
+
+  $('.nav-item.dropdown').on('mouseenter',function(){
+    TweenMax.to(pIcon[0],0.15,{rotation:-45,ease:Power1.easeIn})
+    TweenMax.to('#lineGroup_1',0.20,{attr:{'stroke-dashoffset':'8','stroke-dasharray' :'8'},ease:Power1.easeIn})
+  });
+
+  $('.nav-item.dropdown').on('mouseleave',function(){
+    TweenMax.to(pIcon[0],0.15,{rotation:0,ease:Power1.easeIn})
+    TweenMax.to('#lineGroup_1',0.20,{attr:{'stroke-dashoffset':'0','stroke-dasharray' :'0'},ease:Power1.easeIn})
+  });
+
+  
+
+});

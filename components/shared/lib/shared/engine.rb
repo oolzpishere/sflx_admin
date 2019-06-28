@@ -7,6 +7,9 @@ module Shared
       app.config.assets.precompile += ["shared/manifests/application"]
       app.config.assets.precompile += ["shared/manifests/custom.js"]
       app.config.assets.precompile += ["shared/manifests/galleries.js"]
+      app.config.assets.precompile += ["shared/manifests/site.js"]
+      app.config.assets.precompile += ["shared/manifests/slick.js"]
+      app.config.assets.precompile += ["shared/manifests/turbolink_initialize.js"]
 
     end
   end
