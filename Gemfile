@@ -112,3 +112,5 @@ gem 'shared', path: 'components/shared'
 gem 'work', path: 'components/work'
 gem 'admin', path: 'components/admin'
 gem 'account', path: 'components/account'
+
+gem 'font-awesome-sass', '~> 5.8.1'

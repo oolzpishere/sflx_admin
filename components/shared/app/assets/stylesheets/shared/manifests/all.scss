@@ -365,6 +365,7 @@ $social-default-btn-color: #666;
 $social-icon-size: 60px;
 $social-icon-border: 2px;
 $social-icon-border-radius: 5px;
+$social-icon-font-size: 35px;
 
 .icon-link {
     width: $social-icon-size;
@@ -380,14 +381,9 @@ $social-icon-border-radius: 5px;
     border: $social-icon-border solid transparent;
     position: relative;
    // @include box-sizing(content-box);
-   & svg{
-     color: $social-default-icon-color;
-     width: 70% !important;
-     height: 70% !important;
-     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+   .fab{
+     font-size: $social-icon-font-size;
+     line-height: $social-icon-size - $social-icon-border * 2;
    }
     &.fill {
 
@@ -433,7 +429,7 @@ $social-icon-border-radius: 5px;
         }
       }
 
-      .fa {
+      .fab {
         line-height: $social-icon-size - $social-icon-border * 2;
       }
 
