@@ -6,8 +6,13 @@
   <%= csrf_meta_tags %>
 
   <% if content_for?(:turbolinks_reload) %>
-    <meta name="turbolinks-visit-control" content="reload">
+    <!-- <meta name="turbolinks-visit-control" content="reload"> -->
   <% end %>
+
+  <% if content_for?(:turbolinks_no_cache) %>
+    <meta name="turbolinks-cache-control" content="no-cache">
+  <% end %>
+
 
   <% if content_for(:description) %>
     <meta name="description" content="<%= content_for(:description) %>">
@@ -15,6 +20,7 @@
   <% if content_for(:keywords) %>
     <meta name="keywords" content="<%= content_for(:keywords) %>">
   <% end %>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'shared/manifests/application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= render_manifests('css') %>

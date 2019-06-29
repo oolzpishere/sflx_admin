@@ -1,6 +1,6 @@
 <% _title = @gallery_type ? "#{Work::GalleryType.where(eng_name: @gallery_type).first.gallery_type}设计" : "设计服务" %>
 <% content_for :title, _title %>
-<% content_for :turbolinks_reload, :ture %>
+<% content_for :turbolinks_no_cache, :ture %>
 
 <% unless @gallery_type %>
 <!-- 设计服务首页 -->

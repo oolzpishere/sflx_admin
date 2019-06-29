@@ -38,16 +38,14 @@ document.addEventListener("turbolinks:load", function() {
       TweenMax.to( _, 1, {y:"0px", opacity: 1 });
     })
 
-    if ($('.slider-for.slick-initialized').length == 0){
-      $('.index-slider-for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true
-        // asNavFor: '.index-slider-nav'
-      });
-    }
-
+    // console.log($('.slider-for.slick-initialized').length)
+    $('.index-slider-for').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true
+      // asNavFor: '.index-slider-nav'
+    });
 
     $('.index-slider-nav .slider-nav-item').on("click", function(event){
       $('.index-slider-for').slick( 'slickGoTo', $(this).index() );
