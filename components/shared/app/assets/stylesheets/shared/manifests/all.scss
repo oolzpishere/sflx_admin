@@ -384,6 +384,7 @@ $social-icon-font-size: 35px;
    .fab{
      font-size: $social-icon-font-size;
      line-height: $social-icon-size - $social-icon-border * 2;
+     color: $social-default-icon-color;
    }
     &.fill {
 
