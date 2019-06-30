@@ -7,6 +7,9 @@ document.addEventListener("turbolinks:load", function() {
     this.scrollDown = function(){
       return this.scrollTop > this.lastScrollTop
     };
+    this.scrollUp = function(){
+      return this.scrollTop < this.lastScrollTop
+    };
     this.viewportHeight = window.innerHeight;
   }
   var ws = new WindowStatus;
@@ -145,36 +148,18 @@ document.addEventListener("turbolinks:load", function() {
 
 
   $(window).on('scroll',function(){
-    ws.lastScrollTop = ws.scrollTop
-
-    ws.scrollTop = $(window).scrollTop();
-
+    if (!ws.scrollLock) {
+      ws.lastScrollTop = ws.scrollTop
+      ws.scrollTop = $(window).scrollTop();
+    }
   });
 
-  // <<first-img
-  if ( $('.first-img').length > 0 ) { firstImgScroll() };
-  function firstImgScroll() {
 
-    $(window).on('scroll',function(){
-      if ( ws.scrollTop < 150 && !ws.scrollLock) {
-        if ( ws.scrollDown() ) {
-          ws.scrollLock = true;
-          $(window).scrollTo(ws.viewportHeight, 400, {easing: "easeInOutCubic",
-            always: function(){ ws.scrollLock = false; }
-          });
-        } else {
-          ws.scrollLock = true;
-          $(window).scrollTo(0, 400, {easing: "easeInOutCubic",
-            always: function(){
-              ws.scrollLock = false;
-              ws.lastScrollTop = 0;
-            }
-          });
-        }
-      }
-    });
+  // only use in scrollTo callback.
+  function releaseScrollLockAndSetScrollPosition(){
+    ws.scrollLock = false;
+    ws.lastScrollTop = ws.scrollTop = $(window).scrollTop();
   }
-  // <</first-img
 
   // <<scrollTo
   // gallery index scroll
@@ -185,7 +170,12 @@ document.addEventListener("turbolinks:load", function() {
   // gallery show scroll
   $('.scroll-icon').on('click', function(e){
     e.preventDefault();
-    $(window).scrollTo('.info-container', 400, {easing: "easeInOutCubic"});
+    ws.scrollLock = true;
+    $(window).scrollTo('.info-container', 400, {easing: "easeInOutCubic",
+      always: function(){
+        releaseScrollLockAndSetScrollPosition();
+      }
+    });
   });
 
   // <</scrollTo
@@ -208,9 +198,8 @@ document.addEventListener("turbolinks:load", function() {
     ws.scrollLock = true;
     $(window).scrollTo(0, 400, {easing: "easeInOutCubic",
       always: function(){
-        ws.scrollLock = false;
-        ws.lastScrollTop = 0;
-       }
+        releaseScrollLockAndSetScrollPosition();
+      }
     });
   });
 
