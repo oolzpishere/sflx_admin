@@ -114,3 +114,5 @@ gem 'admin', path: 'components/admin'
 gem 'account', path: 'components/account'
 
 gem 'font-awesome-sass', '~> 5.8.1'
+
+gem 'babel-transpiler'

@@ -1,18 +1,20 @@
-document.addEventListener("turbolinks:load", function() {
 
-  var WindowStatus = function(){
-    this.scrollLock = false;
-    this.scrollTop = 0;
-    this.lastScrollTop = 0;
-    this.scrollDown = function(){
-      return this.scrollTop > this.lastScrollTop
-    };
-    this.scrollUp = function(){
-      return this.scrollTop < this.lastScrollTop
-    };
-    this.viewportHeight = window.innerHeight;
-  }
+//= require shared/manifests/window_status
+"use strict";
+
+document.addEventListener("turbolinks:load", function() {
+  // import { WindowStatus } from 'window_status.js';
+
   var ws = new WindowStatus;
+
+
+
+  // $('.submenu-bar').animateCss('fadeInLeft')
+  // $('.submenu-fadein').animateCss('fadeInLeft', function(){
+  //   $('.submenu-bar').removeClass('animation-paused');
+  // });
+  $('.submenu-fadein').animateCss('fadeInLeft');
+  $('.submenu-bar').animateCss('fadeInLeft');
 
   // animateCss syntax suger
   $.fn.extend({
@@ -41,13 +43,6 @@ document.addEventListener("turbolinks:load", function() {
       return this;
     },
   });
-
-  // $('.submenu-bar').animateCss('fadeInLeft')
-  // $('.submenu-fadein').animateCss('fadeInLeft', function(){
-  //   $('.submenu-bar').removeClass('animation-paused');
-  // });
-  $('.submenu-fadein').animateCss('fadeInLeft');
-  $('.submenu-bar').animateCss('fadeInLeft');
 
 
   function addDelay(items, opts){
@@ -80,7 +75,7 @@ document.addEventListener("turbolinks:load", function() {
     e.preventDefault();
     var menu = $(this);
 
-    // add active classnn
+    // add active class
     $('.submenu-item ').removeClass("active");
     menu.parent('.submenu-item ').addClass("active");
 
@@ -196,7 +191,7 @@ document.addEventListener("turbolinks:load", function() {
   });
 
   function visibilityOfBackToTopButton (){
-    reachFooter = (ws.viewportHeight + ws.scrollTop) > $('footer').offset().top
+    var reachFooter = (ws.viewportHeight + ws.scrollTop) > $('footer').offset().top
 
     if (ws.scrollTop <= 1000 || reachFooter) {
       $('.fixed-button-wrap').addClass('d-none');
