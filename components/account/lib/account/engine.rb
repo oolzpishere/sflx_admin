@@ -10,9 +10,6 @@ module Account
       end
     end
 
-    initializer 'work.asset_precompile_paths' do |app|
-      # app.config.assets.precompile += ["account/manifests/*"]
-    end
 
   end
 end
